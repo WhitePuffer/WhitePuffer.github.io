@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="记录一下Mac OS下搭建Sadowsocks客户端和Kcptun的过程以及注意事项，免得查了忘，忘了查。">
+<meta name="keywords" content="网络相关,环境搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOS下Shadowsocks客户端配置与Kcptun加速">
+<meta property="og:url" content="http://WhitePuffer.github.io/2018/10/18/MacOS下Shadowsocks客户端配置与Kcptun加速/index.html">
+<meta property="og:site_name" content="老思机">
+<meta property="og:description" content="记录一下Mac OS下搭建Sadowsocks客户端和Kcptun的过程以及注意事项，免得查了忘，忘了查。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwcfgtldy9j304203pjrs.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwdq7r0qocj306t0bjjss.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fwcfxxjmd7j30fh08zjs3.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fwcgrxzin6j30dc0b875b.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwcglobn6uj30fh08zgmb.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fwcgvchay5j30of07zmxy.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fwcha06vc9j30ta0ebdie.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fwcha3fvfqj305306aglz.jpg">
+<meta property="og:updated_time" content="2018-10-21T11:01:01.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MacOS下Shadowsocks客户端配置与Kcptun加速">
+<meta name="twitter:description" content="记录一下Mac OS下搭建Sadowsocks客户端和Kcptun的过程以及注意事项，免得查了忘，忘了查。">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwcfgtldy9j304203pjrs.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WhitePuffer.github.io/2018/10/18/MacOS下Shadowsocks客户端配置与Kcptun加速/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MacOS下Shadowsocks客户端配置与Kcptun加速 | 老思机</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老思机</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/2018/10/18/MacOS下Shadowsocks客户端配置与Kcptun加速/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="White Puffer">
+      <meta itemprop="description" content="世界的意义必定在世界之外">
+      <meta itemprop="image" content="https://i.loli.net/2018/10/16/5bc4bc63af790.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老思机">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MacOS下Shadowsocks客户端配置与Kcptun加速
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-18 00:26:52" itemprop="dateCreated datePublished" datetime="2018-10-18T00:26:52+08:00">2018-10-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-21 19:01:01" itemprop="dateModified" datetime="2018-10-21T19:01:01+08:00">2018-10-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/环境搭建/" itemprop="url" rel="index"><span itemprop="name">环境搭建</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录一下Mac OS下搭建Sadowsocks客户端和Kcptun的过程以及注意事项，免得查了忘，忘了查。</p>
+<a id="more"></a>
+<p>本文参考润青的<a href="http://blog.rexking6.top/2017/04/03/%E6%90%AD%E5%BB%BAShadowsocks%E5%B9%B6%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">搭建Shadowsocks并使用 | RexKing6’s Note</a>，其内含kcptun的具体原理和服务端配置。</p>
+<h1 id="安装配置Shadowsocks"><a href="#安装配置Shadowsocks" class="headerlink" title="安装配置Shadowsocks"></a>安装配置Shadowsocks</h1><p>我们一般使用：<a href="https://github.com/shadowsocks/ShadowsocksX-NG" target="_blank" rel="noopener">ShadowsocksX-NG</a></p>
+<p>最新版的SSX-NG是有自带一个Kuptun的。</p>
+<p>先丢一个GFW List URL：<a href="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</a> </p>
+<p>安装略，一个绿色的小飞机。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwcfgtldy9j304203pjrs.jpg" alt="image-20181018155308190"></p>
+<p>接下来是配置shadowsocks了。</p>
+<p>这里先讲一下terminal命令行 <strong>ss-local</strong>配置方法</p>
+<h2 id="方法一-ss-local配置方法"><a href="#方法一-ss-local配置方法" class="headerlink" title="方法一 ss-local配置方法"></a>方法一 <strong>ss-local</strong>配置方法</h2><p><strong>注：</strong>这里的<strong>ss-local</strong>设置完成后只提供了一个<strong>本地端口</strong>供<strong>Proxy SwitchyOmega</strong>等插件连接，<strong>并不是系统代理</strong>。</p>
+<ol>
+<li><p>进入终端,打开SSR的缓存文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>⁨ /USER/jiang/Application Support⁩/ShadowsocksX-NG</span><br><span class="line">open .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到ss-local文件，并利用ln命令在/usr/local/bin下创建一个链接（替身），这样我们就可以直接在teminal里用ss-local启动它啦</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /USER/jiang/<span class="string">"Application Support⁩"</span>/ShadowsocksX-NG/ss-local-3.2.0/ss-local /usr/<span class="built_in">local</span>/bin/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在ShadowsocksX-NG⁩里创建一个ss-local-config.json，把一下信息根据实际情况修改并复制进去。这里的本地端口是用来配置<strong>Proxy SwitchyOmega</strong>等的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"obfs"</span> : <span class="string">"plain"</span>,</span><br><span class="line">  "server" : "45.32.137.118",//服务器地址</span><br><span class="line">  "server_port" : 8989,//端口</span><br><span class="line">  "password" : "********",//密码</span><br><span class="line">  "method" : "aes-256-ctr",//加密方式</span><br><span class="line">  "timeout" : 60,</span><br><span class="line">  "obfs_param" : "",</span><br><span class="line">  "local_port" : 10801,//本地端口</span><br><span class="line">  "protocol" : "origin",</span><br><span class="line">  "local_address" : "127.0.0.1"//本地服务地址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在terminal应用配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-local -c /USER/jiang/Application Support⁩/ShadowsocksX-R⁩/ss-local-config.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置开机自启动（这里还是用GUI配置比较方便XD）<strong>【这里有误】</strong></p>
+<p>将配置文件com.ShadowsocksX-NG.local.plist放在在 ～/Library/LaunchAgents里</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>EnvironmentVariables<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>DYLD_LIBRARY_PATH<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/jiang/Library/Application Support/ShadowsocksX-NG/<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.ShadowsocksX-NG.local<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/jiang/Library/Application Support/ShadowsocksX-NG/ss-local<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>-c<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>ss-local-config.json<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/jiang/Library/Logs/ss-local.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/jiang/Library/Logs/ss-local.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>WorkingDirectory<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/jiang/Library/Application Support/ShadowsocksX-R/<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>完毕</strong></p>
+<h2 id="方法二-直接用SSXR设置"><a href="#方法二-直接用SSXR设置" class="headerlink" title="方法二.直接用SSXR设置"></a>方法二.直接用SSXR设置</h2><p><strong>注：</strong>方法二配置的是<strong>系统代理</strong></p>
+<p>点开顶上的飞机。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwdq7r0qocj306t0bjjss.jpg" alt="image-20181018160255661"></p>
+<p>点红色的进入服务器设置，将服务器的地址，端口，加密方式填写好</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwcfxxjmd7j30fh08zjs3.jpg" alt="image-20181018160937026"></p>
+<p>再回到顶上 “打开Shadowsocks”。</p>
+<p><strong>注：</strong> <strong>偏好设置</strong>中可以设置本地端口和用于<strong>PAC模式</strong>的GFW List URL。</p>
+<p>在<strong>偏好设置</strong>中设置好自己本地Socks5监听端口 这里设置为10801，最后配置<strong>Proxy SwitchOmega</strong>的时候要用到。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwcgrxzin6j30dc0b875b.jpg" alt="image-20181018163826028"></p>
+<h1 id="使用Kcptun加速"><a href="#使用Kcptun加速" class="headerlink" title="使用Kcptun加速"></a>使用Kcptun加速</h1><p>kcptun的具体原理和服务端配置可以参考润青大佬的博客。</p>
+<p>kcptun的下载地址<a href="https://github.com/xtaci/kcptun" target="_blank" rel="noopener">xtaci/kcptun: A Stable &amp; Secure Tunnel Based On KCP with N:M Multiplexing</a></p>
+<p>最新版的SSX-NG是有自带一个Kuptun客户端的。位置在～/Library/“Application Support”/ShadowsocksX-NG/kcptun-v20170718</p>
+<p>SSX-NG的github中有说明如何添加kcptun插件到SSX-NG中<a href="https://github.com/shadowsocks/ShadowsocksX-NG/wiki/SIP003-Plugin" target="_blank" rel="noopener">How to add custom plugins</a></p>
+<p>1.把kcptun.json配置文件改好然后丢到～/Library/“Application Support”/ShadowsocksX-NG/kcptun-v20170718</p>
+<p>这里的remoteaddr指的是服务端提供的端口</p>
+<p>localaddr是本地端口，之后修改SSXNG配置的时候，SS连接的就是这个端口</p>
+<p><strong>注意</strong>这里的key密码是kcptun服务端设置的密码，不是服务器密码，不要混淆了</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"localaddr"</span>: <span class="string">"127.0.0.1:10800"</span>,</span><br><span class="line">    <span class="attr">"remoteaddr"</span>: <span class="string">"45.32.137.118:29900"</span>,</span><br><span class="line">    <span class="attr">"key"</span>: <span class="string">"*********"</span>,</span><br><span class="line">    <span class="attr">"crypt"</span>: <span class="string">"aes"</span>,</span><br><span class="line">    <span class="attr">"mode"</span>: <span class="string">"fast"</span>,</span><br><span class="line">    <span class="attr">"mtu"</span>: <span class="number">1350</span>,</span><br><span class="line">    <span class="attr">"sndwnd"</span>: <span class="number">512</span>,</span><br><span class="line">    <span class="attr">"rcvwnd"</span>: <span class="number">512</span>,</span><br><span class="line">    <span class="attr">"datashard"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"parityshard"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">"dscp"</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.terminal里输入,打开kcptun，并应用配置kcptun.json</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Library/<span class="string">"Application Support"</span></span><br><span class="line"><span class="built_in">cd</span> ShadowsocksX-NG/kcptun_v20170718/</span><br><span class="line">./kcptun_client -c kcptun.json</span><br></pre></td></tr></table></figure>
+<p><strong>需使用Kcptun加速的时候，就需要执行一下这个步骤的命令</strong>。</p>
+<p>这样很麻烦 所以我们编写一个bash脚本,建立一个kcptun.sh文件，写入。</p>
+<p>利用nohup和&amp;命令，实现后台运行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/jiang/Library/<span class="string">"Application Support"</span>/ShadowsocksX-NG/kcptun_v20170718</span><br><span class="line">nohup ./kcptun_client -c kcptun.json &amp;</span><br></pre></td></tr></table></figure>
+<p>在terminal中给kcptun.sh权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 kcptun.sh</span><br></pre></td></tr></table></figure>
+<p>这样我们每次使用kcptun就只需</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh /kcptun.sh</span><br></pre></td></tr></table></figure>
+<p>运行一下kcptun.sh就好了。</p>
+<p>3.修改SS的服务器配置</p>
+<p>新建一个服务器设置，这里把地址改成 127.0.0.1 端口改成刚才第一步设置的localaddr的端口10800</p>
+<p><strong>注意：</strong>密码是VPS服务器密码，而不是kcptun设置的密码</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwcglobn6uj30fh08zgmb.jpg" alt="image-20181018163224853"></p>
+<h1 id="配置Proxy-SwitchOmega"><a href="#配置Proxy-SwitchOmega" class="headerlink" title="配置Proxy SwitchOmega"></a>配置Proxy SwitchOmega</h1><p>使用chrome或者其他的浏览器，下载Proxy SwitchOmega插件，在情景模式里新建情景模式</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwcgvchay5j30of07zmxy.jpg" alt="image-20181018164143440"></p>
+<p>按照上述配置，代理端口就填写之前在Shadowsocks中<strong>偏好设置</strong>里设置的端口，这里是10801，之后更改auto switch如下所示。规则列表就填写文章开头给出的Gfwlist。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwcha06vc9j30ta0ebdie.jpg" alt="image-20181018164417151"></p>
+<p>之后在浏览器右上角切换找到SwitchOmega，切换成auto switch模式。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwcha3fvfqj305306aglz.jpg" alt="image-20181018164545406"></p>
+<p>配置完毕，享受科学上网吧。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>第一次写教程类的博客，花了好久时间。这次写SS搭建的收获还是不小的。弄清楚几个端口和密码的配置也就不难了。顺便也把自己的Mac的SS给重新配置了一下，用了Kcptun享受到了高速科学上网的快乐。</p>
+<p>Kcptun的加速效果特别的明显，只不过每次要使用的时候还要开启kcptun显得有些麻烦不过可以把kcptun用ln命令放到/usr/local/bin里快捷启动，或者设置成开机启动服务，这样就方便多了。</p>
+<p>最后感谢一下润青大佬提供的VPS服务器 XD</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络相关/" rel="tag"># 网络相关</a>
+          
+            <a href="/tags/环境搭建/" rel="tag"># 环境搭建</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/17/计算智能 课程笔记/" rel="next" title="【计算智能】课程笔记">
+                <i class="fa fa-chevron-left"></i> 【计算智能】课程笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/18/「深层神经网络」学习笔记/" rel="prev" title="「深层神经网络」学习笔记">
+                「深层神经网络」学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/10/16/5bc4bc63af790.jpg" alt="White Puffer">
+            
+              <p class="site-author-name" itemprop="name">White Puffer</p>
+              <p class="site-description motion-element" itemprop="description">世界的意义必定在世界之外</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/WhitePuffer" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:23020181154214@stu.xmu.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.rexking6.top/" title="润青大佬的博客" target="_blank">润青大佬的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置Shadowsocks"><span class="nav-number">1.</span> <span class="nav-text">安装配置Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一-ss-local配置方法"><span class="nav-number">1.1.</span> <span class="nav-text">方法一 ss-local配置方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二-直接用SSXR设置"><span class="nav-number">1.2.</span> <span class="nav-text">方法二.直接用SSXR设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Kcptun加速"><span class="nav-number">2.</span> <span class="nav-text">使用Kcptun加速</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置Proxy-SwitchOmega"><span class="nav-number">3.</span> <span class="nav-text">配置Proxy SwitchOmega</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-graduation-cap"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">White Puffer</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
