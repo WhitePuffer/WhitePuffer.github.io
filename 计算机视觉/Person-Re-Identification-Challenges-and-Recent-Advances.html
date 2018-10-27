@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="世界的意义必定在世界之外">
+  <meta name="description" content="田奇《行人再识别：挑战与最新进展》">
+<meta name="keywords" content="计算机视觉,机器学习,讲座笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【视频前沿分析】课程笔记">
-<meta property="og:url" content="http://WhitePuffer.github.io/uncategorized/视频前沿分析.html">
+<meta property="og:title" content="讲座《Person Re-Identification:Challenges and Recent Advances》笔记">
+<meta property="og:url" content="http://WhitePuffer.github.io/计算机视觉/Person-Re-Identification-Challenges-and-Recent-Advances.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="世界的意义必定在世界之外">
+<meta property="og:description" content="田奇《行人再识别：挑战与最新进展》">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-22T02:09:12.155Z">
+<meta property="og:updated_time" content="2018-10-27T07:51:11.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【视频前沿分析】课程笔记">
-<meta name="twitter:description" content="世界的意义必定在世界之外">
+<meta name="twitter:title" content="讲座《Person Re-Identification:Challenges and Recent Advances》笔记">
+<meta name="twitter:description" content="田奇《行人再识别：挑战与最新进展》">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/uncategorized/视频前沿分析.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/计算机视觉/Person-Re-Identification-Challenges-and-Recent-Advances.html">
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>【视频前沿分析】课程笔记 | 老思机</title>
+  <title>讲座《Person Re-Identification:Challenges and Recent Advances》笔记 | 老思机</title>
   
 
 
@@ -304,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/uncategorized/视频前沿分析.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/计算机视觉/Person-Re-Identification-Challenges-and-Recent-Advances.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -321,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【视频前沿分析】课程笔记
+          <h1 class="post-title" itemprop="name headline">讲座《Person Re-Identification:Challenges and Recent Advances》笔记
               
             
           </h1>
@@ -346,13 +347,47 @@
                 
               
 
-              <time title="创建时间：2018-10-22 10:09:12" itemprop="dateCreated datePublished" datetime="2018-10-22T10:09:12+08:00">2018-10-22</time>
+              <time title="创建时间：2018-10-27 14:47:26" itemprop="dateCreated datePublished" datetime="2018-10-27T14:47:26+08:00">2018-10-27</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-27 15:51:11" itemprop="dateModified" datetime="2018-10-27T15:51:11+08:00">2018-10-27</time>
+              
             
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算机视觉/" itemprop="url" rel="index"><span itemprop="name">计算机视觉</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -365,6 +400,8 @@
 
           
 
+          
+              <div class="post-description">田奇《行人再识别：挑战与最新进展》</div>
           
 
         </div>
@@ -380,7 +417,93 @@
       
 
       
-        
+        <p>讲座主要介绍了<strong>行人再识别</strong>域的一些数据集、背景、难点与最新进展，还有提出了一些现阶段的可能开展深入研究的方向。</p>
+<p>笔者研究生阶段第一次听学术讲座,很荣幸听到田奇教授的讲座。做了一些快记，不太齐全，可能有误，具体的还是要仔细去查查。</p>
+<p>讲座时间：2018/10/27 ；主讲人：田奇</p>
+<a id="more"></a>
+<p>主讲人简介：田奇，教授。IEEE Fellow、美国德克萨斯大学圣安东尼奥分校计算机系教授、长江学者。现于华为诺亚方舟实验室，任计算视觉首席科学家，主导视觉方向的前沿研究。</p>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>大背景：大数据，高速增长</p>
+<p>行人再识别主要运用：事件监测，行为分析……</p>
+<p>最新CVPR18上有32篇相关论文，从2009年开始逐年增长。 2014后，deep learning被运用；2017后GAN based被运用</p>
+<h1 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h1><ol>
+<li><p>大规模数据 Large-Scale Data</p>
+<ul>
+<li>Limited Training Data：数据集样式不足，时间、空间受限</li>
+<li>数据获取困难：隐私问题，需要数据集种类多</li>
+<li>标注成本大</li>
+</ul>
+</li>
+<li><p>巨大差异性 Huge Variants：行人表观巨大差异性</p>
+</li>
+<li><p>非理想场景：目标不完整，遮挡，低质量图</p>
+</li>
+</ol>
+<h1 id="Recent-Advance"><a href="#Recent-Advance" class="headerlink" title="Recent Advance"></a>Recent Advance</h1><h2 id="Advance-1：Large-Scale-Data"><a href="#Advance-1：Large-Scale-Data" class="headerlink" title="Advance 1：Large-Scale Data"></a>Advance 1：Large-Scale Data</h2><ol>
+<li><p>数据集：目前最好的数据集</p>
+<ul>
+<li>图像数据集<ul>
+<li>Market-1501 多摄像头</li>
+<li>MSMT17    真实场景：多时间跨度 复杂场景</li>
+</ul>
+</li>
+<li>视频数据集<ul>
+<li>MARS</li>
+</ul>
+</li>
+<li>🌟端对端数据集 An end-to-end re-identification dataset <ul>
+<li>PRW(Person Re-identification in the Wild):结合数据的检测和识别，不仅仅是单纯的跟踪识别，还包含了初始检测</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据生成</p>
+<ul>
+<li>传统方法 ：旋转 缩放 镜像……</li>
+<li>GAN based：<ul>
+<li>生成不同姿态：目前生成质量低</li>
+<li>相机变换：利用相机A的照片生成相机B的照片</li>
+<li>Domain Gap：风格迁移 in CVPR2018</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Advance2：Huge-Variants"><a href="#Advance2：Huge-Variants" class="headerlink" title="Advance2：Huge Variants"></a>Advance2：Huge Variants</h2><ol>
+<li><p>传统方法</p>
+</li>
+<li><p>Deep Learning</p>
+<ul>
+<li>loss function：n元组</li>
+</ul>
+</li>
+</ol>
+<h2 id="Advance3：非理想场景"><a href="#Advance3：非理想场景" class="headerlink" title="Advance3：非理想场景"></a>Advance3：非理想场景</h2><ol>
+<li><p>part of decetion：部分检测</p>
+<p>将人体拆分成多个部分进行检测</p>
+</li>
+<li><p>Partial Matching 解决部分遮挡</p>
+<p>参见论文：DSR[CVPR18] </p>
+</li>
+</ol>
+<h1 id="New-Research-Possibilities"><a href="#New-Research-Possibilities" class="headerlink" title="New Research Possibilities"></a>New Research Possibilities</h1><ol>
+<li><p>Datesets</p>
+<ul>
+<li>生成更多不同姿态 体型</li>
+<li>更多时间场景</li>
+<li>换装</li>
+<li>由短时间到长时间</li>
+<li>高清晰度数据</li>
+</ul>
+</li>
+<li><p>Methods</p>
+<ul>
+<li>信息融合：单纯的图像信息不够 手机定位 GPS </li>
+<li>无标签数据</li>
+<li>超分辨率    </li>
+</ul>
+</li>
+</ol>
+
       
     </div>
 
@@ -398,6 +521,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/计算机视觉/" rel="tag"># 计算机视觉</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/讲座笔记/" rel="tag"># 讲座笔记</a>
+          
+        </div>
+      
 
       
       
@@ -407,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/uncategorized/多媒体技术.html" rel="next" title="【多媒体技术】课程笔记">
-                <i class="fa fa-chevron-left"></i> 【多媒体技术】课程笔记
+              <a href="/算法设计/模拟退火算法解决TSP问题.html" rel="next" title="模拟退火算法解决TSP问题">
+                <i class="fa fa-chevron-left"></i> 模拟退火算法解决TSP问题
               </a>
             
           </div>
@@ -416,10 +549,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/算法设计/模拟退火算法解决TSP问题.html" rel="prev" title="模拟退火算法解决TSP问题">
-                模拟退火算法解决TSP问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,8 +593,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -592,6 +730,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Challenges"><span class="nav-number">2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recent-Advance"><span class="nav-number">3.</span> <span class="nav-text">Recent Advance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Advance-1：Large-Scale-Data"><span class="nav-number">3.1.</span> <span class="nav-text">Advance 1：Large-Scale Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advance2：Huge-Variants"><span class="nav-number">3.2.</span> <span class="nav-text">Advance2：Huge Variants</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advance3：非理想场景"><span class="nav-number">3.3.</span> <span class="nav-text">Advance3：非理想场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#New-Research-Possibilities"><span class="nav-number">4.</span> <span class="nav-text">New Research Possibilities</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
