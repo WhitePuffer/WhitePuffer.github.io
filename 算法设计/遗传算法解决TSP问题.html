@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="研究生课程 计算智能第四章模拟进化算法大作业">
+<meta name="keywords" content="机器学习,课程作业,算法设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遗传算法解决TSP问题">
+<meta property="og:url" content="http://WhitePuffer.github.io/算法设计/遗传算法解决TSP问题.html">
+<meta property="og:site_name" content="老思机">
+<meta property="og:description" content="研究生课程 计算智能第四章模拟进化算法大作业">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-04T09:02:50.452Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="遗传算法解决TSP问题">
+<meta name="twitter:description" content="研究生课程 计算智能第四章模拟进化算法大作业">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WhitePuffer.github.io/算法设计/遗传算法解决TSP问题.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>遗传算法解决TSP问题 | 老思机</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老思机</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/算法设计/遗传算法解决TSP问题.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="White Puffer">
+      <meta itemprop="description" content="世界的意义必定在世界之外">
+      <meta itemprop="image" content="https://i.loli.net/2018/10/16/5bc4bc63af790.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老思机">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">遗传算法解决TSP问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-04 16:12:43" itemprop="dateCreated datePublished" datetime="2018-11-04T16:12:43+08:00">2018-11-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-04 17:02:50" itemprop="dateModified" datetime="2018-11-04T17:02:50+08:00">2018-11-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法设计/" itemprop="url" rel="index"><span itemprop="name">算法设计</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">研究生课程 计算智能第四章模拟进化算法大作业</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="/机器学习/计算智能.html">计算智能</a>第三次大作业，用python实现。</p>
+<p>用遗传算法（GA）解决旅行商问题（TSP）。遗传算法是模拟进化算法的一种，经典的仿生学算法。这个算法有毒，结果没有模拟退火好,而且好慢。</p>
+<a id="more"></a>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>​    TSP问题（旅行商问题）是指旅行家要旅行n个城市，要求各个城市经历且仅经历一次然后回到出发城市，并要求所走的路程最短。 </p>
+<p>​    转换为图论问题即：<strong>给定一个 $n$ 个节点的加权完全图 $d$ ，求一权重最小的哈密尔顿回路 $p$ </strong>。</p>
+<p>​    动态规划求解的经典问题。用遗传算法来实现。</p>
+<h1 id="一-要点"><a href="#一-要点" class="headerlink" title="一. 要点"></a>一. 要点</h1><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ol>
+<li>问题条件符号<ul>
+<li>总共 $N$ 个节点，节点用数字编号 $0,1,\cdots,n$ 表示</li>
+<li>任意两个节点距离用邻接矩阵 $ d[i,j] $ ,其中 $i,j\in {0,1,\cdots,n} $</li>
+</ul>
+</li>
+<li>遗传算法符号<ul>
+<li>种群规模 $M$ ,可取$M = 27N$ </li>
+<li>路径$p[i][0:N-1]$ 表示种群中第i个元素所对应的路径$[0:N-1]$ </li>
+<li>路径长度$l[i]$ 表示种群中第i个元素所对应的路径长度 </li>
+<li>归一化适应度 $p[i]$</li>
+<li>变异概率 $P_m = 0.1= 10%$</li>
+<li>杂交本次实验采用取父代的一半，母代的剩余部分，不需要参数</li>
+</ul>
+</li>
+<li>特殊符号<ul>
+<li>为了运行结果展示的方便，将全局的随机种子$seed = 1$。 </li>
+</ul>
+</li>
+</ol>
+<h2 id="细节介绍"><a href="#细节介绍" class="headerlink" title="细节介绍"></a>细节介绍</h2><p>遗传算法主要的操作有：杂交、变异、选择。对于每一代种群都进行这三种操作，如此往复，直到满足停止条件。</p>
+<p>按程序写的顺序介绍一下每个函数实现的细节。顺便说一下停止条件。</p>
+<h3 id="杂交：hybrid"><a href="#杂交：hybrid" class="headerlink" title="杂交：hybrid"></a>杂交：hybrid</h3><p>杂交分两步，第一步是适应度的计算，程序里用cal_adp()函数实现，第二步是杂交，让适应度越高的个体杂交的几率越大。</p>
+<ol>
+<li><p><strong>适应度函数计算：cal_adp()</strong></p>
+<p>适应度函数主要是给<strong>杂交</strong>操作提供数据，以便适应度越高的<strong>杂交</strong>计算当前种群的。主要的步骤就是：计算路径长度$l[i]$，取适应度$p[i] = \frac{1}{l[i]}$,然后归一化</p>
+<p>$p[i] = \frac{p[i]}{\Sigma p[i]}$ ,将适应度作为杂交被选取到的概率。</p>
+</li>
+<li><p>杂交</p>
+<p>根据适应度选取两个不同个体，然后各自作为父亲，取前一半路径，剩下一半取另外一个个体的剩余路径，生成两个子代。</p>
+<p>进行$\frac{M}{2}$次这样的操作，产生$M$个子代。</p>
+</li>
+</ol>
+<h3 id="变异：mutate"><a href="#变异：mutate" class="headerlink" title="变异：mutate"></a>变异：mutate</h3><p>变异就是将杂交后生成的子代中每一个进行一个变异操作：若随机数小于变异概率，随机调换该个体中的两个节点。</p>
+<h3 id="选择：generate"><a href="#选择：generate" class="headerlink" title="选择：generate"></a>选择：generate</h3><p>生成下一代，这里不将杂交变异后的子代直接作为下一代，而是选取当前父代的一些最优解随机插入子代中代替子代的一部分。从而生成新的子代。</p>
+<h3 id="停止条件"><a href="#停止条件" class="headerlink" title="停止条件"></a>停止条件</h3><p>如果连续一定代的遗传，其最优的解都没有变化，那么就将其视为收敛，这里设定为500。</p>
+<h1 id="二-python代码"><a href="#二-python代码" class="headerlink" title="二. python代码"></a>二. python代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GA</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, N, M, randseed=None)</span>:</span>  <span class="comment"># 城市数量 N；种群规模 M；随机数种子 rand</span></span><br><span class="line">        self.N = N</span><br><span class="line">        self.M = M</span><br><span class="line">        self.seed = randseed</span><br><span class="line">        <span class="comment"># d 距离邻接矩阵</span></span><br><span class="line">        self.d = []</span><br><span class="line">        self.path = []</span><br><span class="line">        self.newpath = []</span><br><span class="line">        self.l = []</span><br><span class="line">        self.p = []</span><br><span class="line">        self.bestl = sys.maxsize</span><br><span class="line">        <span class="comment"># 杂交概率 pc 变异概率 pm</span></span><br><span class="line">        self.pm = <span class="number">0.1</span></span><br><span class="line">        self.pc = <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成 d 距离邻接矩阵</span></span><br><span class="line">        np.random.seed(self.seed)</span><br><span class="line">        self.d = np.random.randint(<span class="number">1</span>, <span class="number">1000</span>, (self.N, self.N))</span><br><span class="line">        self.d = np.triu(self.d, <span class="number">1</span>) + np.triu(self.d, <span class="number">1</span>).T  <span class="comment"># 生成完全图</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成一个含M个个体的初始种群</span></span><br><span class="line">        x = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(self.N)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.M):</span><br><span class="line">            self.path.append(copy.copy(x))</span><br><span class="line">            random.shuffle(x)</span><br><span class="line">        <span class="comment"># print('init')</span></span><br><span class="line">        <span class="comment"># print('d 距离邻接矩阵')</span></span><br><span class="line">        <span class="comment"># print(self.d)</span></span><br><span class="line">        <span class="comment"># print('初始路径距离矩阵')</span></span><br><span class="line">        <span class="comment"># print(self.path)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cal_adp</span><span class="params">(self)</span>:</span>  <span class="comment"># 计算适应度 储存当前代最优值</span></span><br><span class="line">        <span class="comment"># 路径 path[i][:]</span></span><br><span class="line">        <span class="comment"># 路径长度 l[i]</span></span><br><span class="line">        <span class="comment"># 归一化适应度 adp[i]</span></span><br><span class="line">        <span class="comment"># 生成一个含M个个体的初始种群</span></span><br><span class="line">        <span class="comment"># 生成路径 path[i][:] 第i个个体路径</span></span><br><span class="line">        <span class="comment"># 生成路径长度 l[i] 第i个个体路径长度</span></span><br><span class="line">        self.l = []</span><br><span class="line">        self.p = []</span><br><span class="line">        self.bestl = sys.maxsize</span><br><span class="line">        self.bestpath = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.M):</span><br><span class="line">            length = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(self.N - <span class="number">1</span>):</span><br><span class="line">                length += self.d[self.path[i][j]][self.path[i][j + <span class="number">1</span>]]</span><br><span class="line">            length += self.d[self.path[i][self.N - <span class="number">1</span>]][self.path[i][<span class="number">0</span>]]</span><br><span class="line">            self.l.append(copy.copy(length))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成归一化适应度 p[i]  储存当前代最优值</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.M):</span><br><span class="line">            self.p.append(math.pow(self.l[i], <span class="number">-1</span>))</span><br><span class="line">            <span class="keyword">if</span> self.bestl &gt; self.l[i]:</span><br><span class="line">                self.bestl = copy.copy(self.l[i])</span><br><span class="line">                self.bestpath = copy.deepcopy(self.path[i])</span><br><span class="line">                <span class="comment"># print('l[i]',self.l[i])</span></span><br><span class="line">        sump = math.fsum(self.p)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.M):</span><br><span class="line">            self.p[i] /= sump</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hybrid</span><span class="params">(self)</span>:</span>  <span class="comment"># 杂交</span></span><br><span class="line">        self.path = sorted(self.path, key=<span class="keyword">lambda</span> i: self.p[self.path.index(i)])</span><br><span class="line">        self.p = sorted(self.p)</span><br><span class="line">        <span class="comment"># print('杂交前path')</span></span><br><span class="line">        <span class="comment"># print(np.array(self.path))</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, self.M):</span><br><span class="line">            self.p[i] += self.p[i - <span class="number">1</span>]</span><br><span class="line">        <span class="comment"># print(p)</span></span><br><span class="line">        self.newpath = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.M // <span class="number">2</span>):  <span class="comment"># 进行M/2次杂交 一共生成M个子代</span></span><br><span class="line">            x, y = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> x == y:</span><br><span class="line">                a, b = np.random.rand(), np.random.rand()</span><br><span class="line">                x, y = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">                <span class="keyword">while</span> a &gt; self.p[x]:</span><br><span class="line">                    x += <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> b &gt; self.p[y]:</span><br><span class="line">                    y += <span class="number">1</span></span><br><span class="line">            <span class="comment"># x作为父代</span></span><br><span class="line">            child = self.path[x][:self.N // <span class="number">2</span>]</span><br><span class="line">            child2 = list(set(self.path[y]) - set(child))</span><br><span class="line">            child2.sort(key=self.path[y].index)</span><br><span class="line">            <span class="comment"># print(self.path[x],self.path[y])</span></span><br><span class="line">            <span class="comment"># print(child,child2)</span></span><br><span class="line">            self.newpath.append(child + child2)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># y作为父代</span></span><br><span class="line">            child = self.path[y][:self.N // <span class="number">2</span>]</span><br><span class="line">            child2 = list(set(self.path[x]) - set(child))</span><br><span class="line">            child2.sort(key=self.path[x].index)</span><br><span class="line">            <span class="comment"># print(self.path[x],self.path[y])</span></span><br><span class="line">            <span class="comment"># print(child,child2)</span></span><br><span class="line">            self.newpath.append(child + child2)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># print('杂交后newpath')</span></span><br><span class="line">        <span class="comment"># print(np.array(self.newpath))</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mutate</span><span class="params">(self)</span>:</span>  <span class="comment"># 变异</span></span><br><span class="line">        <span class="comment"># print(np.array(self.path))</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.M):</span><br><span class="line">            <span class="keyword">if</span> np.random.rand() &lt; self.pm:  <span class="comment"># 概率变异</span></span><br><span class="line">                a, b = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">                <span class="keyword">while</span> a == b:</span><br><span class="line">                    a, b = np.random.randint(<span class="number">0</span>, self.N), np.random.randint(<span class="number">0</span>, self.N)</span><br><span class="line">                self.newpath[i][a], self.newpath[i][b] = self.newpath[i][b], self.newpath[i][a]</span><br><span class="line">                <span class="comment"># print(i,a,b)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self)</span>:</span>  <span class="comment"># 生成下一代 将M个子代 和 M个父代合并筛选 出M个子代的新种群</span></span><br><span class="line">        <span class="comment"># print(np.array(self.newpath))</span></span><br><span class="line">        <span class="comment"># print(np.array(self.path))</span></span><br><span class="line">        <span class="comment"># t = self.newpath +self.path[:self.M//2]</span></span><br><span class="line">        t = self.newpath</span><br><span class="line">        l = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(int(self.M)):</span><br><span class="line">            length = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(self.N - <span class="number">1</span>):</span><br><span class="line">                length += self.d[t[i][j]][t[i][j + <span class="number">1</span>]]</span><br><span class="line">            length += self.d[t[i][self.N - <span class="number">1</span>]][t[i][<span class="number">0</span>]]</span><br><span class="line">            l.append(copy.copy(length))</span><br><span class="line">        t = sorted(t, key=<span class="keyword">lambda</span> i: l[t.index(i)])</span><br><span class="line">        l = sorted(l)</span><br><span class="line">        <span class="comment">#print('l[0]',l[0])</span></span><br><span class="line">        <span class="comment"># if l[0] &lt; self.l[0]:</span></span><br><span class="line">        <span class="comment">#     t[self.M-1] = copy.copy(self.path[self.M-1])</span></span><br><span class="line">        t[np.random.randint(<span class="number">0</span>,self.M)] = copy.copy(self.path[self.M<span class="number">-1</span>])</span><br><span class="line">        self.path = t[:self.M]  <span class="comment"># 切取最优秀的前M个成为子代path</span></span><br><span class="line">        <span class="comment"># print('新子代path')</span></span><br><span class="line">        <span class="comment"># print(np.array(self.path))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    tsp = GA(N=<span class="number">30</span>, M=<span class="number">1000</span>, randseed=<span class="number">1</span>)  <span class="comment"># 初始化</span></span><br><span class="line">    ans = sys.maxsize</span><br><span class="line">    log = []</span><br><span class="line">    stp = <span class="number">0</span></span><br><span class="line">    tim = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> stp &lt;= <span class="number">1000</span>:  <span class="comment"># 100代最优解没变化则停止</span></span><br><span class="line">        tim += <span class="number">1</span>  <span class="comment"># 记录生成次数</span></span><br><span class="line">        tsp.cal_adp()  <span class="comment"># 计算适应度</span></span><br><span class="line">        log.append(tsp.bestl)</span><br><span class="line">        <span class="comment"># print(ans)</span></span><br><span class="line">        <span class="keyword">if</span> tsp.bestl == ans:</span><br><span class="line">            stp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> tsp.bestl != ans:</span><br><span class="line">            ans = tsp.bestl</span><br><span class="line">            stp = <span class="number">0</span></span><br><span class="line">        tsp.hybrid()  <span class="comment"># 杂交</span></span><br><span class="line">        tsp.mutate()  <span class="comment"># 变异</span></span><br><span class="line">        tsp.generate()  <span class="comment"># 生成子代</span></span><br><span class="line">        print(tsp.bestl,tim)</span><br><span class="line">    print(<span class="string">'Path:'</span>, tsp.bestpath)</span><br><span class="line">    print(<span class="string">'Length:'</span>, tsp.bestl)</span><br><span class="line">    print(<span class="string">'Times'</span>, tim)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/课程作业/" rel="tag"># 课程作业</a>
+          
+            <a href="/tags/算法设计/" rel="tag"># 算法设计</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/计算机网络/远程服务器JupyterNotebook配置与连接.html" rel="next" title="远程Ubuntu服务器JupyterNotebook配置与连接">
+                <i class="fa fa-chevron-left"></i> 远程Ubuntu服务器JupyterNotebook配置与连接
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/10/16/5bc4bc63af790.jpg" alt="White Puffer">
+            
+              <p class="site-author-name" itemprop="name">White Puffer</p>
+              <p class="site-description motion-element" itemprop="description">世界的意义必定在世界之外</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/WhitePuffer" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:23020181154214@stu.xmu.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.rexking6.top/" title="润青大佬的博客" target="_blank">润青大佬的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一-要点"><span class="nav-number">2.</span> <span class="nav-text">一. 要点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#细节介绍"><span class="nav-number">2.2.</span> <span class="nav-text">细节介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#杂交：hybrid"><span class="nav-number">2.2.1.</span> <span class="nav-text">杂交：hybrid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变异：mutate"><span class="nav-number">2.2.2.</span> <span class="nav-text">变异：mutate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择：generate"><span class="nav-number">2.2.3.</span> <span class="nav-text">选择：generate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止条件"><span class="nav-number">2.2.4.</span> <span class="nav-text">停止条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-python代码"><span class="nav-number">3.</span> <span class="nav-text">二. python代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-graduation-cap"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">White Puffer</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.2</div>
+
+
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
