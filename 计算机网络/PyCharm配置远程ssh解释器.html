@@ -108,25 +108,34 @@
 
 
 
-  <meta name="description" content="世界的意义必定在世界之外">
-<meta name="keywords" content="网络配置">
+  <meta name="description" content="Ubuntu服务器ssh配置，客户端PyCharm配置">
+<meta name="keywords" content="计算机网络,环境搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyCharm配置远程ssh解释器">
-<meta property="og:url" content="http://WhitePuffer.github.io/uncategorized/PyCharm配置远程ssh解释器.html">
+<meta property="og:url" content="http://WhitePuffer.github.io/计算机网络/PyCharm配置远程ssh解释器.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="世界的意义必定在世界之外">
+<meta property="og:description" content="Ubuntu服务器ssh配置，客户端PyCharm配置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-06T02:33:31.555Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwy5svo1fcj30vw04fwfu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fwy605d10kj30oz040jrk.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwy63pgdd6j30tr0ja0v2.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwy64q804qj30tr0ja0v2.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fwy697yzrhj30gu01m748.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwy6aafta3j30h406kt94.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fwy6d25056j309o04174f.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fwy6e6l5g6j30mk044dg8.jpg">
+<meta property="og:updated_time" content="2018-11-06T04:07:31.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyCharm配置远程ssh解释器">
-<meta name="twitter:description" content="世界的意义必定在世界之外">
+<meta name="twitter:description" content="Ubuntu服务器ssh配置，客户端PyCharm配置">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwy5svo1fcj30vw04fwfu.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/uncategorized/PyCharm配置远程ssh解释器.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/计算机网络/PyCharm配置远程ssh解释器.html">
 
 
 
@@ -305,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/uncategorized/PyCharm配置远程ssh解释器.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/计算机网络/PyCharm配置远程ssh解释器.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -364,12 +373,30 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-06 10:33:31" itemprop="dateModified" datetime="2018-11-06T10:33:31+08:00">2018-11-06</time>
+                <time title="修改时间：2018-11-06 12:07:31" itemprop="dateModified" datetime="2018-11-06T12:07:31+08:00">2018-11-06</time>
               
             
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -382,6 +409,8 @@
 
           
 
+          
+              <div class="post-description">Ubuntu服务器ssh配置，客户端PyCharm配置</div>
           
 
         </div>
@@ -397,7 +426,65 @@
       
 
       
-        
+        <p>记录一下利用ssh配置PyCharm的远程Interpreter的过程。</p>
+<a id="more"></a>
+<p>两个神器PyCharm/Jupyter配置好之后，可以告别mac跑大程序了。</p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>服务器：ubuntu16.04 </p>
+<p>Python：anaconda3下的python 3.70</p>
+<p>客户端：macbook</p>
+<p>IDE：PyCharm 2018.2.4 (Professional Edition)</p>
+<h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>服务器主要就是ssh的配置，默认已经安装了openssh-server，<strong>由于笔者在实验室内网配置，就不为ssh的安全性考虑了</strong>。</p>
+<ol>
+<li>配置sshd_config, 配置文件默认保存在 /etc/ssh/sshd_config</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>将PermitRootLogin 这行改为PermitRootLogin <strong>yes</strong>  #可登录root账户</p>
+<ol start="2">
+<li>之后重启sshd服务</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+<p>配置完成。</p>
+<h1 id="客户端PyCharm配置"><a href="#客户端PyCharm配置" class="headerlink" title="客户端PyCharm配置"></a>客户端PyCharm配置</h1><ol>
+<li>打开浏览器，输入ssh [服务器用户名]@[sshd服务器ip地址],例如：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@192.168.1.5</span><br></pre></td></tr></table></figure>
+<p>输入密码，登录成功。</p>
+<ol start="2">
+<li>打开PyCharm，进入perference偏好设置。</li>
+</ol>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy5svo1fcj30vw04fwfu.jpg" alt="image-20181106110104032"></p>
+<p>如图，点击右边的齿轮然后添加一个新的Interpreter。</p>
+<ol start="3">
+<li>选择SSH Interpreter，New serverconfiguration，输入Host:[服务器IP地址]，Username:[用户名]。之后Next。输入密码。</li>
+<li>选择服务器上的python解释器所在位置，Finish，完成配置。</li>
+</ol>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwy605d10kj30oz040jrk.jpg" alt="image-20181106110811175"></p>
+<h1 id="客户端远程编译"><a href="#客户端远程编译" class="headerlink" title="客户端远程编译"></a>客户端远程编译</h1><h2 id="路径设置"><a href="#路径设置" class="headerlink" title="路径设置"></a>路径设置</h2><ol>
+<li>对于一个Project，选择remote python 解释器。</li>
+</ol>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy63pgdd6j30tr0ja0v2.jpg" alt="image-20181106111135787"></p>
+<ol start="2">
+<li>菜单栏选择Tools-&gt;Deployment-&gt;Configuration </li>
+</ol>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy64q804qj30tr0ja0v2.jpg" alt="image-20181106111235663"></p>
+<ol start="3">
+<li>Connection标签，设置一下服务器上存放该客户端文件的root path</li>
+</ol>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwy697yzrhj30gu01m748.jpg" alt="image-20181106111652773"></p>
+<ol start="4">
+<li>Mappings标签，配置一下这三个路径。</li>
+</ol>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy6aafta3j30h406kt94.jpg" alt="image-20181106111753559"></p>
+<h2 id="Upload-and-Run"><a href="#Upload-and-Run" class="headerlink" title="Upload and Run"></a>Upload and Run</h2><ol>
+<li>选择一个项目或项目文件，之后Tools-&gt;Deployment-&gt;Upload to…,上传至服务器。</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwy6d25056j309o04174f.jpg" alt="image-20181106112035072"></p>
+<ol start="2">
+<li>运行</li>
+</ol>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwy6e6l5g6j30mk044dg8.jpg" alt="image-20181106112138900"></p>
+<p>远程编译成功！</p>
+
       
     </div>
 
@@ -417,7 +504,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网络配置/" rel="tag"># 网络配置</a>
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+            <a href="/tags/环境搭建/" rel="tag"># 环境搭建</a>
           
         </div>
       
@@ -483,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -561,7 +659,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -615,6 +713,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器配置"><span class="nav-number">2.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端PyCharm配置"><span class="nav-number">3.</span> <span class="nav-text">客户端PyCharm配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端远程编译"><span class="nav-number">4.</span> <span class="nav-text">客户端远程编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路径设置"><span class="nav-number">4.1.</span> <span class="nav-text">路径设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upload-and-Run"><span class="nav-number">4.2.</span> <span class="nav-text">Upload and Run</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
