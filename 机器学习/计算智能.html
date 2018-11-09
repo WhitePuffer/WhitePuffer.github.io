@@ -109,20 +109,20 @@
 
 
   <meta name="description" content="研究生课程 Computational Intelligence">
-<meta name="keywords" content="机器学习,算法设计,课程笔记">
+<meta name="keywords" content="机器学习,课程笔记,算法设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【计算智能】课程笔记">
 <meta property="og:url" content="http://WhitePuffer.github.io/机器学习/计算智能.html">
 <meta property="og:site_name" content="老思机">
 <meta property="og:description" content="研究生课程 Computational Intelligence">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fwjfdx1x8zj30er0a5gog.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fwr7g0tvl3j30en0a3tb8.jpg">
-<meta property="og:updated_time" content="2018-10-31T03:50:56.390Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fx1wh00bdxj30er0a5jtq.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fx1wgysqxuj30en0a3tb8.jpg">
+<meta property="og:updated_time" content="2018-11-09T09:57:49.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【计算智能】课程笔记">
 <meta name="twitter:description" content="研究生课程 Computational Intelligence">
-<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fwjfdx1x8zj30er0a5gog.jpg">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fx1wh00bdxj30er0a5jtq.jpg">
 
 
 
@@ -367,7 +367,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-31 11:50:56" itemprop="dateModified" datetime="2018-10-31T11:50:56+08:00">2018-10-31</time>
+                <time title="修改时间：2018-11-09 17:57:49" itemprop="dateModified" datetime="2018-11-09T17:57:49+08:00">2018-11-09</time>
               
             
           </span>
@@ -437,7 +437,7 @@
 <li><strong>不确定性知识推理</strong>：滤波、平滑、预测、寻找最可能的序列等问题，并给出详细的推理方法介绍：HMM模型和Kalman滤波器，动态Bayes网络及近似推理算法——粒子滤波等。</li>
 </ol>
 <h1 id="第2章-问题求解的搜索"><a href="#第2章-问题求解的搜索" class="headerlink" title="第2章 问题求解的搜索"></a>第2章 问题求解的搜索</h1><h1 id="第3章-退火模拟算法（SA）"><a href="#第3章-退火模拟算法（SA）" class="headerlink" title="第3章 退火模拟算法（SA）"></a>第3章 退火模拟算法（SA）</h1><p>局部搜索算法（以爬山算法为代表）存在缺陷。最致命的是<strong>无法跳离局部最优“陷阱”</strong>，在高维情况下还存在“鞍陷阱”和“梯度消失”。</p>
-<h2 id="I-Metropolis算法"><a href="#I-Metropolis算法" class="headerlink" title="I Metropolis算法"></a>I Metropolis算法</h2><p>为了克服局部搜索的“陷阱”问题，1982年，Kirkpatirck提出<strong>模拟退火算法（ Simulated Annealing Algorithm ）</strong>。模拟退火算法模仿自然界固体退火的微观过程，将Metropolis准则引入到组合优化过程中来，得到了一种对Metropolis算法进行迭代的组合优化算法。</p>
+<h2 id="Metropolis算法"><a href="#Metropolis算法" class="headerlink" title="Metropolis算法"></a>Metropolis算法</h2><p>为了克服局部搜索的“陷阱”问题，1982年，Kirkpatirck提出<strong>模拟退火算法（ Simulated Annealing Algorithm ）</strong>。模拟退火算法模仿自然界固体退火的微观过程，将Metropolis准则引入到组合优化过程中来，得到了一种对Metropolis算法进行迭代的组合优化算法。</p>
 <p>核心思想：模拟退火算法用Metropolis算法产生组合优化问题解的序列。并由Metropolis准则对应的转<br>移概率 $P$<br>$$<br>P(i转移到j)=\begin{cases}<br>1 &amp; f(i) \ge f(j) \<br>e^{\frac{f(i)-f(j)}{t}} &amp; f(i)&lt;f(j) \<br>\end{cases}<br>$$<br>确定是否接受从当前解 $i$ 到 新解 $j$ 的转移。 </p>
 <ul>
 <li>式中 $t\in R^+$ 表示控制参数。开始让$ t $取较大的值，在进行足够多的转移后， 缓慢减小 $t$ 的值，如此重复直至满足某个停止准则时,算法终止。 </li>
@@ -448,9 +448,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwjfdx1x8zj30er0a5gog.jpg" alt="image-20181024170919261"></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwr7g0tvl3j30en0a3tb8.jpg" alt="image-20181024170937420"></p>
-<h2 id="II-伪代码与参数调整"><a href="#II-伪代码与参数调整" class="headerlink" title="II 伪代码与参数调整"></a>II 伪代码与参数调整</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%Procedure SIMULATED_ANNEALING</span></span><br><span class="line">INITIALIZE (i0, t0, L0); <span class="comment">% 初始化i0, t0, L0</span></span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">i</span> = i0;</span><br><span class="line"><span class="keyword">while</span> stop_criterion <span class="comment">% 算法停止准则</span></span><br><span class="line"><span class="comment">%对每个tk产生Lk个解，这Lk个解构成了一条长为Lk的Mapkob链</span></span><br><span class="line">	<span class="keyword">for</span> l=<span class="number">1</span> to Lk</span><br><span class="line">		GENERATE (<span class="built_in">j</span> from Si); <span class="comment">% 从当前解i的邻域Si中产生新解j</span></span><br><span class="line">    	<span class="comment">%以下 3 行 即 Metropolis 算法，共迭代了Lk 次</span></span><br><span class="line">		<span class="keyword">if</span> f(<span class="built_in">j</span>) &lt;= f(<span class="built_in">i</span>)</span><br><span class="line">			<span class="built_in">i</span> = <span class="built_in">j</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> <span class="built_in">exp</span>((f(<span class="built_in">i</span>)-f(<span class="built_in">j</span>))/ tk) &gt;= random[<span class="number">0</span>, <span class="number">1</span>) </span><br><span class="line">			<span class="built_in">i</span> = <span class="built_in">j</span></span><br><span class="line">		k:=k+<span class="number">1</span>;</span><br><span class="line">	CALCULATE_LENGTH (Lk); <span class="comment">%重新计算Mapkob链长Lk </span></span><br><span class="line">    CALCULATE_CONTROL(tk); <span class="comment">%重新计算控制参数值tk</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fx1wh00bdxj30er0a5jtq.jpg" alt="image-20181024170919261"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx1wgysqxuj30en0a3tb8.jpg" alt="image-20181024170937420"></p>
+<h2 id="伪代码与参数调整"><a href="#伪代码与参数调整" class="headerlink" title="伪代码与参数调整"></a>伪代码与参数调整</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%Procedure SIMULATED_ANNEALING</span></span><br><span class="line">INITIALIZE (i0, t0, L0); <span class="comment">% 初始化i0, t0, L0</span></span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">i</span> = i0;</span><br><span class="line"><span class="keyword">while</span> stop_criterion <span class="comment">% 算法停止准则</span></span><br><span class="line"><span class="comment">%对每个tk产生Lk个解，这Lk个解构成了一条长为Lk的Mapkob链</span></span><br><span class="line">	<span class="keyword">for</span> l=<span class="number">1</span> to Lk</span><br><span class="line">		GENERATE (<span class="built_in">j</span> from Si); <span class="comment">% 从当前解i的邻域Si中产生新解j</span></span><br><span class="line">    	<span class="comment">%以下 3 行 即 Metropolis 算法，共迭代了Lk 次</span></span><br><span class="line">		<span class="keyword">if</span> f(<span class="built_in">j</span>) &lt;= f(<span class="built_in">i</span>)</span><br><span class="line">			<span class="built_in">i</span> = <span class="built_in">j</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> <span class="built_in">exp</span>((f(<span class="built_in">i</span>)-f(<span class="built_in">j</span>))/ tk) &gt;= random[<span class="number">0</span>, <span class="number">1</span>) </span><br><span class="line">			<span class="built_in">i</span> = <span class="built_in">j</span></span><br><span class="line">		k:=k+<span class="number">1</span>;</span><br><span class="line">	CALCULATE_LENGTH (Lk); <span class="comment">%重新计算Mapkob链长Lk </span></span><br><span class="line">    CALCULATE_CONTROL(tk); <span class="comment">%重新计算控制参数值tk</span></span><br></pre></td></tr></table></figure>
 <p>那么我们如何重新计算Mapkob链长和控制参数呢？如何设定停止的条件和起始温度t0？</p>
 <p><strong>冷却表(cooling schedule)</strong> 是一组控制算法进程的参数，用以逼近模拟退火算法的渐进收敛性态，使算法在有限时间内执行迭 代过程后返回一个近似最优解。 </p>
 <p>冷却表是影响模拟退火算法实验性能的重要因素，其合理选取是算法应用的关键。 </p>
@@ -468,7 +468,7 @@
 <li>Mapkob 链长 $L_k$ 在控制参数 $t_0$ 的衰减函数已选定 的前提下 ， $L_k$ 应选得在控制参数的每一取值上都能恢复准平衡。 </li>
 <li>在控制参数的衰减函数应使 $t_k$ 的衰减以小为宜。</li>
 </ul>
-<h2 id="III-总结"><a href="#III-总结" class="headerlink" title="III 总结"></a>III 总结</h2><ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li><p>模拟退火算法的目的是为了解决普通的梯度下降法导致的<strong>陷入局部最优解</strong>的问题。</p>
 </li>
 <li><p>SA从自然界中固体退火的微观过程中得到启发。虽可能效果并不是很好，但是<strong>思路是一个突破</strong></p>
@@ -486,7 +486,7 @@
 <p><strong>遗传算法（genetic algorithms）</strong>、<strong>演化策略（evolution strategies）</strong>和<strong>进化程序（evolutionary programming）</strong>是几个典型的模拟进化算法，由 J.H.Holland 、 I.Recenberg 及 L.J.Fogel 等计算智能学者相继提出创立。 模拟进化算法一种仿生类算法。</p>
 <p>仿生类算法，就其目前发展而言，可分为仿生过程算法与仿生结构算法两大类，前者以模拟进化算法为代表，后者以神经网络为典型。</p>
 <p><strong>遗传算法</strong>(Genetic Algorithm,简称GA)是通过模拟生物进化过程来完成优化搜索的仿生类算法。</p>
-<h2 id="I-模拟进化算法"><a href="#I-模拟进化算法" class="headerlink" title="I 模拟进化算法"></a>I 模拟进化算法</h2><h3 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h3><p>考虑全局优化问题：</p>
+<h2 id="模拟进化类算法介绍"><a href="#模拟进化类算法介绍" class="headerlink" title="模拟进化类算法介绍"></a>模拟进化类算法介绍</h2><h3 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h3><p>考虑全局优化问题：</p>
 <p>$$<br>(p):max{F(x):x\in \Omega \subset R^n }, F: \Omega \subset R^n \rightarrow R^1<br>$$</p>
 <p>则$(p)$的多个可行解的一个集合可称之为一个<strong>种群</strong>（population），种群中的每一元素（可行解）可称之为是一个<strong>个体</strong>（individual），种群中个体的数目称之为此种群的<strong>规模</strong>。</p>
 <p>于是，求解问题$(p)$的一个不变规模（例如设为$N$）的模拟进化算法可抽象地描述如下：</p>
@@ -501,7 +501,7 @@
 <li>模拟进化算法利用概率机制而非确定性迭代过程描述。正是这些有别于确定型方法的特征决定了模拟进化算法应用的广泛性、描述的简单性、本质上的并行性和良好的鲁棒性。</li>
 </ol>
 <h3 id="模拟进化算法的典型执行策略"><a href="#模拟进化算法的典型执行策略" class="headerlink" title="模拟进化算法的典型执行策略"></a>模拟进化算法的典型执行策略</h3><p>依历史发展与不同的应用侧重，模拟进化算法通常分为<strong>遗传算法</strong>、<strong>演化策略</strong>与<strong>进化程序</strong>三个典型的执行策略（也可视为三个不同的发展方向）。</p>
-<h2 id="II-遗传算法"><a href="#II-遗传算法" class="headerlink" title="II 遗传算法"></a>II 遗传算法</h2><p><strong>遗传算法是目前研究得最为广泛的一类模拟进化算法。</strong></p>
+<h2 id="遗传算法"><a href="#遗传算法" class="headerlink" title="遗传算法"></a>遗传算法</h2><p><strong>遗传算法是目前研究得最为广泛的一类模拟进化算法。</strong></p>
 <h3 id="基本策略"><a href="#基本策略" class="headerlink" title="基本策略"></a>基本策略</h3><p>假定考虑全局优化问题$(p)$ 。遗传算法基于以下两条基本策略求解问题：</p>
 <ol>
 <li>对于给定的目标函数$F:\Omega \subset R^n→R^1$，它使用FF的任一适应性（fitness）函数（换言之，一个值域非负、与$F$ 有相同极值点的函数）；</li>
@@ -530,8 +530,24 @@
 </li>
 <li>检验终止判据：如果$Y(k+1)$满足预先设定的停机准则，则终止演化，并输出最优解；否则，置$k = k+1$，返回第2步。</li>
 </ol>
-<h2 id="III-演化算法"><a href="#III-演化算法" class="headerlink" title="III 演化算法"></a>III 演化算法</h2><p>相比于遗传算法，演化算法不需要编码。</p>
-<h2 id="IV-进化程序-遗传编程"><a href="#IV-进化程序-遗传编程" class="headerlink" title="IV 进化程序(遗传编程)"></a>IV 进化程序(遗传编程)</h2><p>MIT有一篇很著名的文章讲述进化程序，进化程序的设计思想类似于演化算法。只利用<strong>变异算子</strong>，没有引入<strong>杂交机制</strong>。</p>
+<h2 id="演化算法"><a href="#演化算法" class="headerlink" title="演化算法"></a>演化算法</h2><p>相比于遗传算法，演化算法不需要编码。</p>
+<h2 id="进化程序-遗传编程"><a href="#进化程序-遗传编程" class="headerlink" title="进化程序(遗传编程)"></a>进化程序(遗传编程)</h2><p>MIT有一篇很著名的文章讲述进化程序，进化程序的设计思想类似于演化算法。只利用<strong>变异算子</strong>，没有引入<strong>杂交机制</strong>。</p>
+<h2 id="模拟嫁接技术"><a href="#模拟嫁接技术" class="headerlink" title="模拟嫁接技术"></a>模拟嫁接技术</h2><p>此节介绍一种带有嫁接和剪接操作的<strong>遗传算法</strong>，用以求解具有大量结点的<strong>度约束最小生成树（Degree-Constrained Minimum Spanning Tree）</strong>问题。</p>
+<h3 id="度约束最小生成树问题（DCMST）"><a href="#度约束最小生成树问题（DCMST）" class="headerlink" title="度约束最小生成树问题（DCMST）"></a>度约束最小生成树问题（DCMST）</h3><p><strong>最小生成树（MST）</strong>一般用算法Prim和Kruskal算法求解。</p>
+<p>在实际应用中,通常面临的是需要带有某种约束的<strong>MST</strong>,如二次最小生成树问题、度约束最小生成树问题和概率最小生成树问题等。对于该类问题的求解,目前还不存在多项式时间复杂度的算法,被证明是NP-完全的。</p>
+<p><strong>问题描述</strong></p>
+<p>设连通图$G=(V,E,W)$ ，$V={v_1,v_2,…,v_n}$ 表示图的顶点集合，$E={e_1,e_2,…,e_m}$ 是边的有限集合，$W={w_{ij}}_{n×n}$ 表示边的权重矩阵，规定顶点的度约束为$b_i$（给定的约束值，$i=1,2,…,n$ ），因此度约束最小生成树问题（DCMST）的求解可表述为：<br>$$<br>\text{min }Z=\sum_{i=1}^n\sum_{j=1}^nw_{ij}x_{ij}\<br>\text{s.t.}\left{<br>\begin{aligned}<br>&amp;\sum_{j=1}^n x_{ij} \le b,&amp;&amp;i\in V \<br>&amp;\sum_{i,j\in S}x_{ij}\le |S|-1,&amp;&amp;\forall S \subset V,S \neq \varnothing \<br>&amp;\sum_{i=1}^n \sum_{j=1}^n x_{ij}=n-1,&amp;&amp; x_{ij} \in {0,1},i,j \in V<br>\end{aligned}<br>\right.<br>$$<br>$|S|$表示集合$S$（$V$的子集合）的结点个数。</p>
+<p>设 $T$ 为图 $ G $ 的所有满足度约束的生成树的集合，对DCMST问题求解就是寻找 $G$ 的一棵满足度约束的最小生成树。约束式1为度限制，约束式2和3保证了所得到的是一棵生成树，不形成圈（无环路）。</p>
+<h3 id="模拟嫁接技术-1"><a href="#模拟嫁接技术-1" class="headerlink" title="模拟嫁接技术"></a>模拟嫁接技术</h3><h4 id="收益和代价"><a href="#收益和代价" class="headerlink" title="收益和代价"></a>收益和代价</h4><p>对一棵生成树T1,若将某结点的一条分枝移至另一结点作为其一条分枝后产生的生成树为T2,考察分枝移动前后生成树的边长和的变化,则定义收益(gain)和代价(cost)分别为：<br>$$<br>gain=f(T_1)-f(T_2)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^1-\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2\<br>cost=f(T_2)-f(T_1)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2-\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^1\<br>$$<br>实际上，$cost = - gain $</p>
+<h4 id="嫁接"><a href="#嫁接" class="headerlink" title="嫁接"></a>嫁接</h4><p>将生成树非考察结点且具有某种优良特性的分枝（嫁接枝）接入到非完全生成树的待考察结点中,以形成更好生成树个体(这里指收益大于0)的过程称为嫁接。</p>
+<h4 id="剪接"><a href="#剪接" class="headerlink" title="剪接"></a>剪接</h4><p>将生成树个体考察结点的某一分枝（剪接枝）接入到非完全生成树中另一位置,以形成可行个体或更好个体的过程称为剪接。</p>
+<h4 id="冲突及冲突检测"><a href="#冲突及冲突检测" class="headerlink" title="冲突及冲突检测"></a>冲突及冲突检测</h4><p>在对消除不满足约束情形进行剪接或对具有较差属性的分枝进行剪接操作的同时，若引起新的不满足约束的情形称为冲突。</p>
+<p>在剪接过程中引起了冲突，就称找出这一冲突现象的过程为冲突检测 。</p>
+<h4 id="GPOGA算法"><a href="#GPOGA算法" class="headerlink" title="GPOGA算法"></a>GPOGA算法</h4><p>在基本遗传算法体系的基础上,结合嫁接和剪接算子作用,给出基于嫁接和剪接算子的遗传算法<br>(A Genetic Algorithm with Grafting and Pruning Operators, 简称GPOGA)。</p>
+<p>伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">算法4 (GPOGA). </span><br><span class="line">Input:与所求DCMST问题有关的数据（结点数,完全图边长等）,遗传算法基本控制参数. </span><br><span class="line">Output:生成的最好解个体及有关计算数据. </span><br><span class="line">Begin </span><br><span class="line">	随机初始化种群P(0),t=0; </span><br><span class="line">	计算P(0)中个体的适应值并按适应值排序; </span><br><span class="line">	while 计算代数 t ≤ maxgen do </span><br><span class="line">	     j=0; </span><br><span class="line">	     while 新产生个体j&lt;N do </span><br><span class="line">		根据个体的适应值随机从当代种群中选择两个父个体,设为oldindi1和oldindi2; </span><br><span class="line">		执行杂交操作CrossOver(oldindi1,oldindi2),将产生的新个体保存在newpop[j],newpop[j+1]中; </span><br><span class="line">		执行交换变异操作SwapMutation(newpop[j])、SwapMutation(newpop[j+1]);将产生的两个新	个体 </span><br><span class="line">		复制到临时种群变量数组temp1[j]和temp1[j+1]中; </span><br><span class="line">		执行嫁接操作Grafting(newpop[j]), Grafting (newpop[j+1]); </span><br><span class="line">		执行剪接操作pruning(newpop[j]), pruning (newpop[j+1]); </span><br><span class="line">		计算并评价temp1[j]、temp1[j+1]、newpop[j]、newpop[j+1]、oldindi1及oldindi2的目标值,选 </span><br><span class="line">		择两个较好的个体复制到newpop[j]及newpop[j+1]中; </span><br><span class="line">		j=j+2; </span><br><span class="line">	    end while; </span><br><span class="line">	    计算新种群newpop 的目标值、适应值并排序,同时以oldpop中最好的个体代替newpop中最差的</span><br><span class="line">           个体; </span><br><span class="line">	    将newpop种群中个体复制到oldpop中,计算其目标值、适应值并排序; </span><br><span class="line">	    t=t+1; </span><br><span class="line">	end while; </span><br><span class="line">	记录及输出结果. </span><br><span class="line"> End</span><br></pre></td></tr></table></figure>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>度约束最小生成树（DCMST）问题是一类难解的NP-hard问题,目前尚未有可靠、有效的解决方法。通过对现有方法存在的问题和缺陷进行分析,借鉴花草果树的人工种植和培育技术,设计的基于嫁接和剪接算子的遗传算法<strong>(GPOGA)</strong>,理论分析和实验数据都为算法的正确性和有效性提供了依据。<br>GPOGA的三类算子在计算过程中互为补充,协同完成优化搜索过程,从而使算法的性能优越，鲁棒性更好。</p>
+<h1 id="第5章-群体智能"><a href="#第5章-群体智能" class="headerlink" title="第5章 群体智能"></a>第5章 群体智能</h1><h1 id="第6章-人工神经网络"><a href="#第6章-人工神经网络" class="headerlink" title="第6章 人工神经网络"></a>第6章 人工神经网络</h1><p>·</p>
 
       
     </div>
@@ -554,9 +570,9 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/算法设计/" rel="tag"># 算法设计</a>
-          
             <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+          
+            <a href="/tags/算法设计/" rel="tag"># 算法设计</a>
           
         </div>
       
@@ -653,7 +669,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -688,8 +704,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -777,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-绪论"><span class="nav-number">1.</span> <span class="nav-text">第1章 绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2章-问题求解的搜索"><span class="nav-number">2.</span> <span class="nav-text">第2章 问题求解的搜索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第3章-退火模拟算法（SA）"><span class="nav-number">3.</span> <span class="nav-text">第3章 退火模拟算法（SA）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Metropolis算法"><span class="nav-number">3.1.</span> <span class="nav-text">I Metropolis算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#II-伪代码与参数调整"><span class="nav-number">3.2.</span> <span class="nav-text">II 伪代码与参数调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#III-总结"><span class="nav-number">3.3.</span> <span class="nav-text">III 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第4章-模拟进化与遗传算法"><span class="nav-number">4.</span> <span class="nav-text">第4章 模拟进化与遗传算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-模拟进化算法"><span class="nav-number">4.1.</span> <span class="nav-text">I 模拟进化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法框架"><span class="nav-number">4.1.1.</span> <span class="nav-text">算法框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟进化与传统确定性算法的区别"><span class="nav-number">4.1.2.</span> <span class="nav-text">模拟进化与传统确定性算法的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟进化算法的典型执行策略"><span class="nav-number">4.1.3.</span> <span class="nav-text">模拟进化算法的典型执行策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#II-遗传算法"><span class="nav-number">4.2.</span> <span class="nav-text">II 遗传算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本策略"><span class="nav-number">4.2.1.</span> <span class="nav-text">基本策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法框架-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">算法框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#III-演化算法"><span class="nav-number">4.3.</span> <span class="nav-text">III 演化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IV-进化程序-遗传编程"><span class="nav-number">4.4.</span> <span class="nav-text">IV 进化程序(遗传编程)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-绪论"><span class="nav-number">1.</span> <span class="nav-text">第1章 绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2章-问题求解的搜索"><span class="nav-number">2.</span> <span class="nav-text">第2章 问题求解的搜索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第3章-退火模拟算法（SA）"><span class="nav-number">3.</span> <span class="nav-text">第3章 退火模拟算法（SA）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Metropolis算法"><span class="nav-number">3.1.</span> <span class="nav-text">Metropolis算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪代码与参数调整"><span class="nav-number">3.2.</span> <span class="nav-text">伪代码与参数调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第4章-模拟进化与遗传算法"><span class="nav-number">4.</span> <span class="nav-text">第4章 模拟进化与遗传算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟进化类算法介绍"><span class="nav-number">4.1.</span> <span class="nav-text">模拟进化类算法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法框架"><span class="nav-number">4.1.1.</span> <span class="nav-text">算法框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟进化与传统确定性算法的区别"><span class="nav-number">4.1.2.</span> <span class="nav-text">模拟进化与传统确定性算法的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟进化算法的典型执行策略"><span class="nav-number">4.1.3.</span> <span class="nav-text">模拟进化算法的典型执行策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗传算法"><span class="nav-number">4.2.</span> <span class="nav-text">遗传算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本策略"><span class="nav-number">4.2.1.</span> <span class="nav-text">基本策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法框架-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">算法框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#演化算法"><span class="nav-number">4.3.</span> <span class="nav-text">演化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进化程序-遗传编程"><span class="nav-number">4.4.</span> <span class="nav-text">进化程序(遗传编程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟嫁接技术"><span class="nav-number">4.5.</span> <span class="nav-text">模拟嫁接技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#度约束最小生成树问题（DCMST）"><span class="nav-number">4.5.1.</span> <span class="nav-text">度约束最小生成树问题（DCMST）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟嫁接技术-1"><span class="nav-number">4.5.2.</span> <span class="nav-text">模拟嫁接技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#收益和代价"><span class="nav-number">4.5.2.1.</span> <span class="nav-text">收益和代价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嫁接"><span class="nav-number">4.5.2.2.</span> <span class="nav-text">嫁接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#剪接"><span class="nav-number">4.5.2.3.</span> <span class="nav-text">剪接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冲突及冲突检测"><span class="nav-number">4.5.2.4.</span> <span class="nav-text">冲突及冲突检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPOGA算法"><span class="nav-number">4.5.2.5.</span> <span class="nav-text">GPOGA算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">4.5.2.6.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第5章-群体智能"><span class="nav-number">5.</span> <span class="nav-text">第5章 群体智能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第6章-人工神经网络"><span class="nav-number">6.</span> <span class="nav-text">第6章 人工神经网络</span></a></li></ol></div>
             
 
           </div>
