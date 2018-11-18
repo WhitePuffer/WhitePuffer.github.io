@@ -116,10 +116,24 @@
 <meta property="og:site_name" content="老思机">
 <meta property="og:description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-18T07:34:02.815Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcg57lkwlj30db044wes.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcgroarnyj30db03zaad.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxcgslyiwjj30if05hjrp.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxchk0fnwmj30lw0isgzd.jpg">
+<meta property="og:image" content="http://whitepuffer.github.io/Users/jiang/Library/Application%20Support/typora-user-images/image-20181118203017936.png">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcihxx8j8j30m40hfqfk.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcio4hc8dj30mi0foak4.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcix9chh1j30fg083dgn.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxciy6x1roj30fx060aab.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxcj8a3muyj308l02bdfv.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcj9qoncmj30ao0c33z3.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcjh7g88ej30bo042aad.jpg">
+<meta property="og:updated_time" content="2018-11-18T13:32:42.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs229笔记4-广义线性模型">
 <meta name="twitter:description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg">
 
 
 
@@ -364,7 +378,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-18 15:34:02" itemprop="dateModified" datetime="2018-11-18T15:34:02+08:00">2018-11-18</time>
+                <time title="修改时间：2018-11-18 21:32:42" itemprop="dateModified" datetime="2018-11-18T21:32:42+08:00">2018-11-18</time>
               
             
           </span>
@@ -418,7 +432,34 @@
 
       
         <p>笔记4：广义线性模型 <strong>Generalized Linear Models</strong>，对应讲义<strong>Note1 Part 3</strong> ,对应视频集数4（15）-<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
-<h1 id="The-exponential-family"><a href="#The-exponential-family" class="headerlink" title="The exponential family"></a>The exponential family</h1>
+<h1 id="The-exponential-family-指数分布族"><a href="#The-exponential-family-指数分布族" class="headerlink" title="The exponential family 指数分布族"></a>The exponential family 指数分布族</h1><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg" alt="image-20181118155148953"></p>
+<p>$ \eta $ 为分布的自然参数，$T(y)$ 为充分统计量（通常，如高斯分布，伯努利分布，T(y) = y)。</p>
+<h2 id="Bernoulli-distribution伯努利分布"><a href="#Bernoulli-distribution伯努利分布" class="headerlink" title="Bernoulli distribution伯努利分布"></a>Bernoulli distribution伯努利分布</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcg57lkwlj30db044wes.jpg" alt="image-20181118193656705"></p>
+<p>根据上式有<br>$$<br>\begin{align}<br>\eta &amp;= log\frac{\phi}{1-\phi}\quad \Rightarrow \quad\phi =\frac{1}{1+e^{-\eta}}\<br>a(\eta)&amp;=-log(1-\phi)=log(1+e^{\eta})\<br>T(y)&amp;=y\<br>b(y)&amp;=1<br>\end{align}<br>$$<br><strong>注：</strong>可以发现$\phi$ 的表达式和<strong>logistic 函数</strong>相同。</p>
+<h2 id="Gaussian-distribution高斯分布"><a href="#Gaussian-distribution高斯分布" class="headerlink" title="Gaussian distribution高斯分布"></a>Gaussian distribution高斯分布</h2><p>考虑高斯分布,为了方便，不考虑$\sigma$<br>$$<br>\mathcal N(\mu,\sigma^2) \quad\text{set} \quad\sigma^2=1<br>$$<br>有</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcgroarnyj30db03zaad.jpg" alt="image-20181118195832151"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxcgslyiwjj30if05hjrp.jpg" alt="image-20181118195926018"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不仅<strong>Bernoulli distribution,Gaussian distribution</strong>属于指数分布族，实际上<strong>多项式分布、柏松分布、伽马分布、指数分布</strong>也属于指数分布族</p>
+<h1 id="Constructing-GLMs-构造广义线性模型"><a href="#Constructing-GLMs-构造广义线性模型" class="headerlink" title="Constructing GLMs 构造广义线性模型"></a>Constructing GLMs 构造广义线性模型</h1><p>本小节主要介绍选定了指数分布族后，如何构造GLM，并使用。</p>
+<h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxchk0fnwmj30lw0isgzd.jpg" alt="image-20181118202545419"></p>
+<h2 id="例子：Bernoulli"><a href="#例子：Bernoulli" class="headerlink" title="例子：Bernoulli"></a>例子：Bernoulli</h2><p><img src="/Users/jiang/Library/Application Support/typora-user-images/image-20181118203017936.png" alt="image-20181118203017936"></p>
+<h2 id="构造广义线性模型的意义"><a href="#构造广义线性模型的意义" class="headerlink" title="构造广义线性模型的意义"></a>构造广义线性模型的意义</h2><p>这样构造广义线性模型的意义在于<strong>便利性</strong>。当你遇到一个新的{0,1}分类问题的时候，唯一需要做的决策就是：<strong>选择假设 $ y|x,\theta $ 服从什么分布 </strong>。无论面临任何问题，选择一种指数分布族中的分布，之后遵从相同的规则，就可以得到一个不同的模型和不同学习算法，得到一个不同的广义线性模型。</p>
+<h3 id="Canonical-response-function正则响应函数"><a href="#Canonical-response-function正则响应函数" class="headerlink" title="Canonical response function正则响应函数"></a>Canonical response function正则响应函数</h3><p>一些术语，不做过多介绍。<br>$$<br>\begin{align}<br>&amp;\text {Canonical response function}\quad &amp;&amp;g(\eta)=E[y;\eta]= \frac{1}{1+e^{-\eta}}\<br>&amp;\text{Canonical link function} \quad &amp;&amp;g^{-1}<br>\end{align}<br>$$</p>
+<h2 id="Softmax-regression-Multinomial-🌟多项式分布"><a href="#Softmax-regression-Multinomial-🌟多项式分布" class="headerlink" title="Softmax regression/Multinomial 🌟多项式分布"></a>Softmax regression/Multinomial 🌟多项式分布</h2><p>这是一个重要的例子。当分类问题有k类时， $y\in{1,\dots,k}$,由于参数 $\phi_{k-1} = 1-\sum_{i=1}^{k-1} \phi_i$，故$\phi_{k-1}$ 是冗余参数，则假设参数从 $\phi_1,\dots,\phi_{k-1}$</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcihxx8j8j30m40hfqfk.jpg" alt="image-20181118205821958"></p>
+<p>接下来定义$T(y)$</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcio4hc8dj30mi0foak4.jpg" alt="image-20181118210418231"></p>
+<p>引入符号——<strong>指示函数</strong>：<br>$$<br>\mathcal 1{True} = 1\<br>\mathcal 1{False} = 0\<br>$$<br>则T(y)可以表示为一个简单的公式<br>$$<br>T(y)_i=\mathcal 1{y=i}\<br>这里i下标表示第i个分量<br>$$<br>利用exponnetial family</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcix9chh1j30fg083dgn.jpg" alt="image-20181118211306152"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxciy6x1roj30fx060aab.jpg" alt="image-20181118211359687"></p>
+<p>过程略，之后有</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxcj8a3muyj308l02bdfv.jpg" alt="image-20181118212341741"></p>
+<p>代入，得下式（注意\sum 的上标是k还是k-1，之间可以根据上式互相转换）</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcj9qoncmj30ao0c33z3.jpg" alt="image-20181118212505792"></p>
+<p>现在考虑根据$h_\theta$ 求参数$\theta$,还是最大似然函数法：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcjh7g88ej30bo042aad.jpg" alt="image-20181118213214794"></p>
+<p>这个算法被称为<strong>Softmax regression</strong>，被普遍认为是逻辑回归的推广，可以处理k类分类问题。</p>
+
       
     </div>
 
@@ -657,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-exponential-family"><span class="nav-number">1.</span> <span class="nav-text">The exponential family</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-exponential-family-指数分布族"><span class="nav-number">1.</span> <span class="nav-text">The exponential family 指数分布族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bernoulli-distribution伯努利分布"><span class="nav-number">1.1.</span> <span class="nav-text">Bernoulli distribution伯努利分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-distribution高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">Gaussian distribution高斯分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constructing-GLMs-构造广义线性模型"><span class="nav-number">2.</span> <span class="nav-text">Constructing GLMs 构造广义线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#假设"><span class="nav-number">2.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：Bernoulli"><span class="nav-number">2.2.</span> <span class="nav-text">例子：Bernoulli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造广义线性模型的意义"><span class="nav-number">2.3.</span> <span class="nav-text">构造广义线性模型的意义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Canonical-response-function正则响应函数"><span class="nav-number">2.3.1.</span> <span class="nav-text">Canonical response function正则响应函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-regression-Multinomial-🌟多项式分布"><span class="nav-number">2.4.</span> <span class="nav-text">Softmax regression/Multinomial 🌟多项式分布</span></a></li></ol></li></ol></div>
             
 
           </div>
