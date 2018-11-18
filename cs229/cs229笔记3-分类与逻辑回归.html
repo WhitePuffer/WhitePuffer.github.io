@@ -108,45 +108,32 @@
 
 
 
-  <meta name="description" content="Linear Regression——吴恩达cs229《机器学习》知识要点记录">
+  <meta name="description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
 <meta name="keywords" content="机器学习,课程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs229笔记2-线性回归">
-<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记2-线性回归.html">
+<meta property="og:title" content="cs229笔记3-分类与逻辑回归">
+<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="Linear Regression——吴恩达cs229《机器学习》知识要点记录">
+<meta property="og:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fx481ep11lj30ge03n3yn.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fx481jgu8ej30fx05kq30.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fx481gl38jj30jk04pmxl.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fx481fjx15j305601xmwy.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fx481kc4k7j303k00nwe9.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fx481l87ehj30hf046aa9.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fx481hhn4pj30ez07pq3h.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fx481cy7nvj30ju04bjrm.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fx481imk70j30ih0evjt1.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fx49n54drej30gw08wq7l.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fx48tki4u0j3076029aa3.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fx48v6mo2aj30h20dlai5.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fx497lxhlnj30bd0aq0w9.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fx533w2nqjj309s02kwek.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fx5345058vj30hf03gmxe.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fx536e9zy8j308c01gq2x.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fx536jzh7wj30db046t8y.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fx53ay6nz7j30dd06wjs2.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fx53a9k23jj308h02b0st.jpg">
-<meta property="og:updated_time" content="2018-11-18T03:19:43.759Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fxc1upzv6lj30bt054aab.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fxc228h5nwj30ff02ydfz.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg">
+<meta property="og:updated_time" content="2018-11-18T07:33:30.162Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs229笔记2-线性回归">
-<meta name="twitter:description" content="Linear Regression——吴恩达cs229《机器学习》知识要点记录">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fx481ep11lj30ge03n3yn.jpg">
+<meta name="twitter:title" content="cs229笔记3-分类与逻辑回归">
+<meta name="twitter:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记2-线性回归.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
 
 
 
@@ -156,7 +143,7 @@
   };
 </script>
 
-  <title>cs229笔记2-线性回归 | 老思机</title>
+  <title>cs229笔记3-分类与逻辑回归 | 老思机</title>
   
 
 
@@ -325,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记2-线性回归.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -342,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cs229笔记2-线性回归
+          <h1 class="post-title" itemprop="name headline">cs229笔记3-分类与逻辑回归
               
             
           </h1>
@@ -367,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2018-11-11 16:56:50" itemprop="dateCreated datePublished" datetime="2018-11-11T16:56:50+08:00">2018-11-11</time>
+              <time title="创建时间：2018-11-12 11:00:35" itemprop="dateCreated datePublished" datetime="2018-11-12T11:00:35+08:00">2018-11-12</time>
             
 
             
@@ -384,7 +371,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-18 11:19:43" itemprop="dateModified" datetime="2018-11-18T11:19:43+08:00">2018-11-18</time>
+                <time title="修改时间：2018-11-18 15:33:30" itemprop="dateModified" datetime="2018-11-18T15:33:30+08:00">2018-11-18</time>
               
             
           </span>
@@ -421,7 +408,7 @@
           
 
           
-              <div class="post-description">Linear Regression——吴恩达cs229《机器学习》知识要点记录</div>
+              <div class="post-description">Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录</div>
           
 
         </div>
@@ -437,49 +424,36 @@
       
 
       
-        <p>笔记2：线性回归 <strong>Linear Regression</strong>，对应讲义<strong>Note1 Part 1</strong>,对应视频集数2-3（50min）<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
-<h1 id="Ordinary-least-squares-regression-model-最小二乘法回归模型"><a href="#Ordinary-least-squares-regression-model-最小二乘法回归模型" class="headerlink" title="Ordinary least squares regression model 最小二乘法回归模型"></a>Ordinary least squares regression model 最小二乘法回归模型</h1><p> <strong>Represent funciton/Hypotheses</strong><br>$$<br>h_\theta(x)=h(x) = \sum^n\theta_ix_i=\theta^Tx<br>$$<br><strong>Cost funciton</strong><br>$$<br>J(\theta) = \frac12 \sum_{i=1}^m(h_\theta(x^{(i)})-y{(i)})^2<br>$$<br>注：</p>
-<ul>
-<li>$(x^{(i)},y^{(i)})$ 为样本对</li>
-<li>系数 $1\over2$ 含义：简化之后的计算</li>
-</ul>
-<h2 id="LMS-Least-mean-squares-update-rule-最小均方"><a href="#LMS-Least-mean-squares-update-rule-最小均方" class="headerlink" title="LMS(Least mean squares) update rule 最小均方"></a>LMS(Least mean squares) update rule 最小均方</h2><p>不断变化 $\theta$  以减小$J(\theta)$<br>$$<br>\text{iterate}  \<br>\theta_i := \theta_i - \alpha\frac{\part}{\part \theta_i}J(\theta)\<br>minimize \quad J(\theta)<br>$$</p>
-<h2 id="Batch-gradient-descent-批梯度下降"><a href="#Batch-gradient-descent-批梯度下降" class="headerlink" title="Batch gradient descent 批梯度下降"></a>Batch gradient descent 批梯度下降</h2><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx481ep11lj30ge03n3yn.jpg" alt="image-20181111131932733"></p>
-<p>每次循环都要处理所有（或一个部分）的样本数据,直到收敛。</p>
-<p><strong>缺点：</strong>速度慢</p>
-<h2 id="Stochastic-gradient-descent-随机梯度下降"><a href="#Stochastic-gradient-descent-随机梯度下降" class="headerlink" title="Stochastic gradient descent 随机梯度下降"></a>Stochastic gradient descent 随机梯度下降</h2><p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fx481jgu8ej30fx05kq30.jpg" alt="image-20181111143631107"></p>
-<p>所有的 $\theta_j$ 每次更新仅使用第 $i$ 个样本,无需遍历所有样本。使用完<strong>全部样本</strong>后（for循环一遍）判断收敛，进入下一个loop.</p>
-<p><strong>特性：</strong>速度快，但是不会精确收敛到全局最小值。</p>
-<h1 id="Normal-equations-正规方程"><a href="#Normal-equations-正规方程" class="headerlink" title="Normal equations 正规方程"></a>Normal equations 正规方程</h1><h2 id="Matrix-derivatives"><a href="#Matrix-derivatives" class="headerlink" title="Matrix derivatives"></a>Matrix derivatives</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx481gl38jj30jk04pmxl.jpg" alt="image-20181111144828090"></p>
-<p>Trace 迹</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx481fjx15j305601xmwy.jpg" alt="image-20181111145221756"></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fx481kc4k7j303k00nwe9.jpg" alt="image-20181111151329775"></p>
-<h2 id="用上述符号重新表达最小二乘法"><a href="#用上述符号重新表达最小二乘法" class="headerlink" title="用上述符号重新表达最小二乘法"></a>用上述符号重新表达最小二乘法</h2><p><strong>Cost function:</strong></p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx481l87ehj30hf046aa9.jpg" alt="image-20181111150739427"></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fx481hhn4pj30ez07pq3h.jpg" alt="image-20181111151353958"></p>
-<p>则得到了<strong>Normal equations</strong></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fx481cy7nvj30ju04bjrm.jpg" alt="image-20181111162526765"></p>
-<h1 id="Locally-weighted-regression-LWR-局部加权回归"><a href="#Locally-weighted-regression-LWR-局部加权回归" class="headerlink" title="Locally weighted regression(LWR) 局部加权回归"></a>Locally weighted regression(LWR) 局部加权回归</h1><p>我们先考虑普通的线性回归问题（房价）：参数 $\theta_i$ 的个数选择会导致欠拟合underfitting，过拟合overfitting</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx481imk70j30ih0evjt1.jpg" alt="image-20181111164115719"></p>
-<h2 id="参数学习算法和非参数学习算法"><a href="#参数学习算法和非参数学习算法" class="headerlink" title="参数学习算法和非参数学习算法"></a>参数学习算法和非参数学习算法</h2><p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fx49n54drej30gw08wq7l.jpg" alt="image-20181111174726908"></p>
-<h2 id="LWR"><a href="#LWR" class="headerlink" title="LWR"></a>LWR</h2><p>LWR是一个<strong>非参数算法</strong>，对于<strong>LWR</strong>，根据需要预测的点x，加入权重函数：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx48tki4u0j3076029aa3.jpg" alt="image-20181111171901990"></p>
-<p>拟合方法如下图：可以看出，对于一个点x，我们需要遍历整个样本来求得 $\theta$ ，我们会得到一条拟合x附件的一个区域的局部拟合直线。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx48v6mo2aj30h20dlai5.jpg" alt="image-20181111172035271"></p>
-<p>由此，对于x轴上的所有x都做一次LWR，并且取预测出的y作为函数值，我们可以得到一条近似的曲线。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx497lxhlnj30bd0aq0w9.jpg" alt="image-20181111173226872"></p>
-<p>当然，这个拟合的好坏也是取决于 $\tau$ 的，所以LWR并不能避免underfitting/overfitting的问题。</p>
-<h1 id="Probabilistic-interpretation-线性回归的概率解释"><a href="#Probabilistic-interpretation-线性回归的概率解释" class="headerlink" title="Probabilistic interpretation 线性回归的概率解释"></a>Probabilistic interpretation 线性回归的概率解释</h1><p>运用极大似然估计 <strong>maximum likelihood</strong> </p>
-<p>假设误差项 $\epsilon^{i}$ 与高斯分布正相关，则：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fx533w2nqjj309s02kwek.jpg" alt="image-20181112104526808"></p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fx5345058vj30hf03gmxe.jpg" alt="image-20181112104709557"></p>
-<p>将 概率视为 $\theta$ 的函数——似然函数 $L(\theta)$ :</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fx536e9zy8j308c01gq2x.jpg" alt="image-20181112104919226"></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fx536jzh7wj30db046t8y.jpg" alt="image-20181112104929098"></p>
-<p>求$L(\theta)$ 的极大似然估计相当于求 <strong>log likelihood</strong></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fx53ay6nz7j30dd06wjs2.jpg" alt="image-20181112105341833"></p>
-<p>最大化<strong>log likelihood</strong>也相当于最小化损失函数 $J(\theta)$</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fx53a9k23jj308h02b0st.jpg" alt="image-20181112105301489"></p>
+        <p>笔记3：分类与逻辑回归 <strong>Classification and logistic regression</strong>，对应讲义<strong>Note1 Part 2</strong> ,对应视频集数3（50）- 4（15）<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
+<h1 id="Logistic-regression-逻辑斯蒂回归"><a href="#Logistic-regression-逻辑斯蒂回归" class="headerlink" title="Logistic regression 逻辑斯蒂回归"></a>Logistic regression 逻辑斯蒂回归</h1><h2 id="logistic-function"><a href="#logistic-function" class="headerlink" title="logistic function"></a>logistic function</h2><p><strong>定义：</strong> <strong>logistic function</strong> or <strong>sigmoid function</strong><br>$$<br>g(z) = \frac{1}{1+e^{-z}}<br>$$<br><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg" alt="image-20181118110429904"></p>
+<p>考虑分类问题的<strong>似然函数</strong></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxc1upzv6lj30bt054aab.jpg" alt="image-20181118112229613"></p>
+<p>由于$\mathscr{L}(\theta) = log L(\theta)$ 求最大值会更加的容易，有：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxc228h5nwj30ff02ydfz.jpg" alt="image-20181118112942995"></p>
+<p>梯度上升求最大值：</p>
+<ol>
+<li><p><strong>Batch gradient descent</strong></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg" alt="image-20181118114215190"></p>
+</li>
+<li><p><strong>Stochastic gradient descent</strong></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg" alt="image-20181118114121458"></p>
+</li>
+</ol>
+<p><strong>注：</strong>虽然这个公式与之前 <strong>Linear Regression</strong> 的<strong>基于最小二乘的梯度下降</strong>表面上相同，但是其中的$ h_\theta (x)$ 并非连续函数，而是一个关于 <strong>logsitc funciton</strong>的二值函数 $y \in {0,1}$ 。 即使它们表面上相似，实际上是两种不同的学习算法。这是一种通用的学习模型，实际上会以一种看起来相同的学习算法结束，这并不是一个巧合。</p>
+<h2 id="Newton‘s-method-牛顿法求极值"><a href="#Newton‘s-method-牛顿法求极值" class="headerlink" title="Newton‘s method 牛顿法求极值"></a>Newton‘s method 牛顿法求极值</h2><h3 id="一维函数牛顿法"><a href="#一维函数牛顿法" class="headerlink" title="一维函数牛顿法"></a>一维函数牛顿法</h3><p>首先考虑 求解$f(\theta) = 0 $ 的问题，牛顿法如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"><br>$$<br>\begin{align}<br>&amp;&amp;f’(\theta^{(0)}) &amp;= \frac{f(\theta^{(0)})}{\Delta}\<br>&amp;\text{可推出}&amp; \quad \Delta &amp;= \frac{f(\theta^{(0)})}{f’(\theta^{(0)})} \<br>&amp;\text{归纳得}&amp; \quad \theta^{(t+1)} &amp;= \theta^{(t)}-\frac{f(\theta^{(t)})}{f’(\theta^{(t)})}\<br>\end{align}<br>$$</p>
+<p>回到$l(\theta)$,求$l(\theta)$ 的极值，根据极值点的性质 $l’(\theta) = 0$,得：</p>
+<p>$$<br>\begin{align}<br>l(\theta) \quad &amp;\text{want} \quad \theta \quad s.t \quad l’(\theta) = 0    \<br>&amp;\text{then} \quad \theta^{(t+1)} = \theta^{(t)}-\frac{l’(\theta^{(t)})}{l’’(\theta^{(t)})}\<br>\end{align}<br>$$</p>
+<p>通过迭代，我们就可以得到一个局部最优值。</p>
+<p><strong>注：</strong>事实证明牛顿法是一个收敛很快的算法——<strong>二次收敛</strong>。</p>
+<h3 id="一般化牛顿法——多维"><a href="#一般化牛顿法——多维" class="headerlink" title="一般化牛顿法——多维"></a>一般化牛顿法——多维</h3><p>现在考虑多维情况下一般化牛顿法。<br>$$<br>\begin{align}<br>&amp;\theta^{(t+1)} = \theta^{(t)}-H^{-1}\nabla_\theta l\<br>&amp;\text{where}  \quad H \text{ is the Hessian matrix(海森矩阵）,} \quad H\in \mathcal R^{n \times n}\\<br>&amp; H_{ij} = \frac{\partial ^2 l}{\partial\theta_i\partial\theta_j}<br>\end{align}<br>$$<br>相比梯度下降方法，一般情况下，牛顿法的收敛速度会快很多。</p>
+<p>缺点是</p>
+<ol>
+<li><p>每一次迭代都需要重新计算海森矩阵的逆，海森矩阵大小为n x n（n是特征的数量），如果特征过多，则运算量非常巨大</p>
+</li>
+<li><p>在非凸优化问题中（如神经网络训练），牛顿法很容易陷入鞍点（牛顿法步长会越来越小），而梯度下降法则很容易逃离鞍点（因此在神经网络训练中一般使用梯度下降法，高维空间的神经网络中存在大量鞍点）</p>
+</li>
+</ol>
 
       
     </div>
@@ -515,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/cs229/cs229笔记1-简介.html" rel="next" title="cs229笔记1-简介">
-                <i class="fa fa-chevron-left"></i> cs229笔记1-简介
+              <a href="/cs229/cs229笔记2-线性回归.html" rel="next" title="cs229笔记2-线性回归">
+                <i class="fa fa-chevron-left"></i> cs229笔记2-线性回归
               </a>
             
           </div>
@@ -525,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/cs229/cs229笔记3-分类与逻辑回归.html" rel="prev" title="cs229笔记3-分类与逻辑回归">
-                cs229笔记3-分类与逻辑回归 <i class="fa fa-chevron-right"></i>
+              <a href="/cs229/cs229笔记4-广义线性模型.html" rel="prev" title="cs229笔记4-广义线性模型">
+                cs229笔记4-广义线性模型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -723,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ordinary-least-squares-regression-model-最小二乘法回归模型"><span class="nav-number">1.</span> <span class="nav-text">Ordinary least squares regression model 最小二乘法回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LMS-Least-mean-squares-update-rule-最小均方"><span class="nav-number">1.1.</span> <span class="nav-text">LMS(Least mean squares) update rule 最小均方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Batch-gradient-descent-批梯度下降"><span class="nav-number">1.2.</span> <span class="nav-text">Batch gradient descent 批梯度下降</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stochastic-gradient-descent-随机梯度下降"><span class="nav-number">1.3.</span> <span class="nav-text">Stochastic gradient descent 随机梯度下降</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Normal-equations-正规方程"><span class="nav-number">2.</span> <span class="nav-text">Normal equations 正规方程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matrix-derivatives"><span class="nav-number">2.1.</span> <span class="nav-text">Matrix derivatives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用上述符号重新表达最小二乘法"><span class="nav-number">2.2.</span> <span class="nav-text">用上述符号重新表达最小二乘法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Locally-weighted-regression-LWR-局部加权回归"><span class="nav-number">3.</span> <span class="nav-text">Locally weighted regression(LWR) 局部加权回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数学习算法和非参数学习算法"><span class="nav-number">3.1.</span> <span class="nav-text">参数学习算法和非参数学习算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LWR"><span class="nav-number">3.2.</span> <span class="nav-text">LWR</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Probabilistic-interpretation-线性回归的概率解释"><span class="nav-number">4.</span> <span class="nav-text">Probabilistic interpretation 线性回归的概率解释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-regression-逻辑斯蒂回归"><span class="nav-number">1.</span> <span class="nav-text">Logistic regression 逻辑斯蒂回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-function"><span class="nav-number">1.1.</span> <span class="nav-text">logistic function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Newton‘s-method-牛顿法求极值"><span class="nav-number">1.2.</span> <span class="nav-text">Newton‘s method 牛顿法求极值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一维函数牛顿法"><span class="nav-number">1.2.1.</span> <span class="nav-text">一维函数牛顿法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般化牛顿法——多维"><span class="nav-number">1.2.2.</span> <span class="nav-text">一般化牛顿法——多维</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
