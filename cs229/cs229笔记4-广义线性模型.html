@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
-<meta name="keywords" content="机器学习,课程笔记">
+<meta name="keywords" content="机器学习,课程笔记,cs229">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs229笔记4-广义线性模型">
 <meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记4-广义线性模型.html">
@@ -129,7 +129,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxcj8a3muyj308l02bdfv.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcj9qoncmj30ao0c33z3.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcjh7g88ej30bo042aad.jpg">
-<meta property="og:updated_time" content="2018-11-18T13:32:42.649Z">
+<meta property="og:updated_time" content="2018-11-20T05:45:49.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs229笔记4-广义线性模型">
 <meta name="twitter:description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-18 21:32:42" itemprop="dateModified" datetime="2018-11-18T21:32:42+08:00">2018-11-18</time>
+                <time title="修改时间：2018-11-20 13:45:49" itemprop="dateModified" datetime="2018-11-20T13:45:49+08:00">2018-11-20</time>
               
             
           </span>
@@ -435,7 +435,9 @@
 <h1 id="The-exponential-family-指数分布族"><a href="#The-exponential-family-指数分布族" class="headerlink" title="The exponential family 指数分布族"></a>The exponential family 指数分布族</h1><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg" alt="image-20181118155148953"></p>
 <p>$ \eta $ 为分布的自然参数，$T(y)$ 为充分统计量（通常，如高斯分布，伯努利分布，T(y) = y)。</p>
 <h2 id="Bernoulli-distribution伯努利分布"><a href="#Bernoulli-distribution伯努利分布" class="headerlink" title="Bernoulli distribution伯努利分布"></a>Bernoulli distribution伯努利分布</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcg57lkwlj30db044wes.jpg" alt="image-20181118193656705"></p>
-<p>根据上式有<br>$$<br>\begin{align}<br>\eta &amp;= log\frac{\phi}{1-\phi}\quad \Rightarrow \quad\phi =\frac{1}{1+e^{-\eta}}\<br>a(\eta)&amp;=-log(1-\phi)=log(1+e^{\eta})\<br>T(y)&amp;=y\<br>b(y)&amp;=1<br>\end{align}<br>$$<br><strong>注：</strong>可以发现$\phi$ 的表达式和<strong>logistic 函数</strong>相同。</p>
+<p>根据上式有</p>
+<p>$$<br>\begin{align<em>}<br>\eta &amp;= log\frac{\phi}{1-\phi}\quad \Rightarrow \quad\phi =\frac{1}{1+e^{-\eta}}&amp; \<br>a(\eta)&amp;=-log(1-\phi)=log(1+e^{\eta}) &amp;\<br>T(y)&amp;= y&amp; \<br>b(y)&amp;=1&amp;<br>\end{align</em>}<br>$$</p>
+<p><strong>注：</strong>可以发现$\phi$ 的表达式和<strong>logistic 函数</strong>相同。</p>
 <h2 id="Gaussian-distribution高斯分布"><a href="#Gaussian-distribution高斯分布" class="headerlink" title="Gaussian distribution高斯分布"></a>Gaussian distribution高斯分布</h2><p>考虑高斯分布,为了方便，不考虑$\sigma$<br>$$<br>\mathcal N(\mu,\sigma^2) \quad\text{set} \quad\sigma^2=1<br>$$<br>有</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcgroarnyj30db03zaad.jpg" alt="image-20181118195832151"></p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxcgslyiwjj30if05hjrp.jpg" alt="image-20181118195926018"></p>
@@ -444,7 +446,7 @@
 <h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxchk0fnwmj30lw0isgzd.jpg" alt="image-20181118202545419"></p>
 <h2 id="例子：Bernoulli"><a href="#例子：Bernoulli" class="headerlink" title="例子：Bernoulli"></a>例子：Bernoulli</h2><p><img src="/Users/jiang/Library/Application Support/typora-user-images/image-20181118203017936.png" alt="image-20181118203017936"></p>
 <h2 id="构造广义线性模型的意义"><a href="#构造广义线性模型的意义" class="headerlink" title="构造广义线性模型的意义"></a>构造广义线性模型的意义</h2><p>这样构造广义线性模型的意义在于<strong>便利性</strong>。当你遇到一个新的{0,1}分类问题的时候，唯一需要做的决策就是：<strong>选择假设 $ y|x,\theta $ 服从什么分布 </strong>。无论面临任何问题，选择一种指数分布族中的分布，之后遵从相同的规则，就可以得到一个不同的模型和不同学习算法，得到一个不同的广义线性模型。</p>
-<h3 id="Canonical-response-function正则响应函数"><a href="#Canonical-response-function正则响应函数" class="headerlink" title="Canonical response function正则响应函数"></a>Canonical response function正则响应函数</h3><p>一些术语，不做过多介绍。<br>$$<br>\begin{align}<br>&amp;\text {Canonical response function}\quad &amp;&amp;g(\eta)=E[y;\eta]= \frac{1}{1+e^{-\eta}}\<br>&amp;\text{Canonical link function} \quad &amp;&amp;g^{-1}<br>\end{align}<br>$$</p>
+<h3 id="Canonical-response-function正则响应函数"><a href="#Canonical-response-function正则响应函数" class="headerlink" title="Canonical response function正则响应函数"></a>Canonical response function正则响应函数</h3><p>一些术语，不做过多介绍。<br>$$<br>\begin{align<em>}<br>&amp;\text {Canonical response function}\quad &amp;&amp;g(\eta)=E[y;\eta]= \frac{1}{1+e^{-\eta}}\<br>&amp;\text{Canonical link function} \quad &amp;&amp;g^{-1}<br>\end{align</em>}<br>$$</p>
 <h2 id="Softmax-regression-Multinomial-🌟多项式分布"><a href="#Softmax-regression-Multinomial-🌟多项式分布" class="headerlink" title="Softmax regression/Multinomial 🌟多项式分布"></a>Softmax regression/Multinomial 🌟多项式分布</h2><p>这是一个重要的例子。当分类问题有k类时， $y\in{1,\dots,k}$,由于参数 $\phi_{k-1} = 1-\sum_{i=1}^{k-1} \phi_i$，故$\phi_{k-1}$ 是冗余参数，则假设参数从 $\phi_1,\dots,\phi_{k-1}$</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcihxx8j8j30m40hfqfk.jpg" alt="image-20181118205821958"></p>
 <p>接下来定义$T(y)$</p>
@@ -483,6 +485,8 @@
           
             <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
           
+            <a href="/tags/cs229/" rel="tag"># cs229</a>
+          
         </div>
       
 
@@ -503,6 +507,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/环境搭建/hexo博客markdown数学公式渲染错误解决方法.html" rel="prev" title="hexo博客markdown数学公式渲染错误解决方法">
+                hexo博客markdown数学公式渲染错误解决方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -574,7 +582,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -597,9 +605,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -634,7 +640,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

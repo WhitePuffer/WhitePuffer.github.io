@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
-<meta name="keywords" content="机器学习,课程笔记">
+<meta name="keywords" content="机器学习,课程笔记,cs229">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs229笔记3-分类与逻辑回归">
 <meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg">
-<meta property="og:updated_time" content="2018-11-18T07:33:30.162Z">
+<meta property="og:updated_time" content="2018-11-20T05:40:39.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs229笔记3-分类与逻辑回归">
 <meta name="twitter:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
@@ -371,7 +371,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-18 15:33:30" itemprop="dateModified" datetime="2018-11-18T15:33:30+08:00">2018-11-18</time>
+                <time title="修改时间：2018-11-20 13:40:39" itemprop="dateModified" datetime="2018-11-20T13:40:39+08:00">2018-11-20</time>
               
             
           </span>
@@ -441,7 +441,7 @@
 </ol>
 <p><strong>注：</strong>虽然这个公式与之前 <strong>Linear Regression</strong> 的<strong>基于最小二乘的梯度下降</strong>表面上相同，但是其中的$ h_\theta (x)$ 并非连续函数，而是一个关于 <strong>logsitc funciton</strong>的二值函数 $y \in {0,1}$ 。 即使它们表面上相似，实际上是两种不同的学习算法。这是一种通用的学习模型，实际上会以一种看起来相同的学习算法结束，这并不是一个巧合。</p>
 <h2 id="Newton‘s-method-牛顿法求极值"><a href="#Newton‘s-method-牛顿法求极值" class="headerlink" title="Newton‘s method 牛顿法求极值"></a>Newton‘s method 牛顿法求极值</h2><h3 id="一维函数牛顿法"><a href="#一维函数牛顿法" class="headerlink" title="一维函数牛顿法"></a>一维函数牛顿法</h3><p>首先考虑 求解$f(\theta) = 0 $ 的问题，牛顿法如下：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"><br>$$<br>\begin{align}<br>&amp;&amp;f’(\theta^{(0)}) &amp;= \frac{f(\theta^{(0)})}{\Delta}\<br>&amp;\text{可推出}&amp; \quad \Delta &amp;= \frac{f(\theta^{(0)})}{f’(\theta^{(0)})} \<br>&amp;\text{归纳得}&amp; \quad \theta^{(t+1)} &amp;= \theta^{(t)}-\frac{f(\theta^{(t)})}{f’(\theta^{(t)})}\<br>\end{align}<br>$$</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"><br>$$<br>\begin{eqnarray<em>}<br>&amp;&amp;f’(\theta^{(0)}) &amp;= \frac{f(\theta^{(0)})}{\Delta}\<br>&amp;\text{可推出}&amp; \quad \Delta &amp;= \frac{f(\theta^{(0)})}{f’(\theta^{(0)})} \<br>&amp;\text{归纳得}&amp; \quad \theta^{(t+1)} &amp;= \theta^{(t)}-\frac{f(\theta^{(t)})}{f’(\theta^{(t)})}\<br>\end{eqnarray</em>}<br>$$</p>
 <p>回到$l(\theta)$,求$l(\theta)$ 的极值，根据极值点的性质 $l’(\theta) = 0$,得：</p>
 <p>$$<br>\begin{align}<br>l(\theta) \quad &amp;\text{want} \quad \theta \quad s.t \quad l’(\theta) = 0    \<br>&amp;\text{then} \quad \theta^{(t+1)} = \theta^{(t)}-\frac{l’(\theta^{(t)})}{l’’(\theta^{(t)})}\<br>\end{align}<br>$$</p>
 <p>通过迭代，我们就可以得到一个局部最优值。</p>
@@ -477,6 +477,8 @@
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
             <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+          
+            <a href="/tags/cs229/" rel="tag"># cs229</a>
           
         </div>
       
@@ -573,7 +575,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -596,9 +598,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -633,7 +633,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
