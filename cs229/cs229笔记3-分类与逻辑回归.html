@@ -439,14 +439,14 @@
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg" alt="image-20181118114121458"></p>
 </li>
 </ol>
-<p><strong>注：</strong>虽然这个公式与之前 <strong>Linear Regression</strong> 的<strong>基于最小二乘的梯度下降</strong>表面上相同，但是其中的$ h_\theta (x)$ 并非连续函数，而是一个关于 <strong>logsitc funciton</strong>的二值函数 $y \in {0,1}$ 。 即使它们表面上相似，实际上是两种不同的学习算法。这是一种通用的学习模型，实际上会以一种看起来相同的学习算法结束，这并不是一个巧合。</p>
+<p><strong>注：</strong>虽然这个公式与之前 <strong>Linear Regression</strong> 的<strong>基于最小二乘的梯度下降</strong>表面上相同，但是其中的$ h_\theta (x)$ 并非连续函数，而是一个关于 <strong>logsitc funciton</strong>的二值函数 $y \in \{0,1\}$ 。 即使它们表面上相似，实际上是两种不同的学习算法。这是一种通用的学习模型，实际上会以一种看起来相同的学习算法结束，这并不是一个巧合。</p>
 <h2 id="Newton‘s-method-牛顿法求极值"><a href="#Newton‘s-method-牛顿法求极值" class="headerlink" title="Newton‘s method 牛顿法求极值"></a>Newton‘s method 牛顿法求极值</h2><h3 id="一维函数牛顿法"><a href="#一维函数牛顿法" class="headerlink" title="一维函数牛顿法"></a>一维函数牛顿法</h3><p>首先考虑 求解$f(\theta) = 0 $ 的问题，牛顿法如下：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"><br>$$<br>\begin{eqnarray<em>}<br>&amp;&amp;f’(\theta^{(0)}) &amp;= \frac{f(\theta^{(0)})}{\Delta}\<br>&amp;\text{可推出}&amp; \quad \Delta &amp;= \frac{f(\theta^{(0)})}{f’(\theta^{(0)})} \<br>&amp;\text{归纳得}&amp; \quad \theta^{(t+1)} &amp;= \theta^{(t)}-\frac{f(\theta^{(t)})}{f’(\theta^{(t)})}\<br>\end{eqnarray</em>}<br>$$</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"><br>$$<br>\begin{eqnarray<em>}<br>&amp;&amp;f’(\theta^{(0)}) &amp;= \frac{f(\theta^{(0)})}{\Delta}\\<br>&amp;\text{可推出}&amp; \quad \Delta &amp;= \frac{f(\theta^{(0)})}{f’(\theta^{(0)})} \\<br>&amp;\text{归纳得}&amp; \quad \theta^{(t+1)} &amp;= \theta^{(t)}-\frac{f(\theta^{(t)})}{f’(\theta^{(t)})}\\<br>\end{eqnarray</em>}<br>$$</p>
 <p>回到$l(\theta)$,求$l(\theta)$ 的极值，根据极值点的性质 $l’(\theta) = 0$,得：</p>
-<p>$$<br>\begin{align}<br>l(\theta) \quad &amp;\text{want} \quad \theta \quad s.t \quad l’(\theta) = 0    \<br>&amp;\text{then} \quad \theta^{(t+1)} = \theta^{(t)}-\frac{l’(\theta^{(t)})}{l’’(\theta^{(t)})}\<br>\end{align}<br>$$</p>
+<p>$$<br>\begin{align}<br>l(\theta) \quad &amp;\text{want} \quad \theta \quad s.t \quad l’(\theta) = 0    \\<br>&amp;\text{then} \quad \theta^{(t+1)} = \theta^{(t)}-\frac{l’(\theta^{(t)})}{l’’(\theta^{(t)})}\\<br>\end{align}<br>$$</p>
 <p>通过迭代，我们就可以得到一个局部最优值。</p>
 <p><strong>注：</strong>事实证明牛顿法是一个收敛很快的算法——<strong>二次收敛</strong>。</p>
-<h3 id="一般化牛顿法——多维"><a href="#一般化牛顿法——多维" class="headerlink" title="一般化牛顿法——多维"></a>一般化牛顿法——多维</h3><p>现在考虑多维情况下一般化牛顿法。<br>$$<br>\begin{align}<br>&amp;\theta^{(t+1)} = \theta^{(t)}-H^{-1}\nabla_\theta l\<br>&amp;\text{where}  \quad H \text{ is the Hessian matrix(海森矩阵）,} \quad H\in \mathcal R^{n \times n}\\<br>&amp; H_{ij} = \frac{\partial ^2 l}{\partial\theta_i\partial\theta_j}<br>\end{align}<br>$$<br>相比梯度下降方法，一般情况下，牛顿法的收敛速度会快很多。</p>
+<h3 id="一般化牛顿法——多维"><a href="#一般化牛顿法——多维" class="headerlink" title="一般化牛顿法——多维"></a>一般化牛顿法——多维</h3><p>现在考虑多维情况下一般化牛顿法。<br>$$<br>\begin{align}<br>&amp;\theta^{(t+1)} = \theta^{(t)}-H^{-1}\nabla_\theta l\\<br>&amp;\text{where}  \quad H \text{ is the Hessian matrix(海森矩阵）,} \quad H\in \mathcal R^{n \times n}\\\<br>&amp; H_{ij} = \frac{\partial ^2 l}{\partial\theta_i\partial\theta_j}<br>\end{align}<br>$$<br>相比梯度下降方法，一般情况下，牛顿法的收敛速度会快很多。</p>
 <p>缺点是</p>
 <ol>
 <li><p>每一次迭代都需要重新计算海森矩阵的逆，海森矩阵大小为n x n（n是特征的数量），如果特征过多，则运算量非常巨大</p>

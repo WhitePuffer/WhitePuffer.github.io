@@ -438,7 +438,7 @@
 </ol>
 <h1 id="第2章-问题求解的搜索"><a href="#第2章-问题求解的搜索" class="headerlink" title="第2章 问题求解的搜索"></a>第2章 问题求解的搜索</h1><h1 id="第3章-退火模拟算法（SA）"><a href="#第3章-退火模拟算法（SA）" class="headerlink" title="第3章 退火模拟算法（SA）"></a>第3章 退火模拟算法（SA）</h1><p>局部搜索算法（以爬山算法为代表）存在缺陷。最致命的是<strong>无法跳离局部最优“陷阱”</strong>，在高维情况下还存在“鞍陷阱”和“梯度消失”。</p>
 <h2 id="Metropolis算法"><a href="#Metropolis算法" class="headerlink" title="Metropolis算法"></a>Metropolis算法</h2><p>为了克服局部搜索的“陷阱”问题，1982年，Kirkpatirck提出<strong>模拟退火算法（ Simulated Annealing Algorithm ）</strong>。模拟退火算法模仿自然界固体退火的微观过程，将Metropolis准则引入到组合优化过程中来，得到了一种对Metropolis算法进行迭代的组合优化算法。</p>
-<p>核心思想：模拟退火算法用Metropolis算法产生组合优化问题解的序列。并由Metropolis准则对应的转<br>移概率 $P$<br>$$<br>P(i转移到j)=\begin{cases}<br>1 &amp; f(i) \ge f(j) \<br>e^{\frac{f(i)-f(j)}{t}} &amp; f(i)&lt;f(j) \<br>\end{cases}<br>$$<br>确定是否接受从当前解 $i$ 到 新解 $j$ 的转移。 </p>
+<p>核心思想：模拟退火算法用Metropolis算法产生组合优化问题解的序列。并由Metropolis准则对应的转<br>移概率 $P$<br>$$<br>P(i转移到j)=\begin{cases}<br>1 &amp; f(i) \ge f(j) \\<br>e^{\frac{f(i)-f(j)}{t}} &amp; f(i)&lt;f(j) \\<br>\end{cases}<br>$$<br>确定是否接受从当前解 $i$ 到 新解 $j$ 的转移。 </p>
 <ul>
 <li>式中 $t\in R^+$ 表示控制参数。开始让$ t $取较大的值，在进行足够多的转移后， 缓慢减小 $t$ 的值，如此重复直至满足某个停止准则时,算法终止。 </li>
 <li>模拟退火算法依据Metropolis准则接受新解，除接受优化解外，还在<strong>一个限定范围内</strong>接受恶化解。</li>
@@ -487,7 +487,7 @@
 <p>仿生类算法，就其目前发展而言，可分为仿生过程算法与仿生结构算法两大类，前者以模拟进化算法为代表，后者以神经网络为典型。</p>
 <p><strong>遗传算法</strong>(Genetic Algorithm,简称GA)是通过模拟生物进化过程来完成优化搜索的仿生类算法。</p>
 <h2 id="模拟进化类算法介绍"><a href="#模拟进化类算法介绍" class="headerlink" title="模拟进化类算法介绍"></a>模拟进化类算法介绍</h2><h3 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h3><p>考虑全局优化问题：</p>
-<p>$$<br>(p):max{F(x):x\in \Omega \subset R^n }, F: \Omega \subset R^n \rightarrow R^1<br>$$</p>
+<p>$$<br>(p):max\{F(x):x\in \Omega \subset R^n \}, F: \Omega \subset R^n \rightarrow R^1<br>$$</p>
 <p>则$(p)$的多个可行解的一个集合可称之为一个<strong>种群</strong>（population），种群中的每一元素（可行解）可称之为是一个<strong>个体</strong>（individual），种群中个体的数目称之为此种群的<strong>规模</strong>。</p>
 <p>于是，求解问题$(p)$的一个不变规模（例如设为$N$）的模拟进化算法可抽象地描述如下：</p>
 <ol>
@@ -512,7 +512,7 @@
 <ol>
 <li>初始化：<ol>
 <li>确定种群规模$N$、杂交概率$P_c$、变异概率$X_i(0)X_i(0)P_m$及终止进化准则；</li>
-<li>从$\Omega$中随机选取$N$个个体$X_i(0)$组成初始种群$X(0)={X_1(0),…,X_N(0)}$ ，设$X_i(0)$的染色体编码为$Y_i(0)$，并记$Y(0)={Y_1(0),…,Y_N(0)}$；</li>
+<li>从$\Omega$中随机选取$N$个个体$X_i(0)$组成初始种群$X(0)=\{X_1(0),…,X_N(0)\}$ ，设$X_i(0)$的染色体编码为$Y_i(0)$，并记$Y(0)=\{Y_1(0),…,Y_N(0)\}$；</li>
 <li>计算$Y_i(0)$的适应性值$J(Y_i(0))$；</li>
 <li>置$k = 0$。</li>
 </ol>
@@ -525,7 +525,7 @@
 <li>以概率$P_m$对中间个体$s’_1,s’_2$进行变异，产生两个新个体$s_1,s_2$。</li>
 </ol>
 </li>
-<li>计算由第2.1步所产生的$2M$个新个体的适应性，对这$2M$新个体连同$Y(k)$由某种选择规则确定$N$个个体组成新一代种群$Y(k+1)={Y_1(k+1),…,Y_N(k+1)}$</li>
+<li>计算由第2.1步所产生的$2M$个新个体的适应性，对这$2M$新个体连同$Y(k)$由某种选择规则确定$N$个个体组成新一代种群$Y(k+1)=\{Y_1(k+1),…,Y_N(k+1)\}$</li>
 </ol>
 </li>
 <li>检验终止判据：如果$Y(k+1)$满足预先设定的停机准则，则终止演化，并输出最优解；否则，置$k = k+1$，返回第2步。</li>
@@ -536,9 +536,9 @@
 <h3 id="度约束最小生成树问题（DCMST）"><a href="#度约束最小生成树问题（DCMST）" class="headerlink" title="度约束最小生成树问题（DCMST）"></a>度约束最小生成树问题（DCMST）</h3><p><strong>最小生成树（MST）</strong>一般用算法Prim和Kruskal算法求解。</p>
 <p>在实际应用中,通常面临的是需要带有某种约束的<strong>MST</strong>,如二次最小生成树问题、度约束最小生成树问题和概率最小生成树问题等。对于该类问题的求解,目前还不存在多项式时间复杂度的算法,被证明是NP-完全的。</p>
 <p><strong>问题描述</strong></p>
-<p>设连通图$G=(V,E,W)$ ，$V={v_1,v_2,…,v_n}$ 表示图的顶点集合，$E={e_1,e_2,…,e_m}$ 是边的有限集合，$W={w_{ij}}_{n×n}$ 表示边的权重矩阵，规定顶点的度约束为$b_i$（给定的约束值，$i=1,2,…,n$ ），因此度约束最小生成树问题（DCMST）的求解可表述为：<br>$$<br>\text{min }Z=\sum_{i=1}^n\sum_{j=1}^nw_{ij}x_{ij}\<br>\text{s.t.}\left{<br>\begin{aligned}<br>&amp;\sum_{j=1}^n x_{ij} \le b,&amp;&amp;i\in V \<br>&amp;\sum_{i,j\in S}x_{ij}\le |S|-1,&amp;&amp;\forall S \subset V,S \neq \varnothing \<br>&amp;\sum_{i=1}^n \sum_{j=1}^n x_{ij}=n-1,&amp;&amp; x_{ij} \in {0,1},i,j \in V<br>\end{aligned}<br>\right.<br>$$<br>$|S|$表示集合$S$（$V$的子集合）的结点个数。</p>
+<p>设连通图$G=(V,E,W)$ ，$V=\{v_1,v_2,…,v_n\}$ 表示图的顶点集合，$E=\{e_1,e_2,…,e_m\}$ 是边的有限集合，$W=\{w_{ij}\}_{n×n}$ 表示边的权重矩阵，规定顶点的度约束为$b_i$（给定的约束值，$i=1,2,…,n$ ），因此度约束最小生成树问题（DCMST）的求解可表述为：<br>$$<br>\text{min }Z=\sum_{i=1}^n\sum_{j=1}^nw_{ij}x_{ij}\\<br>\text{s.t.}\left\{<br>\begin{aligned}<br>&amp;\sum_{j=1}^n x_{ij} \le b,&amp;&amp;i\in V \\<br>&amp;\sum_{i,j\in S}x_{ij}\le |S|-1,&amp;&amp;\forall S \subset V,S \neq \varnothing \\<br>&amp;\sum_{i=1}^n \sum_{j=1}^n x_{ij}=n-1,&amp;&amp; x_{ij} \in \{0,1\},i,j \in V<br>\end{aligned}<br>\right.<br>$$<br>$|S|$表示集合$S$（$V$的子集合）的结点个数。</p>
 <p>设 $T$ 为图 $ G $ 的所有满足度约束的生成树的集合，对DCMST问题求解就是寻找 $G$ 的一棵满足度约束的最小生成树。约束式1为度限制，约束式2和3保证了所得到的是一棵生成树，不形成圈（无环路）。</p>
-<h3 id="模拟嫁接技术-1"><a href="#模拟嫁接技术-1" class="headerlink" title="模拟嫁接技术"></a>模拟嫁接技术</h3><h4 id="收益和代价"><a href="#收益和代价" class="headerlink" title="收益和代价"></a>收益和代价</h4><p>对一棵生成树T1,若将某结点的一条分枝移至另一结点作为其一条分枝后产生的生成树为T2,考察分枝移动前后生成树的边长和的变化,则定义收益(gain)和代价(cost)分别为：<br>$$<br>gain=f(T_1)-f(T_2)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^1-\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2\<br>cost=f(T_2)-f(T_1)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2-\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^1\<br>$$<br>实际上，$cost = - gain $</p>
+<h3 id="模拟嫁接技术-1"><a href="#模拟嫁接技术-1" class="headerlink" title="模拟嫁接技术"></a>模拟嫁接技术</h3><h4 id="收益和代价"><a href="#收益和代价" class="headerlink" title="收益和代价"></a>收益和代价</h4><p>对一棵生成树T1,若将某结点的一条分枝移至另一结点作为其一条分枝后产生的生成树为T2,考察分枝移动前后生成树的边长和的变化,则定义收益(gain)和代价(cost)分别为：<br>$$<br>gain=f(T_1)-f(T_2)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^1-\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2\\<br>cost=f(T_2)-f(T_1)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2-\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^1\\<br>$$<br>实际上，$cost = - gain $</p>
 <h4 id="嫁接"><a href="#嫁接" class="headerlink" title="嫁接"></a>嫁接</h4><p>将生成树非考察结点且具有某种优良特性的分枝（嫁接枝）接入到非完全生成树的待考察结点中,以形成更好生成树个体(这里指收益大于0)的过程称为嫁接。</p>
 <h4 id="剪接"><a href="#剪接" class="headerlink" title="剪接"></a>剪接</h4><p>将生成树个体考察结点的某一分枝（剪接枝）接入到非完全生成树中另一位置,以形成可行个体或更好个体的过程称为剪接。</p>
 <h4 id="冲突及冲突检测"><a href="#冲突及冲突检测" class="headerlink" title="冲突及冲突检测"></a>冲突及冲突检测</h4><p>在对消除不满足约束情形进行剪接或对具有较差属性的分枝进行剪接操作的同时，若引起新的不满足约束的情形称为冲突。</p>

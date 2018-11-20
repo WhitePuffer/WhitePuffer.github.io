@@ -443,7 +443,7 @@
 <li>$(x^{(i)},y^{(i)})$ 为样本对</li>
 <li>系数 $1\over2$ 含义：简化之后的计算</li>
 </ul>
-<h2 id="LMS-Least-mean-squares-update-rule-最小均方"><a href="#LMS-Least-mean-squares-update-rule-最小均方" class="headerlink" title="LMS(Least mean squares) update rule 最小均方"></a>LMS(Least mean squares) update rule 最小均方</h2><p>不断变化 $\theta$  以减小$J(\theta)$<br>$$<br>\text{iterate}  \<br>\theta_i := \theta_i - \alpha\frac{\partial}{\partial \theta_i}J(\theta)\<br>minimize \quad J(\theta)<br>$$</p>
+<h2 id="LMS-Least-mean-squares-update-rule-最小均方"><a href="#LMS-Least-mean-squares-update-rule-最小均方" class="headerlink" title="LMS(Least mean squares) update rule 最小均方"></a>LMS(Least mean squares) update rule 最小均方</h2><p>不断变化 $\theta$  以减小$J(\theta)$<br>$$<br>\text{iterate}  \\<br>\theta_i := \theta_i - \alpha\frac{\partial}{\partial \theta_i}J(\theta)\\<br>minimize \quad J(\theta)<br>$$</p>
 <h2 id="Batch-gradient-descent-批梯度下降"><a href="#Batch-gradient-descent-批梯度下降" class="headerlink" title="Batch gradient descent 批梯度下降"></a>Batch gradient descent 批梯度下降</h2><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx481ep11lj30ge03n3yn.jpg" alt="image-20181111131932733"></p>
 <p>每次循环都要处理所有（或一个部分）的样本数据,直到收敛。</p>
 <p><strong>缺点：</strong>速度慢</p>
