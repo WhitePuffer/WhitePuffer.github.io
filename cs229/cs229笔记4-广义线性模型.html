@@ -129,7 +129,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxcj8a3muyj308l02bdfv.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcj9qoncmj30ao0c33z3.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcjh7g88ej30bo042aad.jpg">
-<meta property="og:updated_time" content="2018-11-20T05:55:44.159Z">
+<meta property="og:updated_time" content="2018-11-20T06:06:28.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs229笔记4-广义线性模型">
 <meta name="twitter:description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-20 13:55:44" itemprop="dateModified" datetime="2018-11-20T13:55:44+08:00">2018-11-20</time>
+                <time title="修改时间：2018-11-20 14:06:28" itemprop="dateModified" datetime="2018-11-20T14:06:28+08:00">2018-11-20</time>
               
             
           </span>
@@ -436,9 +436,16 @@
 <p>$ \eta $ 为分布的自然参数，$T(y)$ 为充分统计量（通常，如高斯分布，伯努利分布，T(y) = y)。</p>
 <h2 id="Bernoulli-distribution伯努利分布"><a href="#Bernoulli-distribution伯努利分布" class="headerlink" title="Bernoulli distribution伯努利分布"></a>Bernoulli distribution伯努利分布</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcg57lkwlj30db044wes.jpg" alt="image-20181118193656705"></p>
 <p>根据上式有</p>
-<p>$$<br>\begin{align<em>}<br>\eta &amp;= log\frac{\phi}{1-\phi}\quad \Rightarrow \quad\phi =\frac{1}{1+e^{-\eta}}&amp; \\<br>a(\eta)&amp;=-log(1-\phi)=log(1+e^{\eta}) &amp;\\<br>T(y)&amp;= y&amp; \\<br>b(y)&amp;=1&amp;<br>\end{align</em>}<br>$$</p>
-<p><strong>注：</strong>可以发现$\phi$ 的表达式和<strong>logistic 函数</strong>相同。</p>
-<h2 id="Gaussian-distribution高斯分布"><a href="#Gaussian-distribution高斯分布" class="headerlink" title="Gaussian distribution高斯分布"></a>Gaussian distribution高斯分布</h2><p>考虑高斯分布,为了方便，不考虑$\sigma$<br>$$<br>\mathcal N(\mu,\sigma^2) \quad\text{set} \quad\sigma^2=1<br>$$<br>有</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\eta &= log\frac{\phi}{1-\phi}\quad \Rightarrow \quad\phi =\frac{1}{1+e^{-\eta}}& \\
+a(\eta)&=-log(1-\phi)=log(1+e^{\eta}) &\\
+T(y)&= y& \\
+b(y)&=1&
+\end{align*}</script><p><strong>注：</strong>可以发现$\phi$ 的表达式和<strong>logistic 函数</strong>相同。</p>
+<h2 id="Gaussian-distribution高斯分布"><a href="#Gaussian-distribution高斯分布" class="headerlink" title="Gaussian distribution高斯分布"></a>Gaussian distribution高斯分布</h2><p>考虑高斯分布,为了方便，不考虑$\sigma$</p>
+<script type="math/tex; mode=display">
+\mathcal N(\mu,\sigma^2) \quad\text{set} \quad\sigma^2=1</script><p>有</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcgroarnyj30db03zaad.jpg" alt="image-20181118195832151"></p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxcgslyiwjj30if05hjrp.jpg" alt="image-20181118195926018"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不仅<strong>Bernoulli distribution,Gaussian distribution</strong>属于指数分布族，实际上<strong>多项式分布、柏松分布、伽马分布、指数分布</strong>也属于指数分布族</p>
@@ -446,12 +453,22 @@
 <h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxchk0fnwmj30lw0isgzd.jpg" alt="image-20181118202545419"></p>
 <h2 id="例子：Bernoulli"><a href="#例子：Bernoulli" class="headerlink" title="例子：Bernoulli"></a>例子：Bernoulli</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxeha30cl1j30n40ji7je.jpg" alt="image-20181118203017936"></p>
 <h2 id="构造广义线性模型的意义"><a href="#构造广义线性模型的意义" class="headerlink" title="构造广义线性模型的意义"></a>构造广义线性模型的意义</h2><p>这样构造广义线性模型的意义在于<strong>便利性</strong>。当你遇到一个新的{0,1}分类问题的时候，唯一需要做的决策就是：<strong>选择假设 $ y|x,\theta $ 服从什么分布 </strong>。无论面临任何问题，选择一种指数分布族中的分布，之后遵从相同的规则，就可以得到一个不同的模型和不同学习算法，得到一个不同的广义线性模型。</p>
-<h3 id="Canonical-response-function正则响应函数"><a href="#Canonical-response-function正则响应函数" class="headerlink" title="Canonical response function正则响应函数"></a>Canonical response function正则响应函数</h3><p>一些术语，不做过多介绍。<br>$$<br>\begin{align<em>}<br>&amp;\text {Canonical response function}\quad &amp;&amp;g(\eta)=E[y;\eta]= \frac{1}{1+e^{-\eta}}\\<br>&amp;\text{Canonical link function} \quad &amp;&amp;g^{-1}<br>\end{align</em>}<br>$$</p>
-<h2 id="Softmax-regression-Multinomial-🌟多项式分布"><a href="#Softmax-regression-Multinomial-🌟多项式分布" class="headerlink" title="Softmax regression/Multinomial 🌟多项式分布"></a>Softmax regression/Multinomial 🌟多项式分布</h2><p>这是一个重要的例子。当分类问题有k类时， $y\in\{1,\dots,k\}$,由于参数 $\phi_{k-1} = 1-\sum_{i=1}^{k-1} \phi_i$，故$\phi_{k-1}$ 是冗余参数，则假设参数从 $\phi_1,\dots,\phi_{k-1}$</p>
+<h3 id="Canonical-response-function正则响应函数"><a href="#Canonical-response-function正则响应函数" class="headerlink" title="Canonical response function正则响应函数"></a>Canonical response function正则响应函数</h3><p>一些术语，不做过多介绍。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&\text {Canonical response function}\quad &&g(\eta)=E[y;\eta]= \frac{1}{1+e^{-\eta}}\\
+&\text{Canonical link function} \quad &&g^{-1}
+\end{align*}</script><h2 id="Softmax-regression-Multinomial-🌟多项式分布"><a href="#Softmax-regression-Multinomial-🌟多项式分布" class="headerlink" title="Softmax regression/Multinomial 🌟多项式分布"></a>Softmax regression/Multinomial 🌟多项式分布</h2><p>这是一个重要的例子。当分类问题有k类时， $y\in{1,\dots,k}$,由于参数 $\phi<em>{k-1} = 1-\sum</em>{i=1}^{k-1} \phi<em>i$，故$\phi</em>{k-1}$ 是冗余参数，则假设参数从 $\phi<em>1,\dots,\phi</em>{k-1}$</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcihxx8j8j30m40hfqfk.jpg" alt="image-20181118205821958"></p>
 <p>接下来定义$T(y)$</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcio4hc8dj30mi0foak4.jpg" alt="image-20181118210418231"></p>
-<p>引入符号——<strong>指示函数</strong>：<br>$$<br>\mathcal 1\{True\} = 1\\<br>\mathcal 1\{False\} = 0\\<br>$$<br>则T(y)可以表示为一个简单的公式<br>$$<br>T(y)_i=\mathcal 1\{y=i\}\\<br>这里i下标表示第i个分量<br>$$<br>利用exponnetial family</p>
+<p>引入符号——<strong>指示函数</strong>：</p>
+<script type="math/tex; mode=display">
+\mathcal 1\{True\} = 1\\
+\mathcal 1\{False\} = 0\\</script><p>则T(y)可以表示为一个简单的公式</p>
+<script type="math/tex; mode=display">
+T(y)_i=\mathcal 1\{y=i\}\\
+这里i下标表示第i个分量</script><p>利用exponnetial family</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcix9chh1j30fg083dgn.jpg" alt="image-20181118211306152"></p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxciy6x1roj30fx060aab.jpg" alt="image-20181118211359687"></p>
 <p>过程略，之后有</p>

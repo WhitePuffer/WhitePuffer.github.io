@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="《神经网络与深度学习》学习笔记 第四周课程">
-<meta name="keywords" content="机器学习,深度学习,学习笔记">
+<meta name="keywords" content="机器学习,学习笔记,深度学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「深层神经网络」学习笔记">
 <meta property="og:url" content="http://WhitePuffer.github.io/机器学习/「深层神经网络」学习笔记.html">
@@ -438,8 +438,7 @@
 <p>深度神经网络的许多隐层中，较早的前几层能学习一些低层次的简单特征，等到后几层，就能把简单的特征结合起来，去探测更加复杂的东西。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwg3n16pvqj30ww0hkq89.jpg" alt="2018-10-21 20-04-18屏幕截图"></p>
 <h1 id="4-5-Building-blocks-of-deep-neural-networks-搭建深层神经网路块"><a href="#4-5-Building-blocks-of-deep-neural-networks-搭建深层神经网路块" class="headerlink" title="4.5 Building blocks of deep neural networks 搭建深层神经网路块"></a>4.5 Building blocks of deep neural networks 搭建深层神经网路块</h1><p><strong>Forward and backward functions</strong></p>
-<p>##Layer l (the basic blocks) 单层传播分析</p>
-<p>对于一个神经网络的一个隐藏层layer l ：参数parameters $W^{[l]}$ ，$b^{[l]}$</p>
+<h2 id="Layer-l-the-basic-blocks-单层传播分析"><a href="#Layer-l-the-basic-blocks-单层传播分析" class="headerlink" title="Layer l (the basic blocks) 单层传播分析"></a>Layer l (the basic blocks) 单层传播分析</h2><p>对于一个神经网络的一个隐藏层layer l ：参数parameters $W^{[l]}$ ，$b^{[l]}$</p>
 <ul>
 <li>➡正向传播Forward：<ul>
 <li>Input $a^{[l-1]}$，output $a^{[l]}$ </li>
@@ -501,9 +500,9 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
-          
             <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
         </div>
       
@@ -724,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-1-Deep-L-layer-Neural-network-深层神经网络"><span class="nav-number">1.</span> <span class="nav-text">4.1 Deep L-layer Neural network 深层神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-2-Forward-Propagation-in-a-Deep-Network-前向传播"><span class="nav-number">2.</span> <span class="nav-text">4.2 Forward Propagation in a Deep Network 前向传播</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-3-Getting-your-matrix-dimensions-right-核对矩阵的维数"><span class="nav-number">3.</span> <span class="nav-text">4.3 Getting your matrix dimensions right 核对矩阵的维数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-4-Why-deep-representations-为什么深度网络有用？"><span class="nav-number">4.</span> <span class="nav-text">4.4 Why deep representations?为什么深度网络有用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-5-Building-blocks-of-deep-neural-networks-搭建深层神经网路块"><span class="nav-number">5.</span> <span class="nav-text">4.5 Building blocks of deep neural networks 搭建深层神经网路块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#One-iteration-of-trianing-for-a-neural-network-invovles-单次神经网络迭代训练"><span class="nav-number">5.1.</span> <span class="nav-text">One iteration of trianing for a neural network invovles 单次神经网络迭代训练</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-6-Forward-and-backward-propagation-前向反向传播（实现）"><span class="nav-number">6.</span> <span class="nav-text">4.6 Forward and backward propagation 前向反向传播（实现）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-7-Parameters-VS-Hyperparameters-参数vs超参数"><span class="nav-number">7.</span> <span class="nav-text">4.7 Parameters VS Hyperparameters 参数vs超参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-1-Deep-L-layer-Neural-network-深层神经网络"><span class="nav-number">1.</span> <span class="nav-text">4.1 Deep L-layer Neural network 深层神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-2-Forward-Propagation-in-a-Deep-Network-前向传播"><span class="nav-number">2.</span> <span class="nav-text">4.2 Forward Propagation in a Deep Network 前向传播</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-3-Getting-your-matrix-dimensions-right-核对矩阵的维数"><span class="nav-number">3.</span> <span class="nav-text">4.3 Getting your matrix dimensions right 核对矩阵的维数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-4-Why-deep-representations-为什么深度网络有用？"><span class="nav-number">4.</span> <span class="nav-text">4.4 Why deep representations?为什么深度网络有用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-5-Building-blocks-of-deep-neural-networks-搭建深层神经网路块"><span class="nav-number">5.</span> <span class="nav-text">4.5 Building blocks of deep neural networks 搭建深层神经网路块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Layer-l-the-basic-blocks-单层传播分析"><span class="nav-number">5.1.</span> <span class="nav-text">Layer l (the basic blocks) 单层传播分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-iteration-of-trianing-for-a-neural-network-invovles-单次神经网络迭代训练"><span class="nav-number">5.2.</span> <span class="nav-text">One iteration of trianing for a neural network invovles 单次神经网络迭代训练</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-6-Forward-and-backward-propagation-前向反向传播（实现）"><span class="nav-number">6.</span> <span class="nav-text">4.6 Forward and backward propagation 前向反向传播（实现）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-7-Parameters-VS-Hyperparameters-参数vs超参数"><span class="nav-number">7.</span> <span class="nav-text">4.7 Parameters VS Hyperparameters 参数vs超参数</span></a></li></ol></div>
             
 
           </div>

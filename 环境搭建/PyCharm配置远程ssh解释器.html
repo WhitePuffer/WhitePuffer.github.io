@@ -439,7 +439,7 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 <p>将PermitRootLogin 这行改为PermitRootLogin <strong>yes</strong>  #可登录root账户</p>
-<ol start="2">
+<ol>
 <li>之后重启sshd服务</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
@@ -449,12 +449,12 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@192.168.1.5</span><br></pre></td></tr></table></figure>
 <p>输入密码，登录成功。</p>
-<ol start="2">
+<ol>
 <li>打开PyCharm，进入perference偏好设置。</li>
 </ol>
 <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy5svo1fcj30vw04fwfu.jpg" alt="image-20181106110104032"></p>
 <p>如图，点击右边的齿轮然后添加一个新的Interpreter。</p>
-<ol start="3">
+<ol>
 <li>选择SSH Interpreter，New serverconfiguration，输入Host:[服务器IP地址]，Username:[用户名]。之后Next。输入密码。</li>
 <li>选择服务器上的python解释器所在位置，Finish，完成配置。</li>
 </ol>
@@ -463,15 +463,15 @@
 <li>对于一个Project，选择remote python 解释器。</li>
 </ol>
 <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy63pgdd6j30tr0ja0v2.jpg" alt="image-20181106111135787"></p>
-<ol start="2">
+<ol>
 <li>菜单栏选择Tools-&gt;Deployment-&gt;Configuration </li>
 </ol>
 <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy64q804qj30tr0ja0v2.jpg" alt="image-20181106111235663"></p>
-<ol start="3">
+<ol>
 <li>Connection标签，设置一下服务器上存放该客户端文件的root path</li>
 </ol>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwy697yzrhj30gu01m748.jpg" alt="image-20181106111652773"></p>
-<ol start="4">
+<ol>
 <li>Mappings标签，配置一下这三个路径。</li>
 </ol>
 <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy6aafta3j30h406kt94.jpg" alt="image-20181106111753559"></p>
@@ -479,7 +479,7 @@
 <li>选择一个项目或项目文件，之后Tools-&gt;Deployment-&gt;Upload to…,上传至服务器。</li>
 </ol>
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwy6d25056j309o04174f.jpg" alt="image-20181106112035072"></p>
-<ol start="2">
+<ol>
 <li>运行</li>
 </ol>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwy6e6l5g6j30mk044dg8.jpg" alt="image-20181106112138900"></p>

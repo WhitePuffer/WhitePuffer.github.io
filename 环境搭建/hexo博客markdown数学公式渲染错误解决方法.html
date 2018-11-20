@@ -108,20 +108,22 @@
 
 
 
-  <meta name="description" content="解决一下hexo渲染markdown公式时候出现语法识别错误的问题">
+  <meta name="description" content="解决一下hexo渲染公式出现语义冲突的问题">
 <meta name="keywords" content="计算机网络,环境搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客markdown数学公式渲染错误解决方法">
 <meta property="og:url" content="http://WhitePuffer.github.io/环境搭建/hexo博客markdown数学公式渲染错误解决方法.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="解决一下hexo渲染markdown公式时候出现语法识别错误的问题">
+<meta property="og:description" content="解决一下hexo渲染公式出现语义冲突的问题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxeh5wkp9jj30mm09hwfg.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxehc9zpw4j30ij06fdgh.jpg">
-<meta property="og:updated_time" content="2018-11-20T05:50:58.250Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxehwrm213j30hm03k3yq.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxeip1w1w2j30op06i0u9.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:53:00.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客markdown数学公式渲染错误解决方法">
-<meta name="twitter:description" content="解决一下hexo渲染markdown公式时候出现语法识别错误的问题">
+<meta name="twitter:description" content="解决一下hexo渲染公式出现语义冲突的问题">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxeh5wkp9jj30mm09hwfg.jpg">
 
 
@@ -367,7 +369,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-20 13:50:58" itemprop="dateModified" datetime="2018-11-20T13:50:58+08:00">2018-11-20</time>
+                <time title="修改时间：2018-11-20 14:53:00" itemprop="dateModified" datetime="2018-11-20T14:53:00+08:00">2018-11-20</time>
               
             
           </span>
@@ -404,7 +406,7 @@
           
 
           
-              <div class="post-description">解决一下hexo渲染markdown公式时候出现语法识别错误的问题</div>
+              <div class="post-description">解决一下hexo渲染公式出现语义冲突的问题</div>
           
 
         </div>
@@ -420,7 +422,8 @@
       
 
       
-        <p>最近上传博客的时候发现，某些数学公式在网页上显示错误。这里解决一下hexo渲染markdown公式时候出现语法识别错误问题。本方法适用于<strong>hexo 3.8.0</strong> 。</p>
+        <p>最近上传博客的时候发现，某些数学公式在网页上显示错误。这里解决一下hexo默认公式渲染引擎出现语义冲突问题。本方法适用于<strong>hexo 3.8.0</strong> 。</p>
+<a id="more"></a>
 <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p> 前几年的hexo博客版本中，会出现对于markdown数学公式中<strong>下划线 _ </strong> 的渲染错误。hexo将公式内的<strong>下划线 _ </strong>识别成html语言渲染，从而导致排版错误。这个问题似乎已经在新版本中解决。</p>
 <p>但是，在使用过程中，还是会碰见公式中<strong>星号*</strong>渲染错误的问题。</p>
 <p>在Typora中公式预览正常：</p>
@@ -428,7 +431,31 @@
 <p>而上传之后,博客显示的为：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxehc9zpw4j30ij06fdgh.jpg" alt="image-20181120134927976"></p>
 <p>显然 是将 <strong>*</strong>  识别成了<strong>斜体符号</strong>。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>Hexo默认的公式渲染引擎为hexo-renderer-marked，既然公式渲染出现问题，就换了吧。</p>
+<h2 id="更换渲染引擎"><a href="#更换渲染引擎" class="headerlink" title="更换渲染引擎"></a>更换渲染引擎</h2><p>更换Hexo的渲染引擎，更换为hexo-renderer-kramed。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<p>安装之后，问题解决！现在重新上传之后，网页上的公式就显示正常了。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxehwrm213j30hm03k3yq.jpg" alt="image-20181120140908558"></p>
+<h2 id="关于行间公式渲染问题"><a href="#关于行间公式渲染问题" class="headerlink" title="关于行间公式渲染问题"></a>关于行间公式渲染问题</h2><p>部分博客提到，在跟换引擎之后，行间公式显示正常，但行内公式有时还是存在显示不正常的问题，笔者似乎没有遇到这种情况，遇到之后再来更新博客。遇到这种情况可查阅：<a href="https://vitaheng.com/2017/08/03/hexo%E5%8D%9A%E5%AE%A2MathJax%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">hexo博客MathJax公式渲染问题 | 衡仔的技术小窝</a></p>
+<h2 id="小问题：双花括号"><a href="#小问题：双花括号" class="headerlink" title="小问题：双花括号"></a>小问题：双花括号</h2><p>在寻找解决方法的时候，看见一个hexo渲染时的小问题。</p>
+<p>在公式内如果连续使用两个即以上花括号，例如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \frac&#123;1&#125;&#123;&#123;(2\pi)&#125;^\frac&#123;D&#125;&#123;2&#125;&#125; $</span><br></pre></td></tr></table></figure>
+<p>则会渲染失败。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxeip1w1w2j30op06i0u9.jpg" alt="image-20181120143619909"></p>
+<p>解决方法就是在两个花括号中间加入<strong>空格</strong>，即可正常渲染</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \frac&#123;1&#125;&#123; &#123;(2\pi)&#125;^\frac&#123;D&#125;&#123;2&#125; &#125; $</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\frac{1}{ {(2\pi)}^\frac{D}{2} }</script><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总得来说就是把默认公式渲染引擎marked卸载了，然后装了一个新的渲染引擎kramed。</p>
+<p>下面是些行间公式的测试。</p>
+<p>$ x^{y^z}=(1+e^x)^{-2xy^w} 2 $</p>
+<p>$ f(x,y,z)=3y^2z(3+\frac{7x+5}{1+y^2}) $</p>
+<p>${2}$</p>
+<p>$\sqrt{2}、\sqrt[3]{9}$</p>
+<p>$x_1x_2{\ldots}x_n $</p>
+<p>$\color{red}{红色}$</p>
+<p>$\sum_{i=1}^n \frac{1}{i^2}$</p>
+<p>$a[1]+a[2]\over2$</p>
+
       
     </div>
 
@@ -667,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更换渲染引擎"><span class="nav-number">2.1.</span> <span class="nav-text">更换渲染引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于行间公式渲染问题"><span class="nav-number">2.2.</span> <span class="nav-text">关于行间公式渲染问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小问题：双花括号"><span class="nav-number">2.3.</span> <span class="nav-text">小问题：双花括号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

@@ -426,21 +426,21 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
 <p> 配置文件默认保存在 /home/jl/.jupyter/jupyter_notebook_config.py</p>
-<ol start="2">
+<ol>
 <li>生成登录密钥，运行python</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</span><br><span class="line">passwd()</span><br></pre></td></tr></table></figure>
 <p>Enter password，Verify password，记住你设置的密码。</p>
 <p>得到一个\’sha1:————————\’明文，复制这个带单引号的串</p>
-<ol start="2">
+<ol>
 <li>打开jupyter_notebook_config.py配置文件，输入配置,保存</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">c.NotebookApp.ip=<span class="string">'*'</span>                	<span class="comment"># 就是设置所有ip皆可访问</span></span><br><span class="line">c.NotebookApp.password = <span class="string">u'sha1:___'</span>   	<span class="comment"># 刚才复制的那个sha1明文</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="keyword">False</span>      <span class="comment"># 禁止自动打开浏览器</span></span><br><span class="line">c.NotebookApp.port =<span class="number">8888</span> 				<span class="comment">#端口</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
+<ol>
 <li>终端运行Jupyter Notebook/Lab,可后台挂起</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup jupyter notebook &amp;</span><br></pre></td></tr></table></figure>
-<ol start="4">
+<ol>
 <li>查找服务器的ip地址，可用终端命令</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
