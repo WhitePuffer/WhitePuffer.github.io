@@ -108,25 +108,34 @@
 
 
 
-  <meta name="description" content="Introduction——吴恩达cs229《机器学习》知识要点记录">
+  <meta name="description" content="Generative Learning algorithms——吴恩达cs229《机器学习》知识要点记录">
 <meta name="keywords" content="机器学习,课程笔记,cs229">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs229笔记1-简介">
-<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记-简介.html">
+<meta property="og:title" content="cs229笔记4-生成学习算法">
+<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记4-生成学习算法.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="Introduction——吴恩达cs229《机器学习》知识要点记录">
+<meta property="og:description" content="Generative Learning algorithms——吴恩达cs229《机器学习》知识要点记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T04:55:39.540Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxgva0ah15j30h502r74p.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxgwc5dx0wj30no0badlk.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxgw1bilwuj30en03n3yr.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxgw3o9q3kj30eq02uglr.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxgw7g5yzrj30bt054jrc.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxgwhuxvuzj30iq088759.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxgxbur9ddj30ke0e4wno.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxgzy806pyj30lv058wex.jpg">
+<meta property="og:updated_time" content="2018-11-22T10:04:46.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs229笔记1-简介">
-<meta name="twitter:description" content="Introduction——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:title" content="cs229笔记4-生成学习算法">
+<meta name="twitter:description" content="Generative Learning algorithms——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxgva0ah15j30h502r74p.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记-简介.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记4-生成学习算法.html">
 
 
 
@@ -136,7 +145,7 @@
   };
 </script>
 
-  <title>cs229笔记1-简介 | 老思机</title>
+  <title>cs229笔记4-生成学习算法 | 老思机</title>
   
 
 
@@ -305,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记-简介.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记4-生成学习算法.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -322,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cs229笔记1-简介
+          <h1 class="post-title" itemprop="name headline">cs229笔记4-生成学习算法
               
             
           </h1>
@@ -347,7 +356,7 @@
                 
               
 
-              <time title="创建时间：2018-11-08 18:06:00" itemprop="dateCreated datePublished" datetime="2018-11-08T18:06:00+08:00">2018-11-08</time>
+              <time title="创建时间：2018-11-20 15:00:51" itemprop="dateCreated datePublished" datetime="2018-11-20T15:00:51+08:00">2018-11-20</time>
             
 
             
@@ -364,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-20 12:55:39" itemprop="dateModified" datetime="2018-11-20T12:55:39+08:00">2018-11-20</time>
+                <time title="修改时间：2018-11-22 18:04:46" itemprop="dateModified" datetime="2018-11-22T18:04:46+08:00">2018-11-22</time>
               
             
           </span>
@@ -401,7 +410,7 @@
           
 
           
-              <div class="post-description">Introduction——吴恩达cs229《机器学习》知识要点记录</div>
+              <div class="post-description">Generative Learning algorithms——吴恩达cs229《机器学习》知识要点记录</div>
           
 
         </div>
@@ -417,33 +426,77 @@
       
 
       
-        <p>简要记录一下斯坦福大学公开课cs229《机器学习》的知识要点。<br>笔记1:简要介绍一下机器学习主要算法。<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
-<h1 id="机器学习的定义"><a href="#机器学习的定义" class="headerlink" title="机器学习的定义"></a>机器学习的定义</h1><p><strong>Tom Mitchell</strong> (1998) Well-posed <strong>Learning Problem</strong>: </p>
-<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.</p>
-<p>计算机程序被称作从经验<strong>E</strong>中学习关于某个任务<strong>T</strong>和一些性能测量<strong>P</strong>，如果其在<strong>T</strong>上的性能（由<strong>P</strong>测量）随经验<strong>E</strong>而改善。</p>
-<h1 id="机器学习-算法介绍"><a href="#机器学习-算法介绍" class="headerlink" title="机器学习   算法介绍"></a>机器学习   算法介绍</h1><p>机器学习算法主要分为两类：</p>
+        <p>笔记4：生成学习算法 <strong>Genrative Learning algorithms</strong>，对应讲义<strong>Note2 Part4</strong> ,对应Lecture5-</p>
+<p>主要内容包括提及了生成学习法的意义，判别学习法和生成学习法的区别，并重点介绍了几种生成学习算法——高斯判别分析(Gaussian Discriminant Analysis，GDA)、朴素贝叶斯(Navie Bayes)、拉普拉斯平滑(Laplace Smoothing)。</p>
+<a id="more"></a>
+<p>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
+<h1 id="Genrative-Learning-algorithms-生成学习算法简介"><a href="#Genrative-Learning-algorithms-生成学习算法简介" class="headerlink" title="Genrative Learning algorithms 生成学习算法简介"></a>Genrative Learning algorithms 生成学习算法简介</h1><h2 id="Discriminative-Learning-algorithm判别学习法"><a href="#Discriminative-Learning-algorithm判别学习法" class="headerlink" title="Discriminative Learning algorithm判别学习法"></a>Discriminative Learning algorithm判别学习法</h2><p>之前的课程中讲到的方法都是直接对问题进行求解，如二类分类问题，不管是感知器算法还是逻辑斯蒂回归算法，都是在解空间中寻找一条直线从而把两种类别的样例分开，对于新的样例只要判断在直线的哪一侧即可;这种直接对问题求解的方法可以成为<strong>判别学习方法(discriminative learning algorithm)</strong>。</p>
+<p><strong>Discriminative</strong></p>
 <ul>
-<li>Supervised learning    监督学习</li>
-<li>Unsupervised learning    非监督学习</li>
+<li>learns  $p(y|x)$ </li>
+<li>or learns $h_\theta(x)\in\{0,1\}$ directly</li>
 </ul>
-<p>其他类型：</p>
+<h2 id="Generative-Learning-algorithm生成学习法"><a href="#Generative-Learning-algorithm生成学习法" class="headerlink" title="Generative Learning algorithm生成学习法"></a>Generative Learning algorithm生成学习法</h2><p><strong>生成学习算法(Discriminative Learning algorithm)</strong>则是对两个类别分别进行建模，用新的样例去匹配两个模型，匹配度较高的作为新样例的类别，比如良性肿瘤与恶性肿瘤的分类，首先对两个类别分别建模,用新的肿瘤样本去匹配两个模型，匹配度较高的作为该肿瘤类别判断。</p>
+<p><strong>Generative</strong></p>
 <ul>
-<li>Reinforcement learning 强化学习</li>
-<li>Recommender systems</li>
-</ul>
-<h2 id="Supervised-learning"><a href="#Supervised-learning" class="headerlink" title="Supervised learning"></a>Supervised learning</h2><p>两类问题</p>
-<ul>
-<li>Regression</li>
-<li>Classification</li>
-</ul>
-<h2 id="Unsupervised-learning"><a href="#Unsupervised-learning" class="headerlink" title="Unsupervised learning"></a>Unsupervised learning</h2><ul>
-<li><p>Clustering algorithms</p>
+<li><p>learns $p(x|y)$ and $p(y)$</p>
+<p>$x$ 是样本的特征，$y$ 是样本所属类</p>
+<p>一个生成模型对样本特征建立概率模型，在给定了样本所属类的条件下</p>
+<p>A generative model builds a probabilistic model for what the features looks like,conditioned on class label.</p>
 </li>
-<li><p>Independent component analysis (ICA)</p>
-<p>“Cocktail party problem” 结构学习</p>
+<li><p>根据<strong>贝叶斯公式</strong>可利用模型中的<strong>条件概率</strong>$p(x|y)$ 与<strong>先验概率</strong>$p(y)$ 计算出</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&p(y=1|x)=\frac{p(x|y=1)p(y=1)}{p(x)}\\
+&\text{where} \quad p(x)= p(x|y=1)p(y=1)+p(x|y=0)p(y=0)
+\end{align}</script><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxgva0ah15j30h502r74p.jpg" alt="image-20181122152244387"></p>
 </li>
 </ul>
-<h2 id="Reinforcement-learning"><a href="#Reinforcement-learning" class="headerlink" title="Reinforcement learning"></a>Reinforcement learning</h2><p>Core：Reward function  回报函数</p>
+<h1 id="Guassian-discriminant-analysis-高斯判别分析"><a href="#Guassian-discriminant-analysis-高斯判别分析" class="headerlink" title="Guassian discriminant analysis 高斯判别分析"></a>Guassian discriminant analysis 高斯判别分析</h1><p>接下来介绍一种特殊的生成学习算法。</p>
+<p>假设 $x\in\mathbb R^n$ 是连续函数，假设 $p(x|y)$ 是高斯分布。</p>
+<p>基于以上假设，有<strong>高斯判别分析</strong></p>
+<h2 id="The-multivariate-normal-distribution-多变量高斯分布"><a href="#The-multivariate-normal-distribution-多变量高斯分布" class="headerlink" title="The multivariate normal distribution 多变量高斯分布"></a>The multivariate normal distribution 多变量高斯分布</h2><p>多变量高斯分布的概率密度函数为：</p>
+<script type="math/tex; mode=display">
+p(x;\mu,\Sigma)=\frac{1}{(2\pi)^{n\over2}|\Sigma|^{1\over2}}exp(-{1\over2}(x-\mu)^T\Sigma^{-1}(x-\mu))\\
+其中 \mu 为高斯分布均值，\Sigma 是协方差矩阵\\
+\Sigma = E[(x-\mu)(x-\mu)^T]</script><p>当变量之间存在一定的相关性：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxgwc5dx0wj30no0badlk.jpg" alt="image-20181122155926537"></p>
+<h2 id="The-Guassian-Discriminant-Analysis-model-高斯判别分析模型"><a href="#The-Guassian-Discriminant-Analysis-model-高斯判别分析模型" class="headerlink" title="The Guassian Discriminant Analysis model 高斯判别分析模型"></a>The Guassian Discriminant Analysis model 高斯判别分析模型</h2><h3 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h3><p>这个模型的基本假设是目标值 $y$ 服从伯努利分布，条件概率 $p(x|y)$ 服从正态分布。于是，它们的概率密度为:</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxgw1bilwuj30en03n3yr.jpg" alt="image-20181122154903043"></p>
+<p>则数据集的<strong>极大似然函数</strong>的对数为 <strong>(Joint likehood)</strong>：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxgw3o9q3kj30eq02uglr.jpg" alt="image-20181122155115610"></p>
+<p><strong>注：</strong>对比之前判别学习法的极大似然函数<strong>(conditional likehood)</strong>：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxgw7g5yzrj30bt054jrc.jpg" alt="image-20181118112229613"></p>
+<p>对极大似然函数对数最大化，我们就的得到了 GDA 模型的各参数的极大似然估计，即得到了如何使用 GDA 算法的方法。各参数的极大似然估计如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxgwhuxvuzj30iq088759.jpg" alt="image-20181122160455235"></p>
+<h3 id="预测新样本"><a href="#预测新样本" class="headerlink" title="预测新样本"></a>预测新样本</h3><p>对于一个新样本$x$,由于预测无需考虑x出现的概率,故有$p(x)=1$，则预测如下：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+arg \max_{y} p(y|x)&= arg \max_{y} {p(x|y)p(y)\over p(x)}\\
+&= arg \max_{y} p(x|y)p(y)
+\end{align}</script><p>且若$p(y)$是均匀分布的,即$p(y=0)=p(y=1)$：</p>
+<script type="math/tex; mode=display">
+arg \max_{y} p(y|x)\quad等价于\quad arg \max_{y}p(x|y)</script><h2 id="GDA-and-logistic-regression"><a href="#GDA-and-logistic-regression" class="headerlink" title="GDA and logistic regression"></a>GDA and logistic regression</h2><p>对于GDA建立的模型，计算$p(y=1|x)$,你得到了一条函数如下，可以看出这条函数与sigmoid函数相同。区别是GDA得到的曲线，取脸是位置还是曲线最陡峭点的陡峭程度都与sigmoid不同。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxgxbur9ddj30ke0e4wno.jpg" alt="image-20181122163346426"></p>
+<h3 id="Discussion：GDA-and-logistic-regression-生成学习法与逻辑回归的关系"><a href="#Discussion：GDA-and-logistic-regression-生成学习法与逻辑回归的关系" class="headerlink" title="Discussion：GDA and logistic regression 生成学习法与逻辑回归的关系"></a>Discussion：GDA and logistic regression 生成学习法与逻辑回归的关系</h3><p><strong>GDA与logistic function是泛化与特化的关系，GDA 比逻辑斯蒂回归有更多的前置假设。</strong></p>
+<p>假设 $x|y \sim \text{Guassian}$，可以导出logistic后验分布$p(y=1|x)$.</p>
+<p>然而反向并不成立，也就是说，服从logistic分布的 $p(y=1|x)$并不能推出$x|y \sim \text{Guassian}$</p>
+<p>事实上，假设$x|y$服从柏松分布时，也可以推出后验概率$p(y=1|x)$服从logistic分布</p>
+<p><strong>更泛化的是，若你假设条件概率属于指数分布族,也可推出后验概率是logistic函数</strong></p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\left\{
+\begin{array}\
+x|y=1 \sim Expfamily（\eta_1)\\
+x|y=0 \sim Expfamily（\eta_0)
+\end{array}
+\right.\\
+&\Longrightarrow p(y=1|x) \text{ is logstic}
+\end{align}</script><h4 id="GDA与逻辑回归的优缺点"><a href="#GDA与逻辑回归的优缺点" class="headerlink" title="GDA与逻辑回归的优缺点"></a>GDA与逻辑回归的优缺点</h4><p>当数据服从或大致服从正态分布时，使用 GDA 会达到更好的效果，因为 GDA利用了更多的信息构建模型。而且相比逻辑回归这种判别学习模型，GDA可以使用更少的数据构建出强壮的模型。</p>
+<p>但是当数据不服从正态分布时，那么逻辑斯蒂回归更有效，因为它做出更少的假设，构建的模型更加具有鲁棒性。但是相比生成学习，为了拟合出模型，它需要更多的样本。</p>
+<h1 id="Naive-Bayes-朴素贝叶斯算法"><a href="#Naive-Bayes-朴素贝叶斯算法" class="headerlink" title="Naive Bayes 朴素贝叶斯算法"></a>Naive Bayes 朴素贝叶斯算法</h1><p>GDA 针对的是特征向量$x$为连续值时的问题。而朴素贝叶斯(Navie Bayes，NB)则针对的是特征向量$x$为离散值时的问题。</p>
+<p>朴素贝叶斯假设即是在给定分类 $y$ 后，假设特征向量$x$中 的各个分量是相互独立的。如下式所示:</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxgzy806pyj30lv058wex.jpg" alt="image-20181122180428232"></p>
 
       
     </div>
@@ -481,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/uncategorized/课程「改善深层神经网络」笔记.html" rel="next" title="课程「改善深层神经网络」笔记">
-                <i class="fa fa-chevron-left"></i> 课程「改善深层神经网络」笔记
+              <a href="/环境搭建/hexo博客markdown数学公式渲染错误解决方法.html" rel="next" title="hexo博客markdown数学公式渲染错误解决方法">
+                <i class="fa fa-chevron-left"></i> hexo博客markdown数学公式渲染错误解决方法
               </a>
             
           </div>
@@ -490,10 +543,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/cs229/cs229笔记1-线性回归.html" rel="prev" title="cs229笔记1-线性回归">
-                cs229笔记1-线性回归 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -689,7 +738,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习的定义"><span class="nav-number">1.</span> <span class="nav-text">机器学习的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-算法介绍"><span class="nav-number">2.</span> <span class="nav-text">机器学习   算法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Supervised-learning"><span class="nav-number">2.1.</span> <span class="nav-text">Supervised learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unsupervised-learning"><span class="nav-number">2.2.</span> <span class="nav-text">Unsupervised learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reinforcement-learning"><span class="nav-number">2.3.</span> <span class="nav-text">Reinforcement learning</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Genrative-Learning-algorithms-生成学习算法简介"><span class="nav-number">1.</span> <span class="nav-text">Genrative Learning algorithms 生成学习算法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Discriminative-Learning-algorithm判别学习法"><span class="nav-number">1.1.</span> <span class="nav-text">Discriminative Learning algorithm判别学习法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generative-Learning-algorithm生成学习法"><span class="nav-number">1.2.</span> <span class="nav-text">Generative Learning algorithm生成学习法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guassian-discriminant-analysis-高斯判别分析"><span class="nav-number">2.</span> <span class="nav-text">Guassian discriminant analysis 高斯判别分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-multivariate-normal-distribution-多变量高斯分布"><span class="nav-number">2.1.</span> <span class="nav-text">The multivariate normal distribution 多变量高斯分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Guassian-Discriminant-Analysis-model-高斯判别分析模型"><span class="nav-number">2.2.</span> <span class="nav-text">The Guassian Discriminant Analysis model 高斯判别分析模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型建立"><span class="nav-number">2.2.1.</span> <span class="nav-text">模型建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测新样本"><span class="nav-number">2.2.2.</span> <span class="nav-text">预测新样本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GDA-and-logistic-regression"><span class="nav-number">2.3.</span> <span class="nav-text">GDA and logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Discussion：GDA-and-logistic-regression-生成学习法与逻辑回归的关系"><span class="nav-number">2.3.1.</span> <span class="nav-text">Discussion：GDA and logistic regression 生成学习法与逻辑回归的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GDA与逻辑回归的优缺点"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">GDA与逻辑回归的优缺点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Naive-Bayes-朴素贝叶斯算法"><span class="nav-number">3.</span> <span class="nav-text">Naive Bayes 朴素贝叶斯算法</span></a></li></ol></div>
             
 
           </div>
@@ -887,6 +936,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
