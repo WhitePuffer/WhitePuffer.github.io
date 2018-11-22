@@ -108,28 +108,39 @@
 
 
 
-  <meta name="description" content="吴恩达《深度学习工程师》课程 02.改善深层神经网络：超参数调试、正则化以及优化">
-<meta name="keywords" content="机器学习,课程笔记">
+  <meta name="description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
+<meta name="keywords" content="机器学习,课程笔记,cs229">
 <meta property="og:type" content="article">
-<meta property="og:title" content="课程「改善深层神经网络」笔记">
-<meta property="og:url" content="http://WhitePuffer.github.io/uncategorized/课程「改善深层神经网络」笔记.html">
+<meta property="og:title" content="cs229笔记3-广义线性模型">
+<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记3-广义线性模型.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="吴恩达《深度学习工程师》课程 02.改善深层神经网络：超参数调试、正则化以及优化">
+<meta property="og:description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwykeeo80hj30h303tgls.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwykjx0b2tj30cl08dwfw.jpg">
-<meta property="og:updated_time" content="2018-11-18T07:36:34.947Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcg57lkwlj30db044wes.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcgroarnyj30db03zaad.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxcgslyiwjj30if05hjrp.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxchk0fnwmj30lw0isgzd.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxeha30cl1j30n40ji7je.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcihxx8j8j30m40hfqfk.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcio4hc8dj30mi0foak4.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcix9chh1j30fg083dgn.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxciy6x1roj30fx060aab.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxcj8a3muyj308l02bdfv.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcj9qoncmj30ao0c33z3.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxcjh7g88ej30bo042aad.jpg">
+<meta property="og:updated_time" content="2018-11-20T07:00:08.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="课程「改善深层神经网络」笔记">
-<meta name="twitter:description" content="吴恩达《深度学习工程师》课程 02.改善深层神经网络：超参数调试、正则化以及优化">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwykeeo80hj30h303tgls.jpg">
+<meta name="twitter:title" content="cs229笔记3-广义线性模型">
+<meta name="twitter:description" content="Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/uncategorized/课程「改善深层神经网络」笔记.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记3-广义线性模型.html">
 
 
 
@@ -139,7 +150,7 @@
   };
 </script>
 
-  <title>课程「改善深层神经网络」笔记 | 老思机</title>
+  <title>cs229笔记3-广义线性模型 | 老思机</title>
   
 
 
@@ -308,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/uncategorized/课程「改善深层神经网络」笔记.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记3-广义线性模型.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -325,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">课程「改善深层神经网络」笔记
+          <h1 class="post-title" itemprop="name headline">cs229笔记3-广义线性模型
               
             
           </h1>
@@ -350,7 +361,7 @@
                 
               
 
-              <time title="创建时间：2018-11-06 17:14:02" itemprop="dateCreated datePublished" datetime="2018-11-06T17:14:02+08:00">2018-11-06</time>
+              <time title="创建时间：2018-11-18 15:31:11" itemprop="dateCreated datePublished" datetime="2018-11-18T15:31:11+08:00">2018-11-18</time>
             
 
             
@@ -367,12 +378,30 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-18 15:36:34" itemprop="dateModified" datetime="2018-11-18T15:36:34+08:00">2018-11-18</time>
+                <time title="修改时间：2018-11-20 15:00:08" itemprop="dateModified" datetime="2018-11-20T15:00:08+08:00">2018-11-20</time>
               
             
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cs229/" itemprop="url" rel="index"><span itemprop="name">cs229</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -385,6 +414,8 @@
 
           
 
+          
+              <div class="post-description">Generalized Linear Models——吴恩达cs229《机器学习》知识要点记录</div>
           
 
         </div>
@@ -400,19 +431,53 @@
       
 
       
-        <p>吴恩达《<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">深度学习工程师</a>》课程 02.<a href="https://mooc.study.163.com/course/2001281003" target="_blank" rel="noopener">改善深层神经网络：超参数调试、正则化以及优化</a></p>
-<a id="more"></a>
-<h1 id="实用层面"><a href="#实用层面" class="headerlink" title="实用层面"></a>实用层面</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>对于样本，可将其分类为训练集/验证集/测试集（train:development:test）。</p>
-<p>在数据量小于10000时，可分配比例 train/test = 70/30 or train/development/test = 60/20/20</p>
-<p>在数据量大于10000时，dev和test的比例将减小，100w时，train/development/test = 98/1/1</p>
-<p>有些时候数据来源不单一，训练神经网络时要保证数据dev 和 test 来自同一分布！</p>
-<h2 id="偏差-方差"><a href="#偏差-方差" class="headerlink" title="偏差/方差"></a>偏差/方差</h2><p>偏差：模型训练完后对于trian set 的误差</p>
-<p>方差：模型训练完之后对于test set 的误差</p>
-<p>通常对于模型训练，先解决偏差过高问题，后解决方差过高问题。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="L2-正则化"><a href="#L2-正则化" class="headerlink" title="L2 正则化"></a>L2 正则化</h3><p>为了防止过拟合，引入正则化。正则化会使W的权重变小，从而使得网络变得“简单”。正则化参数 $\lambda \rightarrow \infin$ 时，网络趋向于一个线性回归。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwykeeo80hj30h303tgls.jpg" alt="image-20181106192612026"></p>
-<h3 id="Dropout-（随机失活）"><a href="#Dropout-（随机失活）" class="headerlink" title="Dropout （随机失活）"></a>Dropout （随机失活）</h3><p>随机删除一些节点，得到一个节点、规模更小的网络 </p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwykjx0b2tj30cl08dwfw.jpg" alt="image-20181106193133141"></p>
+        <p>笔记3：广义线性模型 <strong>Generalized Linear Models</strong>，对应讲义<strong>Note1 Part3</strong> ,对应视频集数4（15）- 4<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
+<h1 id="The-exponential-family-指数分布族"><a href="#The-exponential-family-指数分布族" class="headerlink" title="The exponential family 指数分布族"></a>The exponential family 指数分布族</h1><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxc9mzjymlj30jy03swex.jpg" alt="image-20181118155148953"></p>
+<p>$ \eta $ 为分布的自然参数，$T(y)$ 为充分统计量（通常，如高斯分布，伯努利分布，T(y) = y)。</p>
+<h2 id="Bernoulli-distribution伯努利分布"><a href="#Bernoulli-distribution伯努利分布" class="headerlink" title="Bernoulli distribution伯努利分布"></a>Bernoulli distribution伯努利分布</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcg57lkwlj30db044wes.jpg" alt="image-20181118193656705"></p>
+<p>根据上式有</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\eta &= log\frac{\phi}{1-\phi}\quad \Rightarrow \quad\phi =\frac{1}{1+e^{-\eta}}& \\
+a(\eta)&=-log(1-\phi)=log(1+e^{\eta}) &\\
+T(y)&= y& \\
+b(y)&=1&
+\end{align*}</script><p><strong>注：</strong>可以发现$\phi$ 的表达式和<strong>logistic 函数</strong>相同。</p>
+<h2 id="Gaussian-distribution高斯分布"><a href="#Gaussian-distribution高斯分布" class="headerlink" title="Gaussian distribution高斯分布"></a>Gaussian distribution高斯分布</h2><p>考虑高斯分布,为了方便，不考虑$\sigma$</p>
+<script type="math/tex; mode=display">
+\mathcal N(\mu,\sigma^2) \quad\text{set} \quad\sigma^2=1</script><p>有</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcgroarnyj30db03zaad.jpg" alt="image-20181118195832151"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxcgslyiwjj30if05hjrp.jpg" alt="image-20181118195926018"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不仅<strong>Bernoulli distribution,Gaussian distribution</strong>属于指数分布族，实际上<strong>多项式分布、柏松分布、伽马分布、指数分布</strong>也属于指数分布族</p>
+<h1 id="Constructing-GLMs-构造广义线性模型"><a href="#Constructing-GLMs-构造广义线性模型" class="headerlink" title="Constructing GLMs 构造广义线性模型"></a>Constructing GLMs 构造广义线性模型</h1><p>本小节主要介绍选定了指数分布族后，如何构造GLM，并使用。</p>
+<h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxchk0fnwmj30lw0isgzd.jpg" alt="image-20181118202545419"></p>
+<h2 id="例子：Bernoulli"><a href="#例子：Bernoulli" class="headerlink" title="例子：Bernoulli"></a>例子：Bernoulli</h2><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxeha30cl1j30n40ji7je.jpg" alt="image-20181118203017936"></p>
+<h2 id="构造广义线性模型的意义"><a href="#构造广义线性模型的意义" class="headerlink" title="构造广义线性模型的意义"></a>构造广义线性模型的意义</h2><p>这样构造广义线性模型的意义在于<strong>便利性</strong>。当你遇到一个新的{0,1}分类问题的时候，唯一需要做的决策就是：<strong>选择假设 $ y|x,\theta $ 服从什么分布 </strong>。无论面临任何问题，选择一种指数分布族中的分布，之后遵从相同的规则，就可以得到一个不同的模型和不同学习算法，得到一个不同的广义线性模型。</p>
+<h3 id="Canonical-response-function正则响应函数"><a href="#Canonical-response-function正则响应函数" class="headerlink" title="Canonical response function正则响应函数"></a>Canonical response function正则响应函数</h3><p>一些术语，不做过多介绍。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&\text {Canonical response function}\quad &&g(\eta)=E[y;\eta]= \frac{1}{1+e^{-\eta}}\\
+&\text{Canonical link function} \quad &&g^{-1}
+\end{align*}</script><h2 id="Softmax-regression-Multinomial-🌟多项式分布"><a href="#Softmax-regression-Multinomial-🌟多项式分布" class="headerlink" title="Softmax regression/Multinomial 🌟多项式分布"></a>Softmax regression/Multinomial 🌟多项式分布</h2><p>这是一个重要的例子。当分类问题有k类时， $y\in{1,\dots,k}$,由于参数 $\phi<em>{k-1} = 1-\sum</em>{i=1}^{k-1} \phi<em>i$，故$\phi</em>{k-1}$ 是冗余参数，则假设参数从 $\phi<em>1,\dots,\phi</em>{k-1}$</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcihxx8j8j30m40hfqfk.jpg" alt="image-20181118205821958"></p>
+<p>接下来定义$T(y)$</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcio4hc8dj30mi0foak4.jpg" alt="image-20181118210418231"></p>
+<p>引入符号——<strong>指示函数</strong>：</p>
+<script type="math/tex; mode=display">
+\mathcal 1\{True\} = 1\\
+\mathcal 1\{False\} = 0\\</script><p>则T(y)可以表示为一个简单的公式</p>
+<script type="math/tex; mode=display">
+T(y)_i=\mathcal 1\{y=i\}\\
+这里i下标表示第i个分量</script><p>利用exponnetial family</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcix9chh1j30fg083dgn.jpg" alt="image-20181118211306152"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxciy6x1roj30fx060aab.jpg" alt="image-20181118211359687"></p>
+<p>过程略，之后有</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxcj8a3muyj308l02bdfv.jpg" alt="image-20181118212341741"></p>
+<p>代入，得下式（注意\sum 的上标是k还是k-1，之间可以根据上式互相转换）</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcj9qoncmj30ao0c33z3.jpg" alt="image-20181118212505792"></p>
+<p>现在考虑根据$h_\theta$ 求参数$\theta$,还是最大似然函数法：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxcjh7g88ej30bo042aad.jpg" alt="image-20181118213214794"></p>
+<p>这个算法被称为<strong>Softmax regression</strong>，被普遍认为是逻辑回归的推广，可以处理k类分类问题。</p>
 
       
     </div>
@@ -437,6 +502,8 @@
           
             <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
           
+            <a href="/tags/cs229/" rel="tag"># cs229</a>
+          
         </div>
       
 
@@ -448,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/环境搭建/PyCharm配置远程ssh解释器.html" rel="next" title="PyCharm配置远程ssh解释器">
-                <i class="fa fa-chevron-left"></i> PyCharm配置远程ssh解释器
+              <a href="/cs229/cs229笔记2-分类与逻辑回归.html" rel="next" title="cs229笔记2-分类与逻辑回归">
+                <i class="fa fa-chevron-left"></i> cs229笔记2-分类与逻辑回归
               </a>
             
           </div>
@@ -458,8 +525,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/cs229/cs229笔记-简介.html" rel="prev" title="cs229笔记1-简介">
-                cs229笔记1-简介 <i class="fa fa-chevron-right"></i>
+              <a href="/环境搭建/hexo博客markdown数学公式渲染错误解决方法.html" rel="prev" title="hexo博客markdown数学公式渲染错误解决方法">
+                hexo博客markdown数学公式渲染错误解决方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实用层面"><span class="nav-number">1.</span> <span class="nav-text">实用层面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">1.1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏差-方差"><span class="nav-number">1.2.</span> <span class="nav-text">偏差/方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化"><span class="nav-number">1.3.</span> <span class="nav-text">正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#L2-正则化"><span class="nav-number">1.3.1.</span> <span class="nav-text">L2 正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropout-（随机失活）"><span class="nav-number">1.3.2.</span> <span class="nav-text">Dropout （随机失活）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-exponential-family-指数分布族"><span class="nav-number">1.</span> <span class="nav-text">The exponential family 指数分布族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bernoulli-distribution伯努利分布"><span class="nav-number">1.1.</span> <span class="nav-text">Bernoulli distribution伯努利分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-distribution高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">Gaussian distribution高斯分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constructing-GLMs-构造广义线性模型"><span class="nav-number">2.</span> <span class="nav-text">Constructing GLMs 构造广义线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#假设"><span class="nav-number">2.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：Bernoulli"><span class="nav-number">2.2.</span> <span class="nav-text">例子：Bernoulli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造广义线性模型的意义"><span class="nav-number">2.3.</span> <span class="nav-text">构造广义线性模型的意义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Canonical-response-function正则响应函数"><span class="nav-number">2.3.1.</span> <span class="nav-text">Canonical response function正则响应函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-regression-Multinomial-🌟多项式分布"><span class="nav-number">2.4.</span> <span class="nav-text">Softmax regression/Multinomial 🌟多项式分布</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -854,6 +921,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

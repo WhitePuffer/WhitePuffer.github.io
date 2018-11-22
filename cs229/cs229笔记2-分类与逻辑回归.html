@@ -108,28 +108,32 @@
 
 
 
-  <meta name="description" content="吴恩达《深度学习工程师》课程 02.改善深层神经网络：超参数调试、正则化以及优化">
-<meta name="keywords" content="机器学习,课程笔记">
+  <meta name="description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
+<meta name="keywords" content="机器学习,课程笔记,cs229">
 <meta property="og:type" content="article">
-<meta property="og:title" content="课程「改善深层神经网络」笔记">
-<meta property="og:url" content="http://WhitePuffer.github.io/uncategorized/课程「改善深层神经网络」笔记.html">
+<meta property="og:title" content="cs229笔记2-分类与逻辑回归">
+<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记2-分类与逻辑回归.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="吴恩达《深度学习工程师》课程 02.改善深层神经网络：超参数调试、正则化以及优化">
+<meta property="og:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwykeeo80hj30h303tgls.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwykjx0b2tj30cl08dwfw.jpg">
-<meta property="og:updated_time" content="2018-11-18T07:36:34.947Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fxc1upzv6lj30bt054aab.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fxc228h5nwj30ff02ydfz.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:59:50.346Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="课程「改善深层神经网络」笔记">
-<meta name="twitter:description" content="吴恩达《深度学习工程师》课程 02.改善深层神经网络：超参数调试、正则化以及优化">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fwykeeo80hj30h303tgls.jpg">
+<meta name="twitter:title" content="cs229笔记2-分类与逻辑回归">
+<meta name="twitter:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/uncategorized/课程「改善深层神经网络」笔记.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记2-分类与逻辑回归.html">
 
 
 
@@ -139,7 +143,7 @@
   };
 </script>
 
-  <title>课程「改善深层神经网络」笔记 | 老思机</title>
+  <title>cs229笔记2-分类与逻辑回归 | 老思机</title>
   
 
 
@@ -308,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/uncategorized/课程「改善深层神经网络」笔记.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记2-分类与逻辑回归.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -325,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">课程「改善深层神经网络」笔记
+          <h1 class="post-title" itemprop="name headline">cs229笔记2-分类与逻辑回归
               
             
           </h1>
@@ -350,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2018-11-06 17:14:02" itemprop="dateCreated datePublished" datetime="2018-11-06T17:14:02+08:00">2018-11-06</time>
+              <time title="创建时间：2018-11-12 11:00:35" itemprop="dateCreated datePublished" datetime="2018-11-12T11:00:35+08:00">2018-11-12</time>
             
 
             
@@ -367,12 +371,30 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-18 15:36:34" itemprop="dateModified" datetime="2018-11-18T15:36:34+08:00">2018-11-18</time>
+                <time title="修改时间：2018-11-20 14:59:50" itemprop="dateModified" datetime="2018-11-20T14:59:50+08:00">2018-11-20</time>
               
             
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cs229/" itemprop="url" rel="index"><span itemprop="name">cs229</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -385,6 +407,8 @@
 
           
 
+          
+              <div class="post-description">Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录</div>
           
 
         </div>
@@ -400,19 +424,52 @@
       
 
       
-        <p>吴恩达《<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">深度学习工程师</a>》课程 02.<a href="https://mooc.study.163.com/course/2001281003" target="_blank" rel="noopener">改善深层神经网络：超参数调试、正则化以及优化</a></p>
-<a id="more"></a>
-<h1 id="实用层面"><a href="#实用层面" class="headerlink" title="实用层面"></a>实用层面</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>对于样本，可将其分类为训练集/验证集/测试集（train:development:test）。</p>
-<p>在数据量小于10000时，可分配比例 train/test = 70/30 or train/development/test = 60/20/20</p>
-<p>在数据量大于10000时，dev和test的比例将减小，100w时，train/development/test = 98/1/1</p>
-<p>有些时候数据来源不单一，训练神经网络时要保证数据dev 和 test 来自同一分布！</p>
-<h2 id="偏差-方差"><a href="#偏差-方差" class="headerlink" title="偏差/方差"></a>偏差/方差</h2><p>偏差：模型训练完后对于trian set 的误差</p>
-<p>方差：模型训练完之后对于test set 的误差</p>
-<p>通常对于模型训练，先解决偏差过高问题，后解决方差过高问题。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="L2-正则化"><a href="#L2-正则化" class="headerlink" title="L2 正则化"></a>L2 正则化</h3><p>为了防止过拟合，引入正则化。正则化会使W的权重变小，从而使得网络变得“简单”。正则化参数 $\lambda \rightarrow \infin$ 时，网络趋向于一个线性回归。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwykeeo80hj30h303tgls.jpg" alt="image-20181106192612026"></p>
-<h3 id="Dropout-（随机失活）"><a href="#Dropout-（随机失活）" class="headerlink" title="Dropout （随机失活）"></a>Dropout （随机失活）</h3><p>随机删除一些节点，得到一个节点、规模更小的网络 </p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwykjx0b2tj30cl08dwfw.jpg" alt="image-20181106193133141"></p>
+        <p>笔记2：分类与逻辑回归 <strong>Classification and logistic regression</strong>，对应讲义<strong>Note1 Part2</strong> ,对应视频集数3（50）- 4（15）<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
+<h1 id="Logistic-regression-逻辑斯蒂回归"><a href="#Logistic-regression-逻辑斯蒂回归" class="headerlink" title="Logistic regression 逻辑斯蒂回归"></a>Logistic regression 逻辑斯蒂回归</h1><h2 id="logistic-function"><a href="#logistic-function" class="headerlink" title="logistic function"></a>logistic function</h2><p><strong>定义：</strong> <strong>logistic function</strong> or <strong>sigmoid function</strong> </p>
+<script type="math/tex; mode=display">
+g(z) = \frac{1}{1+e^{-z}}</script><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg" alt="image-20181118110429904"></p>
+<p>考虑分类问题的<strong>似然函数</strong></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxc1upzv6lj30bt054aab.jpg" alt="image-20181118112229613"></p>
+<p>由于$\mathscr{L}(\theta) = log L(\theta)$ 求最大值会更加的容易，有：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxc228h5nwj30ff02ydfz.jpg" alt="image-20181118112942995"></p>
+<p>梯度上升求最大值：</p>
+<ol>
+<li><p><strong>Batch gradient descent</strong></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg" alt="image-20181118114215190"></p>
+</li>
+<li><p><strong>Stochastic gradient descent</strong></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg" alt="image-20181118114121458"></p>
+</li>
+</ol>
+<p><strong>注：</strong>虽然这个公式与之前 <strong>Linear Regression</strong> 的<strong>基于最小二乘的梯度下降</strong>表面上相同，但是其中的$ h_\theta (x)$ 并非连续函数，而是一个关于 <strong>logsitc funciton</strong>的二值函数 $y \in {0,1}$ 。 即使它们表面上相似，实际上是两种不同的学习算法。这是一种通用的学习模型，实际上会以一种看起来相同的学习算法结束，这并不是一个巧合。</p>
+<h2 id="Newton‘s-method-牛顿法求极值"><a href="#Newton‘s-method-牛顿法求极值" class="headerlink" title="Newton‘s method 牛顿法求极值"></a>Newton‘s method 牛顿法求极值</h2><h3 id="一维函数牛顿法"><a href="#一维函数牛顿法" class="headerlink" title="一维函数牛顿法"></a>一维函数牛顿法</h3><p>首先考虑 求解$f(\theta) = 0 $ 的问题，牛顿法如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"></p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&&f'(\theta^{(0)}) &= \frac{f(\theta^{(0)})}{\Delta}\\
+&\text{可推出}& \quad \Delta &= \frac{f(\theta^{(0)})}{f'(\theta^{(0)})} \\
+&\text{归纳得}& \quad \theta^{(t+1)} &= \theta^{(t)}-\frac{f(\theta^{(t)})}{f'(\theta^{(t)})}\\
+\end{align*}</script><p>回到$l(\theta)$,求$l(\theta)$ 的极值，根据极值点的性质 $l’(\theta) = 0$,得：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
+&\text{then} \quad \theta^{(t+1)} = \theta^{(t)}-\frac{l'(\theta^{(t)})}{l''(\theta^{(t)})}\\
+\end{align}</script><p>通过迭代，我们就可以得到一个局部最优值。</p>
+<p><strong>注：</strong>事实证明牛顿法是一个收敛很快的算法——<strong>二次收敛</strong>。</p>
+<h3 id="一般化牛顿法——多维"><a href="#一般化牛顿法——多维" class="headerlink" title="一般化牛顿法——多维"></a>一般化牛顿法——多维</h3><p>现在考虑多维情况下一般化牛顿法。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\theta^{(t+1)} = \theta^{(t)}-H^{-1}\nabla_\theta l\\
+&\text{where}  \quad H \text{ is the Hessian matrix(海森矩阵）,} \quad H\in \mathcal R^{n \times n}\\\
+& H_{ij} = \frac{\partial ^2 l}{\partial\theta_i\partial\theta_j} 
+\end{align}</script><p>相比梯度下降方法，一般情况下，牛顿法的收敛速度会快很多。</p>
+<p>缺点是</p>
+<ol>
+<li><p>每一次迭代都需要重新计算海森矩阵的逆，海森矩阵大小为n x n（n是特征的数量），如果特征过多，则运算量非常巨大</p>
+</li>
+<li><p>在非凸优化问题中（如神经网络训练），牛顿法很容易陷入鞍点（牛顿法步长会越来越小），而梯度下降法则很容易逃离鞍点（因此在神经网络训练中一般使用梯度下降法，高维空间的神经网络中存在大量鞍点）</p>
+</li>
+</ol>
 
       
     </div>
@@ -437,6 +494,8 @@
           
             <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
           
+            <a href="/tags/cs229/" rel="tag"># cs229</a>
+          
         </div>
       
 
@@ -448,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/环境搭建/PyCharm配置远程ssh解释器.html" rel="next" title="PyCharm配置远程ssh解释器">
-                <i class="fa fa-chevron-left"></i> PyCharm配置远程ssh解释器
+              <a href="/cs229/cs229笔记1-线性回归.html" rel="next" title="cs229笔记1-线性回归">
+                <i class="fa fa-chevron-left"></i> cs229笔记1-线性回归
               </a>
             
           </div>
@@ -458,8 +517,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/cs229/cs229笔记-简介.html" rel="prev" title="cs229笔记1-简介">
-                cs229笔记1-简介 <i class="fa fa-chevron-right"></i>
+              <a href="/cs229/cs229笔记3-广义线性模型.html" rel="prev" title="cs229笔记3-广义线性模型">
+                cs229笔记3-广义线性模型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实用层面"><span class="nav-number">1.</span> <span class="nav-text">实用层面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">1.1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏差-方差"><span class="nav-number">1.2.</span> <span class="nav-text">偏差/方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化"><span class="nav-number">1.3.</span> <span class="nav-text">正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#L2-正则化"><span class="nav-number">1.3.1.</span> <span class="nav-text">L2 正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropout-（随机失活）"><span class="nav-number">1.3.2.</span> <span class="nav-text">Dropout （随机失活）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-regression-逻辑斯蒂回归"><span class="nav-number">1.</span> <span class="nav-text">Logistic regression 逻辑斯蒂回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-function"><span class="nav-number">1.1.</span> <span class="nav-text">logistic function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Newton‘s-method-牛顿法求极值"><span class="nav-number">1.2.</span> <span class="nav-text">Newton‘s method 牛顿法求极值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一维函数牛顿法"><span class="nav-number">1.2.1.</span> <span class="nav-text">一维函数牛顿法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般化牛顿法——多维"><span class="nav-number">1.2.2.</span> <span class="nav-text">一般化牛顿法——多维</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -854,6 +913,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
