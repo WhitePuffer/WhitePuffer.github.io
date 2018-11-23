@@ -108,32 +108,25 @@
 
 
 
-  <meta name="description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
+  <meta name="description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
 <meta name="keywords" content="机器学习,课程笔记,cs229">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs229笔记3-分类与逻辑回归">
-<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
+<meta property="og:title" content="cs229笔记5-支持向量机">
+<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
+<meta property="og:description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fxc1upzv6lj30bt054aab.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fxc228h5nwj30ff02ydfz.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg">
-<meta property="og:updated_time" content="2018-11-20T06:07:03.396Z">
+<meta property="og:updated_time" content="2018-11-23T13:52:04.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs229笔记3-分类与逻辑回归">
-<meta name="twitter:description" content="Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg">
+<meta name="twitter:title" content="cs229笔记5-支持向量机">
+<meta name="twitter:description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
 
 
 
@@ -143,7 +136,7 @@
   };
 </script>
 
-  <title>cs229笔记3-分类与逻辑回归 | 老思机</title>
+  <title>cs229笔记5-支持向量机 | 老思机</title>
   
 
 
@@ -312,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记3-分类与逻辑回归.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -329,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cs229笔记3-分类与逻辑回归
+          <h1 class="post-title" itemprop="name headline">cs229笔记5-支持向量机
               
             
           </h1>
@@ -354,7 +347,7 @@
                 
               
 
-              <time title="创建时间：2018-11-12 11:00:35" itemprop="dateCreated datePublished" datetime="2018-11-12T11:00:35+08:00">2018-11-12</time>
+              <time title="创建时间：2018-11-23 21:48:11" itemprop="dateCreated datePublished" datetime="2018-11-23T21:48:11+08:00">2018-11-23</time>
             
 
             
@@ -371,7 +364,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-20 14:07:03" itemprop="dateModified" datetime="2018-11-20T14:07:03+08:00">2018-11-20</time>
+                <time title="修改时间：2018-11-23 21:52:04" itemprop="dateModified" datetime="2018-11-23T21:52:04+08:00">2018-11-23</time>
               
             
           </span>
@@ -408,7 +401,7 @@
           
 
           
-              <div class="post-description">Classification and logistic regression——吴恩达cs229《机器学习》知识要点记录</div>
+              <div class="post-description">Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录</div>
           
 
         </div>
@@ -424,52 +417,8 @@
       
 
       
-        <p>笔记3：分类与逻辑回归 <strong>Classification and logistic regression</strong>，对应讲义<strong>Note1 Part 2</strong> ,对应视频集数3（50）- 4（15）<br><a id="more"></a><br>课程地址：<a href="https://www.bilibili.com/video/av14806439" target="_blank" rel="noopener">【Andrew Ng】机器学习 吴恩达 中文字幕 (2008版 CS229)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
-<h1 id="Logistic-regression-逻辑斯蒂回归"><a href="#Logistic-regression-逻辑斯蒂回归" class="headerlink" title="Logistic regression 逻辑斯蒂回归"></a>Logistic regression 逻辑斯蒂回归</h1><h2 id="logistic-function"><a href="#logistic-function" class="headerlink" title="logistic function"></a>logistic function</h2><p><strong>定义：</strong> <strong>logistic function</strong> or <strong>sigmoid function</strong> </p>
-<script type="math/tex; mode=display">
-g(z) = \frac{1}{1+e^{-z}}</script><p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxc1gpl7cqj308505qq31.jpg" alt="image-20181118110429904"></p>
-<p>考虑分类问题的<strong>似然函数</strong></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxc1upzv6lj30bt054aab.jpg" alt="image-20181118112229613"></p>
-<p>由于$\mathscr{L}(\theta) = log L(\theta)$ 求最大值会更加的容易，有：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fxc228h5nwj30ff02ydfz.jpg" alt="image-20181118112942995"></p>
-<p>梯度上升求最大值：</p>
-<ol>
-<li><p><strong>Batch gradient descent</strong></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxc2fa3ggpj30ad01imxf.jpg" alt="image-20181118114215190"></p>
-</li>
-<li><p><strong>Stochastic gradient descent</strong></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxc2ed5nycj308q019glm.jpg" alt="image-20181118114121458"></p>
-</li>
-</ol>
-<p><strong>注：</strong>虽然这个公式与之前 <strong>Linear Regression</strong> 的<strong>基于最小二乘的梯度下降</strong>表面上相同，但是其中的$ h_\theta (x)$ 并非连续函数，而是一个关于 <strong>logsitc funciton</strong>的二值函数 $y \in {0,1}$ 。 即使它们表面上相似，实际上是两种不同的学习算法。这是一种通用的学习模型，实际上会以一种看起来相同的学习算法结束，这并不是一个巧合。</p>
-<h2 id="Newton‘s-method-牛顿法求极值"><a href="#Newton‘s-method-牛顿法求极值" class="headerlink" title="Newton‘s method 牛顿法求极值"></a>Newton‘s method 牛顿法求极值</h2><h3 id="一维函数牛顿法"><a href="#一维函数牛顿法" class="headerlink" title="一维函数牛顿法"></a>一维函数牛顿法</h3><p>首先考虑 求解$f(\theta) = 0 $ 的问题，牛顿法如下：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxc6d9cff5j30b7073n0j.jpg" alt="image-20181118135839554"></p>
-<script type="math/tex; mode=display">
-\begin{align*}
-&&f'(\theta^{(0)}) &= \frac{f(\theta^{(0)})}{\Delta}\\
-&\text{可推出}& \quad \Delta &= \frac{f(\theta^{(0)})}{f'(\theta^{(0)})} \\
-&\text{归纳得}& \quad \theta^{(t+1)} &= \theta^{(t)}-\frac{f(\theta^{(t)})}{f'(\theta^{(t)})}\\
-\end{align*}</script><p>回到$l(\theta)$,求$l(\theta)$ 的极值，根据极值点的性质 $l’(\theta) = 0$,得：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
-&\text{then} \quad \theta^{(t+1)} = \theta^{(t)}-\frac{l'(\theta^{(t)})}{l''(\theta^{(t)})}\\
-\end{align}</script><p>通过迭代，我们就可以得到一个局部最优值。</p>
-<p><strong>注：</strong>事实证明牛顿法是一个收敛很快的算法——<strong>二次收敛</strong>。</p>
-<h3 id="一般化牛顿法——多维"><a href="#一般化牛顿法——多维" class="headerlink" title="一般化牛顿法——多维"></a>一般化牛顿法——多维</h3><p>现在考虑多维情况下一般化牛顿法。</p>
-<script type="math/tex; mode=display">
-\begin{align}
-&\theta^{(t+1)} = \theta^{(t)}-H^{-1}\nabla_\theta l\\
-&\text{where}  \quad H \text{ is the Hessian matrix(海森矩阵）,} \quad H\in \mathcal R^{n \times n}\\\
-& H_{ij} = \frac{\partial ^2 l}{\partial\theta_i\partial\theta_j} 
-\end{align}</script><p>相比梯度下降方法，一般情况下，牛顿法的收敛速度会快很多。</p>
-<p>缺点是</p>
-<ol>
-<li><p>每一次迭代都需要重新计算海森矩阵的逆，海森矩阵大小为n x n（n是特征的数量），如果特征过多，则运算量非常巨大</p>
-</li>
-<li><p>在非凸优化问题中（如神经网络训练），牛顿法很容易陷入鞍点（牛顿法步长会越来越小），而梯度下降法则很容易逃离鞍点（因此在神经网络训练中一般使用梯度下降法，高维空间的神经网络中存在大量鞍点）</p>
-</li>
-</ol>
+        <p>笔记5：支持向量机 <strong>Support Vector Machines</strong>，对应讲义<strong>Note3 Part5</strong> ,对应Lecture6(25)-</p>
+<p>主要内容包括介绍了神经网络，支持向量机</p>
 
       
     </div>
@@ -507,8 +456,8 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/cs229/cs229笔记2-线性回归.html" rel="next" title="cs229笔记2-线性回归">
-                <i class="fa fa-chevron-left"></i> cs229笔记2-线性回归
+              <a href="/数学/《矩阵论》知识点.html" rel="next" title="《矩阵论》知识点">
+                <i class="fa fa-chevron-left"></i> 《矩阵论》知识点
               </a>
             
           </div>
@@ -516,10 +465,6 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/cs229/cs229笔记4-广义线性模型.html" rel="prev" title="cs229笔记4-广义线性模型">
-                cs229笔记4-广义线性模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,17 +509,8 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -591,7 +527,7 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -614,7 +550,9 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -651,7 +589,9 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -705,22 +645,6 @@ l(\theta) \quad &\text{want} \quad \theta \quad s.t \quad l'(\theta) = 0    \\
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-regression-逻辑斯蒂回归"><span class="nav-number">1.</span> <span class="nav-text">Logistic regression 逻辑斯蒂回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-function"><span class="nav-number">1.1.</span> <span class="nav-text">logistic function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Newton‘s-method-牛顿法求极值"><span class="nav-number">1.2.</span> <span class="nav-text">Newton‘s method 牛顿法求极值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一维函数牛顿法"><span class="nav-number">1.2.1.</span> <span class="nav-text">一维函数牛顿法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般化牛顿法——多维"><span class="nav-number">1.2.2.</span> <span class="nav-text">一般化牛顿法——多维</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

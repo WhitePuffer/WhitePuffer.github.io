@@ -518,7 +518,7 @@ X(0)=(X_1(0),...,X_n(0)),置K=0</script></li>
 <ol>
 <li>初始化：<ol>
 <li>确定种群规模$N$、杂交概率$P_c$、变异概率$X_i(0)X_i(0)P_m$及终止进化准则；</li>
-<li>从$\Omega$中随机选取$N$个个体$X_i(0)$组成初始种群$X(0)={X_1(0),…,X_N(0)}$ ，设$X_i(0)$的染色体编码为$Y_i(0)$，并记$Y(0)={Y_1(0),…,Y_N(0)}$；</li>
+<li>从$\Omega$中随机选取$N$个个体$X_i(0)$组成初始种群$X(0)=\{X_1(0),…,X_N(0)\}$ ，设$X_i(0)$的染色体编码为$Y_i(0)$，并记$Y(0)=\{Y_1(0),…,Y_N(0)\}$；</li>
 <li>计算$Y_i(0)$的适应性值$J(Y_i(0))$；</li>
 <li>置$k = 0$。</li>
 </ol>
@@ -526,12 +526,12 @@ X(0)=(X_1(0),...,X_n(0)),置K=0</script></li>
 <li>种群进化：<ol>
 <li>执行$M$步如下操作,一般取$M\ge \frac{N}{2}$：<ol>
 <li>对每一$Y_i(k)$依据其适应性赋一繁殖概率$P_i(k)$；</li>
-<li>以概率$P<em>i(k) (1\le i\le n)$从$Y(k)$中随机选取两个个体，分别记作$Y</em>{i1}(k),Y_{i2}(k)$</li>
-<li>以概率$P<em>c$ 对$Y</em>{i1}(k),Y_{i2}(k)$进行杂交，产生两个中间个体$s’_1,s’_2$；</li>
+<li>以概率$P_i(k) (1\le i\le n)$从$Y(k)$中随机选取两个个体，分别记作$Y_{i1}(k),Y_{i2}(k)$</li>
+<li>以概率$P_c$ 对$Y_{i1}(k),Y_{i2}(k)$进行杂交，产生两个中间个体$s’_1,s’_2$；</li>
 <li>以概率$P_m$对中间个体$s’_1,s’_2$进行变异，产生两个新个体$s_1,s_2$。</li>
 </ol>
 </li>
-<li>计算由第2.1步所产生的$2M$个新个体的适应性，对这$2M$新个体连同$Y(k)$由某种选择规则确定$N$个个体组成新一代种群$Y(k+1)={Y_1(k+1),…,Y_N(k+1)}$</li>
+<li>计算由第2.1步所产生的$2M$个新个体的适应性，对这$2M$新个体连同$Y(k)$由某种选择规则确定$N$个个体组成新一代种群$Y(k+1)=\{Y_1(k+1),…,Y_N(k+1)\}$</li>
 </ol>
 </li>
 <li>检验终止判据：如果$Y(k+1)$满足预先设定的停机准则，则终止演化，并输出最优解；否则，置$k = k+1$，返回第2步。</li>
@@ -542,7 +542,7 @@ X(0)=(X_1(0),...,X_n(0)),置K=0</script></li>
 <h3 id="度约束最小生成树问题（DCMST）"><a href="#度约束最小生成树问题（DCMST）" class="headerlink" title="度约束最小生成树问题（DCMST）"></a>度约束最小生成树问题（DCMST）</h3><p><strong>最小生成树（MST）</strong>一般用算法Prim和Kruskal算法求解。</p>
 <p>在实际应用中,通常面临的是需要带有某种约束的<strong>MST</strong>,如二次最小生成树问题、度约束最小生成树问题和概率最小生成树问题等。对于该类问题的求解,目前还不存在多项式时间复杂度的算法,被证明是NP-完全的。</p>
 <p><strong>问题描述</strong></p>
-<p>设连通图$G=(V,E,W)$ ，$V={v<em>1,v_2,…,v_n}$ 表示图的顶点集合，$E={e_1,e_2,…,e_m}$ 是边的有限集合，$W={w</em>{ij}}_{n×n}$ 表示边的权重矩阵，规定顶点的度约束为$b_i$（给定的约束值，$i=1,2,…,n$ ），因此度约束最小生成树问题（DCMST）的求解可表述为：</p>
+<p>设连通图$G=(V,E,W)$ ，$V=\{v_1,v_2,…,v_n\}$ 表示图的顶点集合，$E=\{e_1,e_2,…,e_m\}$ 是边的有限集合，$W=\{w_{ij}\}_{n×n}$ 表示边的权重矩阵，规定顶点的度约束为$b_i$（给定的约束值，$i=1,2,…,n$ ），因此度约束最小生成树问题（DCMST）的求解可表述为：</p>
 <script type="math/tex; mode=display">
 \text{min }Z=\sum_{i=1}^n\sum_{j=1}^nw_{ij}x_{ij}\\
 \text{s.t.}\left\{
@@ -687,7 +687,7 @@ cost=f(T_2)-f(T_1)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2-\sum_{i=1
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -710,7 +710,9 @@ cost=f(T_2)-f(T_1)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2-\sum_{i=1
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -747,7 +749,9 @@ cost=f(T_2)-f(T_1)=\sum_{i=1}^{n-1}\sum_{j=i+1}^n w_{ij} \ast x_{ij}^2-\sum_{i=1
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
