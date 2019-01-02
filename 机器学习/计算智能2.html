@@ -108,25 +108,28 @@
 
 
 
-  <meta name="description" content="经典深度学习论文">
-<meta name="keywords" content="机器学习,论文笔记,深度学习">
+  <meta name="description" content="研究生课程 Computational Intelligence">
+<meta name="keywords" content="机器学习,课程笔记,算法设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《ImageNet Classification with Deep Convolutional Neural Networks》论文笔记">
-<meta property="og:url" content="http://WhitePuffer.github.io/机器学习/《ImageNet-Classification-with-Deep-Convolutional-Neural-Networks》论文笔记.html">
+<meta property="og:title" content="《计算智能》课程笔记2">
+<meta property="og:url" content="http://WhitePuffer.github.io/机器学习/计算智能2.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="经典深度学习论文">
+<meta property="og:description" content="研究生课程 Computational Intelligence">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-23T11:27:44.546Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fysjkowr8yj30v007lgpq.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fysk2qxxi4j30qk0ekq7m.jpg">
+<meta property="og:updated_time" content="2019-01-02T13:24:08.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《ImageNet Classification with Deep Convolutional Neural Networks》论文笔记">
-<meta name="twitter:description" content="经典深度学习论文">
+<meta name="twitter:title" content="《计算智能》课程笔记2">
+<meta name="twitter:description" content="研究生课程 Computational Intelligence">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fysjkowr8yj30v007lgpq.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/机器学习/《ImageNet-Classification-with-Deep-Convolutional-Neural-Networks》论文笔记.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/机器学习/计算智能2.html">
 
 
 
@@ -136,7 +139,7 @@
   };
 </script>
 
-  <title>《ImageNet Classification with Deep Convolutional Neural Networks》论文笔记 | 老思机</title>
+  <title>《计算智能》课程笔记2 | 老思机</title>
   
 
 
@@ -305,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/机器学习/《ImageNet-Classification-with-Deep-Convolutional-Neural-Networks》论文笔记.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/机器学习/计算智能2.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -322,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《ImageNet Classification with Deep Convolutional Neural Networks》论文笔记
+          <h1 class="post-title" itemprop="name headline">《计算智能》课程笔记2
               
             
           </h1>
@@ -347,7 +350,7 @@
                 
               
 
-              <time title="创建时间：2018-10-21 20:30:30" itemprop="dateCreated datePublished" datetime="2018-10-21T20:30:30+08:00">2018-10-21</time>
+              <time title="创建时间：2019-01-02 21:12:28" itemprop="dateCreated datePublished" datetime="2019-01-02T21:12:28+08:00">2019-01-02</time>
             
 
             
@@ -364,7 +367,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-23 19:27:44" itemprop="dateModified" datetime="2018-10-23T19:27:44+08:00">2018-10-23</time>
+                <time title="修改时间：2019-01-02 21:24:08" itemprop="dateModified" datetime="2019-01-02T21:24:08+08:00">2019-01-02</time>
               
             
           </span>
@@ -401,7 +404,7 @@
           
 
           
-              <div class="post-description">经典深度学习论文</div>
+              <div class="post-description">研究生课程 Computational Intelligence</div>
           
 
         </div>
@@ -417,8 +420,27 @@
       
 
       
-        <p>开个读论文的坑，待更新 2018.10.21 20:33</p>
-<a id="more"></a>
+        <p>研一课程，做一个知识重点笔记。笔记分两部分，这个部分是曲延云上老师上的第7章。</p>
+<p>本课程主要涉及算法有：不确定性问题</p>
+<p>相关链接<a href="/机器学习/计算智能1.html">《计算智能》课程笔记1</a></p>
+<h1 id="第7章-不确定性理论"><a href="#第7章-不确定性理论" class="headerlink" title="第7章 不确定性理论"></a>第7章 不确定性理论</h1><h2 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h2><h3 id="概率观念"><a href="#概率观念" class="headerlink" title="概率观念"></a>概率观念</h3><blockquote>
+<p>objectivist：大部分物理学家认为，<strong>量子现象客观上是概率现象，而宏观尺度上的不确定性——比如，掷硬币的不确定性——通常来自对初始条件的无知，而且似乎不符合倾向论。</strong></p>
+<p>subjectivist：将概率视为刻画Agent信念的一种方式，认为概率不具备任何外在的物理意义。</p>
+</blockquote>
+<h3 id="贝叶斯定理-Bayes’-Theorem"><a href="#贝叶斯定理-Bayes’-Theorem" class="headerlink" title="贝叶斯定理 Bayes’ Theorem"></a>贝叶斯定理 Bayes’ Theorem</h3><script type="math/tex; mode=display">
+P(b|a)= \frac {P(a|b)P(b)}{P(a)}</script><p>实际上很容易看出：</p>
+<script type="math/tex; mode=display">
+P(b|a)= \frac{P(ab)}{P(a)}=\frac {P(a|b)P(b)}{P(a)}</script><p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fysjkowr8yj30v007lgpq.jpg" alt="image-20190102210454241"></p>
+<h2 id="贝叶斯网络-Bayesian-network"><a href="#贝叶斯网络-Bayesian-network" class="headerlink" title="贝叶斯网络 Bayesian network"></a>贝叶斯网络 Bayesian network</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>贝叶斯网络是一个<strong>有向图</strong>，其中每个节点都标注了定量概率信息。</p>
+<ul>
+<li><strong>每个结点对应一个随机变量</strong>。变量可以是离散的或连续的。</li>
+<li>一个连接点对的有向边或箭头集合。若存在从结点 $X$ 指向结点 $Y$ 的有向边，则称 $X$ 是 $Y$ 的父节点。</li>
+<li>图中没有有向回路（有向无环图DAG）</li>
+<li>每个结点 $X_i$都有一个条件概率分布：$P(X_i|\text{Parents}(X_i))$ ，量化父结点对于该结点的影响</li>
+</ul>
+<p>在简单的例子中，条件概率分布被表示为条件概率表（CPT）。CPT中的每一行包含了每个节点值<br>对于一个条件事件的条件概率。</p>
+<p>例如：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fysk2qxxi4j30qk0ekq7m.jpg" alt="image-20190102212220833"></p>
 
       
     </div>
@@ -441,9 +463,9 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/论文笔记/" rel="tag"># 论文笔记</a>
+            <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/tags/算法设计/" rel="tag"># 算法设计</a>
           
         </div>
       
@@ -456,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/机器学习/「深层神经网络」学习笔记.html" rel="next" title="「深层神经网络」学习笔记">
-                <i class="fa fa-chevron-left"></i> 「深层神经网络」学习笔记
+              <a href="/uncategorized/Principal-Components-Analysis-PCA.html" rel="next" title="Principal Components Analysis(PCA)">
+                <i class="fa fa-chevron-left"></i> Principal Components Analysis(PCA)
               </a>
             
           </div>
@@ -465,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/uncategorized/多媒体技术.html" rel="prev" title="【多媒体技术】课程笔记">
-                【多媒体技术】课程笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,8 +531,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -531,7 +558,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -593,9 +620,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -650,6 +675,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第7章-不确定性理论"><span class="nav-number">1.</span> <span class="nav-text">第7章 不确定性理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概率论"><span class="nav-number">1.1.</span> <span class="nav-text">概率论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率观念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概率观念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯定理-Bayes’-Theorem"><span class="nav-number">1.1.2.</span> <span class="nav-text">贝叶斯定理 Bayes’ Theorem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯网络-Bayesian-network"><span class="nav-number">1.2.</span> <span class="nav-text">贝叶斯网络 Bayesian network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -663,7 +704,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-graduation-cap"></i>
   </span>
