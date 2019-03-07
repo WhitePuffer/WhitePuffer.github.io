@@ -108,25 +108,33 @@
 
 
 
-  <meta name="description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
-<meta name="keywords" content="机器学习,课程笔记,cs229">
+  <meta name="description" content="鲁棒模型拟合问题简述">
+<meta name="keywords" content="机器学习,算法设计,鲁棒统计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs229笔记5-支持向量机">
-<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
+<meta property="og:title" content="鲁棒模型拟合：解决什么问题">
+<meta property="og:url" content="http://WhitePuffer.github.io/鲁棒统计/鲁棒模型拟合：解决什么问题.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
+<meta property="og:description" content="鲁棒模型拟合问题简述">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-23T13:52:04.678Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0tzbtiyrbj306u08hwf1.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1g0tzc14j5xj306y061q34.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0u0girz41j30h30b2q41.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1g0u16fa292j304u044jrh.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0tzz3c02tj30ox0chtfs.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0u0bd4futj30gs0c2773.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0u1jvewf3j30li0cxdsx.jpg">
+<meta property="og:updated_time" content="2019-03-07T03:18:36.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs229笔记5-支持向量机">
-<meta name="twitter:description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:title" content="鲁棒模型拟合：解决什么问题">
+<meta name="twitter:description" content="鲁棒模型拟合问题简述">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0tzbtiyrbj306u08hwf1.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/鲁棒统计/鲁棒模型拟合：解决什么问题.html">
 
 
 
@@ -136,7 +144,7 @@
   };
 </script>
 
-  <title>cs229笔记5-支持向量机 | 老思机</title>
+  <title>鲁棒模型拟合：解决什么问题 | 老思机</title>
   
 
 
@@ -305,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/鲁棒统计/鲁棒模型拟合：解决什么问题.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -322,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cs229笔记5-支持向量机
+          <h1 class="post-title" itemprop="name headline">鲁棒模型拟合：解决什么问题
               
             
           </h1>
@@ -347,7 +355,7 @@
                 
               
 
-              <time title="创建时间：2018-11-23 21:48:11" itemprop="dateCreated datePublished" datetime="2018-11-23T21:48:11+08:00">2018-11-23</time>
+              <time title="创建时间：2019-03-07 11:15:19" itemprop="dateCreated datePublished" datetime="2019-03-07T11:15:19+08:00">2019-03-07</time>
             
 
             
@@ -364,7 +372,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-23 21:52:04" itemprop="dateModified" datetime="2018-11-23T21:52:04+08:00">2018-11-23</time>
+                <time title="修改时间：2019-03-07 11:18:36" itemprop="dateModified" datetime="2019-03-07T11:18:36+08:00">2019-03-07</time>
               
             
           </span>
@@ -381,7 +389,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cs229/" itemprop="url" rel="index"><span itemprop="name">cs229</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/鲁棒统计/" itemprop="url" rel="index"><span itemprop="name">鲁棒统计</span></a></span>
 
                 
                 
@@ -401,7 +409,7 @@
           
 
           
-              <div class="post-description">Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录</div>
+              <div class="post-description">鲁棒模型拟合问题简述</div>
           
 
         </div>
@@ -417,8 +425,56 @@
       
 
       
-        <p>笔记5：支持向量机 <strong>Support Vector Machines</strong>，对应讲义<strong>Note3 Part5</strong> ,对应Lecture6(25)-</p>
-<p>主要内容包括介绍了神经网络，支持向量机</p>
+        <p>简要的介绍一下鲁棒模型拟合（Robust Model Fitting），对于基本问题的各种概念进行解释与举例。</p>
+<a id="more"></a>
+<p>我参考了相关的研究论文与维基百科，就不一一列举了。</p>
+<p>这里先介绍一下什么是模型拟合。</p>
+<h1 id="模型拟合"><a href="#模型拟合" class="headerlink" title="模型拟合"></a>模型拟合</h1><p><strong>模型拟合</strong>（Model Fitting）指从一组观测数据中，给定合适的模型的情况下，利用数据来估计模型的参数。</p>
+<p>拟合不是某一种特定的方法，而是指的是能够将一组数据，按照给定模型的规律方程化的方法全体。所求取的参数是在模型的<strong>参数空间</strong>内能够”最好“的解释数据的<strong>参数</strong>。</p>
+<p>其中<strong>回归分析</strong> 是模型拟合的一种方法。分为 线性回归 和 非线性回归。</p>
+<p>拟合还有其他的方法，例如：指数平滑，ARIMA，VAR 等。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>在实际应用中，我们可以运用<strong>线性最小二乘</strong>拟合一组数据点。例如：</p>
+<p>给定一组 $m$ 个二维数据点</p>
+<script type="math/tex; mode=display">
+D= \{(x_1,y_1),(x_2,y_2),\dots,(x_m,y_m)\}\\</script><p>并给出模型函数 $f$ 与参数 $\beta$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\hat y= f(x,\beta) = \sum_{j=1}^n\beta_j\phi_j(x)\\
+&\text{where} \quad \beta =(\beta_1,\beta_2,\dots,\beta_n)\\
+\end{align}</script><p>目的寻找参数 $\beta$ 使得模型函数最“拟合”数据。理想情况下，模型与数据完全没有偏差。通常这是不可能的，一般是一个超定问题，数据点数大于参数个数 $m&gt;n$ 。此时，最小二乘是找到<strong>残差</strong>(residual)平方和的最小可能值：</p>
+<script type="math/tex; mode=display">
+\min L(\beta) =  \sum_{i=1}^n r^2_i(\beta) \\
+\text{where} \quad r_i(\beta) = y_i - f(x_i,\beta)</script><p>从而求解最佳参数 $\beta$</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0tzbtiyrbj306u08hwf1.jpg" alt="image-20190307093617538"><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0tzc14j5xj306y061q34.jpg" alt="image-20190307093629970"></p>
+<h2 id="最小二乘法的缺陷"><a href="#最小二乘法的缺陷" class="headerlink" title="最小二乘法的缺陷"></a>最小二乘法的缺陷</h2><p>最小二乘法对于数据的噪声点是非常敏感的，当数据存在噪声，最小二乘法会出现很大的偏差。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0u0girz41j30h30b2q41.jpg" alt="image-20190307101523552"></p>
+<h1 id="鲁棒模型拟合"><a href="#鲁棒模型拟合" class="headerlink" title="鲁棒模型拟合"></a>鲁棒模型拟合</h1><p>所谓鲁棒性（Robustness），又可称做顽健性<del>耐操性</del>。在计算机科学领域，就是指在一个计算机系统在运行期间对抗错误与处理错误地能力。在模型拟合中，可以狭义的理解为对抗噪声的能力。</p>
+<p>在真实环境下，数据不可避的存在噪声点。</p>
+<p><strong>鲁棒模型拟合</strong>，指在存在噪声的情况下，估计给定模型的参数。换句话说，就是使得模型拟合对于噪声不敏感。</p>
+<p>一个合格的鲁棒模型拟合算法，能够不受大量离群点影响（鲁棒性），准确的估计出数据中的模型个数与各个模型的参数（有效性）。</p>
+<p>我们将属于一个模型实例的点称为该模型的内点（Inliers），不属于任何模型实例的点，称为离群点（Outliers）。一般的界定方法是，对于一个模型假设，点与模型的残差 $\delta$ 大于某个阈值为outlier，而小于该阈值的视为inlier。如下图，模型假设是绿点连接成的直线，红色点为该模型的outliers。蓝色点则是“支持”该模型的inliers。这也是判断模型假设好坏与否的标准。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0u16fa292j304u044jrh.jpg" alt="image-20190307104017416"></p>
+<p>最经典的算法是RANSAC，出自：Fischler, M. A., &amp; Bolles, R. C. (1981). <em>Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography</em>. <em>Communications of the ACM</em> (Vol. 24). Morgan Kaufmann Publishers, Inc. <a href="https://doi.org/10.1145/358669.358692" target="_blank" rel="noopener">https://doi.org/10.1145/358669.358692</a></p>
+<h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2><p>目前，鲁棒模型拟合存在的难点在于</p>
+<ol>
+<li>大量的离群点（outliers&gt;90%)</li>
+<li>数据集中存在多个模型。<ul>
+<li>模型的数量未知</li>
+<li>各自内点的个数不平衡</li>
+<li>模型实例之间会互相干扰：对于一个模型而言，其余模型的内点也被视为outliers，被称作pseudo-outliers</li>
+</ul>
+</li>
+</ol>
+<p>例如：</p>
+<p>二维平面点集上的圆形拟合，图中存在大量非真实模型离群点的干扰与4个相交的真实圆形构成的点集。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0tzz3c02tj30ox0chtfs.jpg" alt="image-20190307095839142"></p>
+<p>三维直线的拟合</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0u0bd4futj30gs0c2773.jpg" alt="image-20190307101027419"></p>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p>模型拟合不仅可以运用与点集的形状模型估计，还用于计算机视觉中真实场景中的参数模型的估计。例如三维重构，图片全景拼接，运动分割，平面估计。</p>
+<p>本质上是对于<strong>单应性矩阵</strong>或<strong>基础矩阵</strong>的估计。（Homography/Fundamental Matrix Estimation）</p>
+<p>如下图，对于一个真实物体，进行两个不同角度的拍摄（角度不能过大），特征提取匹配后，会存在错误的无效噪声点的匹配，这时候可以根据 相机拍摄的<strong>对极几何</strong> 特性，利用拟合方法，各个真实平面从视角A到视角B的变换所对应的单应性/基础矩阵。 从而找到真实平面。</p>
+<p>🛰️在之后的文章会详细的介绍 对极几何。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0u1jvewf3j30li0cxdsx.jpg" alt="image-20190307105307803"></p>
 
       
     </div>
@@ -441,9 +497,9 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            <a href="/tags/算法设计/" rel="tag"># 算法设计</a>
           
-            <a href="/tags/cs229/" rel="tag"># cs229</a>
+            <a href="/tags/鲁棒统计/" rel="tag"># 鲁棒统计</a>
           
         </div>
       
@@ -456,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/数学/《矩阵论》知识点.html" rel="next" title="《矩阵论》知识点">
-                <i class="fa fa-chevron-left"></i> 《矩阵论》知识点
+              <a href="/uncategorized/sentence-2.html" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -465,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/机器学习/计算智能2.html" rel="prev" title="《计算智能》课程笔记2——概率推理">
-                《计算智能》课程笔记2——概率推理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -655,6 +716,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型拟合"><span class="nav-number">1.</span> <span class="nav-text">模型拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小二乘法的缺陷"><span class="nav-number">1.2.</span> <span class="nav-text">最小二乘法的缺陷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#鲁棒模型拟合"><span class="nav-number">2.</span> <span class="nav-text">鲁棒模型拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#难点"><span class="nav-number">2.1.</span> <span class="nav-text">难点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际应用"><span class="nav-number">2.2.</span> <span class="nav-text">实际应用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

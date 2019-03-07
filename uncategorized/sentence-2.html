@@ -108,25 +108,24 @@
 
 
 
-  <meta name="description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
-<meta name="keywords" content="机器学习,课程笔记,cs229">
+  <meta name="description" content="Multiple Models Fitting as a Set Coverage ProblemWe cast the multi-model fitting problem in terms of set coverage. 我们 根据（in terms of）集合覆盖来描述多模型覆盖问题  cast  VERB 描述;描写;描绘  To cast someone in a particula">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs229笔记5-支持向量机">
-<meta property="og:url" content="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
+<meta property="og:title" content="老思机">
+<meta property="og:url" content="http://WhitePuffer.github.io/uncategorized/sentence-2.html">
 <meta property="og:site_name" content="老思机">
-<meta property="og:description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
+<meta property="og:description" content="Multiple Models Fitting as a Set Coverage ProblemWe cast the multi-model fitting problem in terms of set coverage. 我们 根据（in terms of）集合覆盖来描述多模型覆盖问题  cast  VERB 描述;描写;描绘  To cast someone in a particula">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-23T13:52:04.678Z">
+<meta property="og:updated_time" content="2019-03-06T15:00:14.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs229笔记5-支持向量机">
-<meta name="twitter:description" content="Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录">
+<meta name="twitter:title" content="老思机">
+<meta name="twitter:description" content="Multiple Models Fitting as a Set Coverage ProblemWe cast the multi-model fitting problem in terms of set coverage. 我们 根据（in terms of）集合覆盖来描述多模型覆盖问题  cast  VERB 描述;描写;描绘  To cast someone in a particula">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
+  <link rel="canonical" href="http://WhitePuffer.github.io/uncategorized/sentence-2.html">
 
 
 
@@ -136,7 +135,7 @@
   };
 </script>
 
-  <title>cs229笔记5-支持向量机 | 老思机</title>
+  <title> | 老思机</title>
   
 
 
@@ -305,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/cs229/cs229笔记5-支持向量机.html">
+    <link itemprop="mainEntityOfPage" href="http://WhitePuffer.github.io/uncategorized/sentence-2.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="White Puffer">
@@ -322,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cs229笔记5-支持向量机
+          <h1 class="post-title" itemprop="name headline">
               
             
           </h1>
@@ -347,7 +346,7 @@
                 
               
 
-              <time title="创建时间：2018-11-23 21:48:11" itemprop="dateCreated datePublished" datetime="2018-11-23T21:48:11+08:00">2018-11-23</time>
+              <time title="创建时间：2019-02-28 16:01:24" itemprop="dateCreated datePublished" datetime="2019-02-28T16:01:24+08:00">2019-02-28</time>
             
 
             
@@ -364,30 +363,12 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-23 21:52:04" itemprop="dateModified" datetime="2018-11-23T21:52:04+08:00">2018-11-23</time>
+                <time title="修改时间：2019-03-06 23:00:14" itemprop="dateModified" datetime="2019-03-06T23:00:14+08:00">2019-03-06</time>
               
             
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cs229/" itemprop="url" rel="index"><span itemprop="name">cs229</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -400,8 +381,6 @@
 
           
 
-          
-              <div class="post-description">Support Vectorn Machines——吴恩达cs229《机器学习》知识要点记录</div>
           
 
         </div>
@@ -417,8 +396,92 @@
       
 
       
-        <p>笔记5：支持向量机 <strong>Support Vector Machines</strong>，对应讲义<strong>Note3 Part5</strong> ,对应Lecture6(25)-</p>
-<p>主要内容包括介绍了神经网络，支持向量机</p>
+        <h1 id="Multiple-Models-Fitting-as-a-Set-Coverage-Problem"><a href="#Multiple-Models-Fitting-as-a-Set-Coverage-Problem" class="headerlink" title="Multiple Models Fitting as a Set Coverage Problem"></a>Multiple Models Fitting as a Set Coverage Problem</h1><p>We <strong>cast</strong> the multi-model fitting problem <strong>in terms of</strong> set coverage.</p>
+<p>我们 根据（in terms of）集合覆盖来描述多模型覆盖问题</p>
+<blockquote>
+<p>cast </p>
+<p>VERB 描述;描写;描绘 </p>
+<p>To <strong>cast</strong> someone in a particular way or as a particular thing means to describe them in that way or suggest they are that thing.</p>
+</blockquote>
+<p>Finding a model (or structure) that fits data corrupted by noise and outliers is an <strong>omnipresent</strong> problem in <strong>empirical</strong> sciences, including Computer Vision.</p>
+<ul>
+<li><p>omnipresent adj.\ 无所不在的</p>
+</li>
+<li><p>empirical adj.\ 经验主义的，完全根据经验的；实证的</p>
+</li>
+</ul>
+<p>Moreover, the presence of multiple structures <strong>strains</strong> robust estimation, because, in addition to rogue points, the outliers to a structure of interest are all the inliers to the other structures.</p>
+<ul>
+<li><p>strains vt.\ 拉紧；滥用；滤去；竭力</p>
+<p>force (a part of one’s body or oneself) to make a strenuous or unusually great effort.</p>
+</li>
+</ul>
+<p>简要来说，这句话的意思是：多模型的出现对于鲁棒估计来 “很有挑战force to make a strenuous great effort”</p>
+<p>As such, this strategy <strong>is inherently prone</strong> to achieve suboptimal segmentation.</p>
+<ul>
+<li>be prone to 易于……；有……的倾向</li>
+<li>inherently adv.\ 内在地；固有地；天性地；本质上</li>
+</ul>
+<p>At first the space Θ of all the feasible structures is approximated as a suitable finite hypothesis space H in different ways.</p>
+<p>首先，所有可行结构的空间Θ以不同方式近似为合适的有限假设空间H.</p>
+<p>In this way the difficulties of the quantization step <strong>are alleviated by</strong> mapping the data into the parameter space through random sampling and then by seeking the modes (e.g. with with mean-shift [3]).</p>
+<ul>
+<li>alleviated  v.\ 减轻（alleviate的过去分词）；使…缓和</li>
+</ul>
+<p>In all these consensus based methods, alongside the voting phase, the approximation of Θ is <strong>a recurring and tricky issue</strong>. </p>
+<ul>
+<li>recurring and tricky issue 反复和棘手的问题</li>
+</ul>
+<p>This issue <strong>is addressed by</strong> enforcing several disjointedness criteria, either explicitly or implicitly by different approximations of the solution space</p>
+<p>这个方法<strong>被解决</strong> by 即 明确或隐含地 执行若干的 脱节的标准？通过对解空间的不同近似。 </p>
+<p>As regards Sequential Ransac, this idea can <strong>be identified</strong> in the iterative removal of the discovered inliers and in the subsequent sampling of the hypotheses on the remaining data.</p>
+<ul>
+<li>体会一下这个意思，大致是说：这个idea可以被看作为….</li>
+<li>identified vt.\ 确定；鉴定；识别，辨认出；使参与；把…看成一样\ vi.\ 确定；认同；一致</li>
+</ul>
+<p>As such, this strategy is <strong>inherently</strong> prone to achieve suboptimal segmentation.</p>
+<p>因此，该策略<strong>本质上</strong>倾向于实现次优分割。 </p>
+<p>A parallel scheme, dubbed Multi-Ransac, has been proposed in [39] <strong>in the endeavor to</strong> mitigate its greediness.</p>
+<p>the algorithm would fail in <strong>discerning authentic structures</strong>.</p>
+<ul>
+<li>识别真实结构</li>
+<li><p>discern  vt.\ 识别；领悟，认识</p>
+</li>
+<li><p>authentic adj.\ 真正的，真实的；可信的</p>
+</li>
+</ul>
+<p>In order to overcome the drawbacks inherent to consensus methods, the problem <strong>has been tackled from</strong> a different point of view</p>
+<ul>
+<li>be tackled from 解决，处理，对付（tackle的过去式和过去分词）</li>
+</ul>
+<p>The changes of perspective <strong>entailed</strong> by preference analysis re-<br>sults in a different approach to the chicken-&amp;-egg dilemma</p>
+<p>偏好集引起的观点的变化，导致了另一种鸡-蛋困境的方向。</p>
+<ul>
+<li>entail 引起</li>
+</ul>
+<p>we can ascribe to preference analysis also all the approaches based on higher order clustering</p>
+<ul>
+<li>ascribe vt.\ 归因于；归咎于 ascribe <em>sth</em> to <em>sb/sth</em> </li>
+</ul>
+<p>the segmentation/clustering problem is <strong>ill-posed</strong>, and that a “no<br>free lunch theorem”</p>
+<ul>
+<li>ill-posed 病态的</li>
+</ul>
+<p>the treatment reserved to outliers is not completely <strong>sound</strong>. </p>
+<p>对异常值保留的处理并不完全合理</p>
+<p><strong>Hierarchical</strong> methods in practice are more <strong>resilient</strong> to outliers,</p>
+<ul>
+<li>Hierarchical adj.\ 分层的；等级体系的</li>
+<li>resilient adj.\ 弹回的，有弹力的；能复原的；可迅速恢复的</li>
+</ul>
+<p>in other words, the true structures determine, <strong>by means of</strong> their consensus sets, a cover of the data, i.e. a collection of sets whose union contains X:</p>
+<ul>
+<li>by means of 用，依靠</li>
+</ul>
+<p>SET COVER and MAXIMUM COVERAGE are long known to be NP-hard [11]: not surprisingly, since the inherent complexity of multi-model fitting does not disappear by simply rephrasing it in different terms. Nevertheless, these optimization problems are among the oldest, most studied and widespread ones in the mathematical programming literature. <strong>Therefore we can reap the outcomes of the efforts made by the scientific community in addressing this issues, and enjoy the fruits of several studies focused on approximating the solutions of these problems.</strong></p>
+<p>众所周知，SET COVER和MAXIMUM COVERAGE是NP难的[11]：毫不奇怪，因为多模型拟合的固有复杂性并没有通过简单地用不同的术语重新表述而消失。 然而，这些优化问题是数学规划文献中最古老，研究最多和最普遍的问题之一。 因此，我们可以收获科学界在解决这一问题方面所做出的努力的成果，并享受几项研究的成果，这些研究的重点是近似解决这些问题。</p>
+<h1 id="Mode-Seeking-on-Hypergraphs-for-Robust-Geometric-Model-Fitting-MSH"><a href="#Mode-Seeking-on-Hypergraphs-for-Robust-Geometric-Model-Fitting-MSH" class="headerlink" title="Mode-Seeking on Hypergraphs for Robust Geometric Model Fitting (MSH)"></a>Mode-Seeking on Hypergraphs for Robust Geometric Model Fitting (MSH)</h1><p>a hypergraph <strong>involves</strong> high order similarities instead of <strong>pairwise similarities</strong> used on the graph and it can describe more complex relationships among modes of interest.</p>
+<p>超图<strong>涉及</strong>高阶相似性而不是图上使用的<strong>成对相似性</strong>，它可以描述感兴趣模式之间更复杂的关系。</p>
 
       
     </div>
@@ -437,16 +500,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-          
-            <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
-          
-            <a href="/tags/cs229/" rel="tag"># cs229</a>
-          
-        </div>
-      
 
       
       
@@ -456,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/数学/《矩阵论》知识点.html" rel="next" title="《矩阵论》知识点">
-                <i class="fa fa-chevron-left"></i> 《矩阵论》知识点
+              <a href="/uncategorized/PCA详解.html" rel="next" title="Principal Components Analysis(PCA)详解">
+                <i class="fa fa-chevron-left"></i> Principal Components Analysis(PCA)详解
               </a>
             
           </div>
@@ -466,8 +519,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/机器学习/计算智能2.html" rel="prev" title="《计算智能》课程笔记2——概率推理">
-                《计算智能》课程笔记2——概率推理 <i class="fa fa-chevron-right"></i>
+              <a href="/鲁棒统计/鲁棒模型拟合：解决什么问题.html" rel="prev" title="鲁棒模型拟合：解决什么问题">
+                鲁棒模型拟合：解决什么问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -513,8 +566,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -655,6 +717,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Multiple-Models-Fitting-as-a-Set-Coverage-Problem"><span class="nav-number">1.</span> <span class="nav-text">Multiple Models Fitting as a Set Coverage Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mode-Seeking-on-Hypergraphs-for-Robust-Geometric-Model-Fitting-MSH"><span class="nav-number">2.</span> <span class="nav-text">Mode-Seeking on Hypergraphs for Robust Geometric Model Fitting (MSH)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -847,30 +925,6 @@
   
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 
