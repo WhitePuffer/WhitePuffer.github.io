@@ -111,7 +111,7 @@
   <meta name="description" content="鲁棒模型拟合问题简述">
 <meta name="keywords" content="机器学习,算法设计,鲁棒统计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鲁棒模型拟合：解决什么问题">
+<meta property="og:title" content="鲁棒模型拟合：解决什么问题？">
 <meta property="og:url" content="http://WhitePuffer.github.io/鲁棒统计/鲁棒模型拟合：解决什么问题.html">
 <meta property="og:site_name" content="老思机">
 <meta property="og:description" content="鲁棒模型拟合问题简述">
@@ -123,9 +123,9 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0tzz3c02tj30ox0chtfs.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0u0bd4futj30gs0c2773.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0u1jvewf3j30li0cxdsx.jpg">
-<meta property="og:updated_time" content="2019-03-07T03:18:36.957Z">
+<meta property="og:updated_time" content="2019-03-07T03:29:34.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鲁棒模型拟合：解决什么问题">
+<meta name="twitter:title" content="鲁棒模型拟合：解决什么问题？">
 <meta name="twitter:description" content="鲁棒模型拟合问题简述">
 <meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0tzbtiyrbj306u08hwf1.jpg">
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title>鲁棒模型拟合：解决什么问题 | 老思机</title>
+  <title>鲁棒模型拟合：解决什么问题？ | 老思机</title>
   
 
 
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">鲁棒模型拟合：解决什么问题
+          <h1 class="post-title" itemprop="name headline">鲁棒模型拟合：解决什么问题？
               
             
           </h1>
@@ -372,7 +372,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-07 11:18:36" itemprop="dateModified" datetime="2019-03-07T11:18:36+08:00">2019-03-07</time>
+                <time title="修改时间：2019-03-07 11:29:34" itemprop="dateModified" datetime="2019-03-07T11:29:34+08:00">2019-03-07</time>
               
             
           </span>
@@ -425,7 +425,7 @@
       
 
       
-        <p>简要的介绍一下鲁棒模型拟合（Robust Model Fitting），对于基本问题的各种概念进行解释与举例。</p>
+        <p>简述<strong>鲁棒模型拟合</strong>（Robust Model Fitting），对于基本问题的各种概念进行解释与举例。</p>
 <a id="more"></a>
 <p>我参考了相关的研究论文与维基百科，就不一一列举了。</p>
 <p>这里先介绍一下什么是模型拟合。</p>
@@ -446,13 +446,13 @@ D= \{(x_1,y_1),(x_2,y_2),\dots,(x_m,y_m)\}\\</script><p>并给出模型函数 $f
 \min L(\beta) =  \sum_{i=1}^n r^2_i(\beta) \\
 \text{where} \quad r_i(\beta) = y_i - f(x_i,\beta)</script><p>从而求解最佳参数 $\beta$</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0tzbtiyrbj306u08hwf1.jpg" alt="image-20190307093617538"><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0tzc14j5xj306y061q34.jpg" alt="image-20190307093629970"></p>
-<h2 id="最小二乘法的缺陷"><a href="#最小二乘法的缺陷" class="headerlink" title="最小二乘法的缺陷"></a>最小二乘法的缺陷</h2><p>最小二乘法对于数据的噪声点是非常敏感的，当数据存在噪声，最小二乘法会出现很大的偏差。</p>
+<h2 id="最小二乘法的缺陷"><a href="#最小二乘法的缺陷" class="headerlink" title="最小二乘法的缺陷"></a>最小二乘法的缺陷</h2><p>最小二乘法对于数据的噪声点是非常敏感的，当数据存在outliers，最小二乘法会出现很大的偏差。</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0u0girz41j30h30b2q41.jpg" alt="image-20190307101523552"></p>
 <h1 id="鲁棒模型拟合"><a href="#鲁棒模型拟合" class="headerlink" title="鲁棒模型拟合"></a>鲁棒模型拟合</h1><p>所谓鲁棒性（Robustness），又可称做顽健性<del>耐操性</del>。在计算机科学领域，就是指在一个计算机系统在运行期间对抗错误与处理错误地能力。在模型拟合中，可以狭义的理解为对抗噪声的能力。</p>
 <p>在真实环境下，数据不可避的存在噪声点。</p>
 <p><strong>鲁棒模型拟合</strong>，指在存在噪声的情况下，估计给定模型的参数。换句话说，就是使得模型拟合对于噪声不敏感。</p>
 <p>一个合格的鲁棒模型拟合算法，能够不受大量离群点影响（鲁棒性），准确的估计出数据中的模型个数与各个模型的参数（有效性）。</p>
-<p>我们将属于一个模型实例的点称为该模型的内点（Inliers），不属于任何模型实例的点，称为离群点（Outliers）。一般的界定方法是，对于一个模型假设，点与模型的残差 $\delta$ 大于某个阈值为outlier，而小于该阈值的视为inlier。如下图，模型假设是绿点连接成的直线，红色点为该模型的outliers。蓝色点则是“支持”该模型的inliers。这也是判断模型假设好坏与否的标准。</p>
+<p>我们将属于一个模型实例的点称为该模型的<strong>内点</strong>（Inliers），不属于任何模型实例的点，称为<strong>离群点</strong>（Outliers）。一般的界定方法是，对于一个模型假设，点与模型的残差 $\delta$ 大于某个阈值为outlier，而小于该阈值的视为inlier。如下图，模型假设是绿点连接成的直线，红色点为该模型的outliers。蓝色点则是“支持”该模型的inliers。这也是判断模型假设好坏与否的标准。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0u16fa292j304u044jrh.jpg" alt="image-20190307104017416"></p>
 <p>最经典的算法是RANSAC，出自：Fischler, M. A., &amp; Bolles, R. C. (1981). <em>Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography</em>. <em>Communications of the ACM</em> (Vol. 24). Morgan Kaufmann Publishers, Inc. <a href="https://doi.org/10.1145/358669.358692" target="_blank" rel="noopener">https://doi.org/10.1145/358669.358692</a></p>
 <h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2><p>目前，鲁棒模型拟合存在的难点在于</p>
